@@ -4,4 +4,5 @@ primer repositorio grupal
 Aqui subiremos toda la actualizacion del proyecto
 
 -------
-prueba se push: @juan_sabugo 
+prueba se push: @juan_sabugo
+prueba de push: @mati_garcia 

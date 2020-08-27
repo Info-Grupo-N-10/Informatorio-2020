@@ -7,7 +7,8 @@ Aqui subiremos toda la actualizacion del proyecto
 prueba se push: @juan_sabugo 
 @chicky01
 @mati
-@guada
+@guada 
+@elias
 
 PASOS PARA CONECTAR
 En todos los pasos es recomendable ir viendo el estado con git status

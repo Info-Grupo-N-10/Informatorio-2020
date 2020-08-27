@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Home</title>
+</head>
+<body>
+	<h1>INICIO</h1>>
+<div>
+	<a href="{% url 'registro' %}">Registro</a><br>
+	<a href="{% url 'perfil:perfil' %}">Perfil</a><br>
+	<a href="{% url 'propiedades' %}">Propiedades</a><br>
+	<a href="{% url 'home' %}">Home</a><br>
+</div>
+<div style= "margin-top: 200px">
+
+	{% block contenido %}
+	
+	{% endblock %}
+	
+</div>>
+</body>
+</html>

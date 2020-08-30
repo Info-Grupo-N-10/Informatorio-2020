@@ -10,7 +10,7 @@ prueba se push: @juan_sabugo
 @guada 
 @elias
 @julian2
-
+@juanpablo
 
 PASOS PARA CONECTAR
 En todos los pasos es recomendable ir viendo el estado con git status

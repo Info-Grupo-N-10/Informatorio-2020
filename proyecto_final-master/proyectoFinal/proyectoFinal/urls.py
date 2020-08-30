@@ -18,5 +18,5 @@ urlpatterns = [
 	 path('perfil', include('apps.perfil.urls')),
 	 path('publicacion', include('apps.publicacion.urls')),
 	 path('favoritos', include('apps.favoritos.urls')),
-
+        
 ]

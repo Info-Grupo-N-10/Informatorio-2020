@@ -18,7 +18,4 @@ def Contacto(request):
 def Perfiles(request):
 	return render(request, 'perfiles.html')
 
-
-
-
 #Registro, Perfil, Usuarios, Propiedades, Publicación, Favoritos

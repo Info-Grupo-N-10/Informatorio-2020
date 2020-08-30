@@ -15,7 +15,4 @@ def Propiedades(request):
 
 
 
-
-
-
 #Registro, Perfil, Usuarios, Propiedades, Publicación, Favoritos

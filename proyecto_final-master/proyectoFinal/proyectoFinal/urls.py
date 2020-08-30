@@ -7,7 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
 
      path('', views.Home , name = 'home'),
-     path('Regigastrarse', views.Registro, name = 'registro'),
+     path('Registrarse', views.Registro, name = 'registro'),
      path('Usuarios', views.Usuarios, name = 'usuarios'), 
      path('Propiedades', views.Propiedades, name = 'propiedades'),#app catalogo de publicaciones
      

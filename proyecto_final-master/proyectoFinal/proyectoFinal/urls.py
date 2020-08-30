@@ -10,6 +10,8 @@ urlpatterns = [
      path('Registrarse', views.Registro, name = 'registro'),
      path('Usuarios', views.Usuarios, name = 'usuarios'), 
      path('Propiedades', views.Propiedades, name = 'propiedades'),#app catalogo de publicaciones
+     path('Contacto', views.Contacto, name = 'contacto'), #
+     path('Perfiles', views.Perfiles, name = 'perfiles'),
      
 
      #urls otras app

@@ -1,8 +1,8 @@
 from django.shortcuts import render
 
 # Create your views here.
-def Perfil(request):
-	return render(request,'perfil/perfil.html')
+def Perfiles(request):
+	return render(request,'publicacion/perfiles.html')	
 
 def Agente1(request):
 	return render(request,'perfil/agente1.html')

@@ -425,7 +425,7 @@ a:hover {
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
 .nav-arrow-b .owl-arrow .owl-nav .owl-next:hover {
-  background-color: #26a356;
+  background-color: #FFD300;
 }
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-next {
@@ -1551,7 +1551,7 @@ footer .credits {
 
 .form-a #sendmessage {
   color: #FFD300;
-  border: 1px solid #26a356;
+  border: 1px solid #FFD300;
   display: none;
   text-align: center;
   padding: 15px;
@@ -1649,7 +1649,7 @@ footer .credits {
 }
 
 .btn.btn-b-n:hover {
-  background-color: #26a356;
+  background-color: #FFD300;
   color: #ffffff;
 }
 

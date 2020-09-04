@@ -29,12 +29,12 @@ a {
 }
 
 a:hover {
-  color: #FFD300;
+  color: #3914AF;
   text-decoration: none;
 }
 
 .modal-backdrop.fade {
-  z-index: -1;
+  z-index: 1000;
 }
 
 .link-two {
@@ -429,7 +429,7 @@ a:hover {
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-prev:hover,
 .nav-arrow-b .owl-arrow .owl-nav .owl-next:hover {
-  background-color: #26a356;
+  background-color: #3914AF;
 }
 
 .nav-arrow-b .owl-arrow .owl-nav .owl-next {
@@ -1653,7 +1653,7 @@ footer .credits {
 }
 
 .btn.btn-b-n:hover {
-  background-color: #26a356;
+  background-color: #3914AF;
   color: #ffffff;
 }
 

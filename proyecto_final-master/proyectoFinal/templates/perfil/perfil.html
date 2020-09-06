@@ -1,8 +1,19 @@
 {% extends 'base.html' %}
 
-{% block contenido %}
-	<h1>SOY EL PERFIL</h1>>
-	<div>
-		<a href="{% url 'favoritos:favoritos' %}">Favoritos</a><br>
-	</div>>
-{% endblock %}
+	{% block contenido %}
+		<h1>SOY EL PERFIL</h1>
+		<div>
+			{{object_list}}
+
+			{% for p in object_list %}
+
+				<a href="{% url 'favoritos:favoritos' %}">Favoritos</a><br>
+
+				<a href= "{% url 'perfil:editar' p.usuario_id %}">EDITAR PERFIL</a>
+				
+				<form method= "POST" action="{% url 'home' p.usuario_id %}">{% csrf_token %}
+					<button type="submit">ELIMINAR PERFIL</button>
+				</form>
+			{% endfor %}
+		</div>
+	{% endblock %}

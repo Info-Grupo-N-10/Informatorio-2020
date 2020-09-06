@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	
+	<h1>TODOS LOS PERFILES </h1>
+		
+		{{object_list}}
+
+		{% for p in object_list %}
+		
+		<p><b>Nombre: </b>{{p.nombre}}</p>
+		<p><b>Telefono: </b>{{p.descripcion}}</p>
+		<p><b>Email: </b>{{p.email}}</p>
+		<p><b>Precio: </b>{{p.precio}}</p>
+			<img src= "{{p.imagen.url}}" width="100" height="100">	
+			<form method= "POST" action="{% url 'productos:editar' p.codigo %}">{% csrf_token %}
+			<button type="submit">ELIMINAR PERFIL</button>
+			</form>
+		
+		{% endfor %}
+		
+	
+
+{% endblock %}

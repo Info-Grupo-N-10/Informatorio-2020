@@ -12,7 +12,3 @@ class Perfil(models.Model):
 
 
 
-"""
-usuario_id = models.ForeignKey(
-        'Usuario', on_delete=models.CASCADE)
-"""

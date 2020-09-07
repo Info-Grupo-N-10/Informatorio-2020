@@ -9,9 +9,6 @@ def Registro(request):
 def Usuarios(request):
 	return render(request, 'usuarios.html')#propiedades
 
-def Propiedades(request):
-	return render(request, 'propiedades.html')#home
-
 
 
 

@@ -27,6 +27,8 @@ class Borrar(DeleteView):
 	model = Publicacion
 	success_url = reverse_lazy("propiedades.html")
 
-class ListarPoductos(ListView):
+class ListarPublicaciones(ListView):
 	model = Publicacion
 	template_name = 'propiedades.html'
+
+	

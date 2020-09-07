@@ -10,12 +10,11 @@ from . import views
 
 
 urlpatterns = [
+    
     path('admin/', admin.site.urls),
-
-     path('', views.Home , name = 'home'),
-     path('Propiedades', views.Propiedades, name = 'propiedades'),#app catalogo de publicaciones
-     path('Login', auth.LoginView.as_view(template_name="usuarios/login.html"), name='login'),
-     path('Logout', auth.LogoutView.as_view(), name='logout'),
+    path('', views.Home , name = 'home'),
+    path('Login', auth.LoginView.as_view(template_name="usuarios/login.html"), name='login'),
+    path('Logout', auth.LogoutView.as_view(), name='logout'),
 
      #urls otras app
 	 path('perfil', include('apps.perfil.urls')),

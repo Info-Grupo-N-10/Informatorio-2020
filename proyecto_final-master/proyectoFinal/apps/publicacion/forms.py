@@ -1,17 +1,17 @@
-from .models import Publicacion
+from .models import Publicaciones
 from django import forms
 
 
 class AltaPublicacion(forms.ModelForm):
 
 	class Meta:
-		model = Publicacion
+		model = Publicaciones
 		fields = '__all__'
 
 
 class EditarPublicacion(forms.ModelForm):
  	class Meta:         
- 		model = Publicacion         
+ 		model = Publicaciones        
  		fields =  ["precio", "descripcion", "ubicacion", "ambientes", "habitaciones", "baños", "cochera", "patio", "mascotas", "niños", "superficie", "servicios", "tipo_inmueble"]   
           
 

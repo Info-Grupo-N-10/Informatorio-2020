@@ -17,9 +17,9 @@ urlpatterns = [
     path('Logout', auth.LogoutView.as_view(), name='logout'),
 
      #urls otras app
-	 path('perfil', include('apps.perfil.urls')),
-	 path('Registro', include('apps.usuarios.urls')),
-     path('publicacion', include('apps.publicacion.urls')),
-	 path('favoritos', include('apps.favoritos.urls')),
+	 path('Perfil/', include('apps.perfil.urls')),
+	 path('Registro/', include('apps.usuarios.urls')),
+     path('Inmuebles/', include('apps.publicacion.urls')),
+	 path('Favoritos/', include('apps.favoritos.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

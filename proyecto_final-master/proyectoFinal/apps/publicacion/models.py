@@ -2,7 +2,7 @@ from django.db import models
 
 
 
-class Publicacion(models.Model):
+class Publicaciones(models.Model):
 	publicacion_id = models.AutoField(primary_key=True)
 	precio = models.DecimalField(max_digits=10, decimal_places=2)
 	descripcion = models.TextField()
@@ -32,5 +32,5 @@ class Tipo_Inmueble(models.Model):
 	habitacion = models.BooleanField(default=False)
 
 
-
+#ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA
 

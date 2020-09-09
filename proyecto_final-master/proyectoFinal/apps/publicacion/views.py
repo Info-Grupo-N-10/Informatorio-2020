@@ -9,10 +9,10 @@ from django.forms import formset_factory
 
 
 def Publicacion(request):	
-	return render(request,'publicacion/publicacion.html')
+	return render(request,'publicacion/publi.html')
 
 def CargarImagenes(request):
-	return render(request, 'publicacion/publicacion.html')
+	return render(request, 'publicacion/publi.html')
 
 class Crear(CreateView):
 	model = Publicaciones
@@ -34,41 +34,3 @@ class Borrar(DeleteView):
 class ListarPublicaciones(ListView):
 	model = Publicaciones
 	template_name = 'propiedades.html'
-"""
-def post(request):
-
-       ImageFormSet = modelformset_factory(Imagenes_Publicaciones,
-                                           form=ImagenesForm, extra=1)
-
-       if request.method == 'POST':
-
-           postForm = AltaPublicacion(request.POST)
-           formset = ImageFormSet(request.POST, request.FILES,
-                                  queryset=Imagenes_Publicaciones.objects.none())
-
-
-           if postForm.is_valid() and formset.is_valid():
-
-
-
-               post_form = postForm.save(commit=False)
-               post_form.user = request.user
-               post_form.save()
-
-               for form in formset.cleaned_data:
-                   image = form['image']
-                   photo = Images(post=post_form, image=image)
-                   photo.save()
-               messages.success(request,
-                                "Yeeew,check it out on the home page!")
-               return HttpResponseRedirect("publicacion/publicacion.html")
-           else:
-               print (postForm.errors, formset.errors)
-       else:
-           postForm = PostForm()
-           formset = ImageFormSet(queryset=Imagenes_Publicaciones.objects.none())
-       return render(request, 'publicacion/crear.html',
-                     {'postForm': postForm, 'formset': formset},
-                     context_instance=RequestContext(request))
-
-"""

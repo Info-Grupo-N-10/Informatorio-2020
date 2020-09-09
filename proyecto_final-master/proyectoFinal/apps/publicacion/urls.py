@@ -7,7 +7,7 @@ app_name="publicacion"
 
 urlpatterns = [
 
-	path('Publicacion/', views.Publicacion, name = 'publicacion'),
+	path('Publicacion/', views.Publicacion, name = 'publi'),
 	path('Listar/', views.ListarPublicaciones.as_view(), name='listar'),
 	path('Crear/', views.Crear.as_view(), name="crear"),
 	path('Borrar/', views.Borrar.as_view(), name="borrar"),

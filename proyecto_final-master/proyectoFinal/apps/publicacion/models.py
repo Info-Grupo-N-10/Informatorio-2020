@@ -1,6 +1,19 @@
 from django.db import models
 
 
+class Servicios(models.Model):
+	nombre = models.CharField(max_length=50, default=False)
+
+	def __str__(self):
+		return self.nombre
+	
+
+class Tipo_Inmueble(models.Model):
+	nombre = models.CharField(max_length=50, default=False)
+
+	def __str__(self):
+		return self.nombre
+
 
 class Publicaciones(models.Model):
 	publicacion_id = models.AutoField(primary_key=True)
@@ -15,22 +28,12 @@ class Publicaciones(models.Model):
 	mascotas = models.BooleanField(default=False)
 	niños = models.BooleanField(default=False)
 	superficie = models.CharField(max_length= 50)
-	servicios = models.ForeignKey(
-        'Servicios', on_delete=models.CASCADE)
-	tipo_inmueble = models.ForeignKey('Tipo_Inmueble', on_delete=models.CASCADE)
-
-class Servicios(models.Model):
-	internet = models.BooleanField(default=False) 
-	cable = models.BooleanField(default=False)
-	luz = models.BooleanField(default=False)
-	telefono = models.BooleanField(default=False)
-
-class Tipo_Inmueble(models.Model):
-	casa = models.BooleanField(default=False)
-	departamento = models.BooleanField(default=False)
-	duplex = models.BooleanField(default=False)
-	habitacion = models.BooleanField(default=False)
+	servicios = models.ManyToManyField(Servicios, related_name='miServicios')
+	tipo_inmueble = models.ForeignKey('Tipo_Inmueble',related_name='tipoInmueble', null=True, on_delete=models.SET_NULL)
 
 
 #ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA
 
+class Imagenes_Publicaciones(models.Model):
+	img = models.ImageField(upload_to= "publicaciones", null=False, blank=False)
+	publicacion = models.ForeignKey(Publicaciones,related_name='imgInmueble', null=True, on_delete=models.SET_NULL)

@@ -3,12 +3,15 @@ from django.views.generic import CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from .forms import *
-from .models import Publicaciones
+from .models import Publicaciones, Imagenes_Publicaciones
 from django.urls import reverse_lazy
 
 
 def Publicacion(request):	
 	return render(request,'publicacion/publicacion.html')
+
+def CargarImagenes(request):
+	return render(request, 'publicacion/publicacion.html')
 
 class Crear(CreateView):
 	model = Publicaciones
@@ -30,4 +33,14 @@ class Borrar(DeleteView):
 class ListarPublicaciones(ListView):
 	model = Publicaciones
 	template_name = 'propiedades.html'
+
+class CargarImagenes(CreateView):
+	model =  Imagenes_Publicaciones
+	template_name = 'publicacion/publicacion.html'
+
+def ListarImagenes(request):
+	context = {}
+	todos = Imagenes_Publicaciones.objects.all()
+	context['imagenes'] = todos
+	return render(request, 'publicacion/publicacion.html', context)
 

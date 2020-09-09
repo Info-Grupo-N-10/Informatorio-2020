@@ -8,7 +8,7 @@ class Perfil(models.Model):
 	telefono = models.CharField(max_length=20)
 	email = models.CharField(max_length=50)
 	descripcion = models.TextField()
-	imagen = models.ImageField(upload_to= "productos", null=True, blank=True)
+	imagen = models.ImageField(upload_to= "perfiles", null=True, blank=True)
 
 
 

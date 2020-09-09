@@ -1,14 +1,31 @@
 from django.shortcuts import render
+from django.views.generic import CreateView, DeleteView 
+from django.views.generic.edit import UpdateView
+from django.views.generic.list import ListView
+from .forms import *
+from .models import Perfil
+from django.urls import reverse_lazy
 
-# Create your views here.
-def Perfiles(request):
-	return render(request,'publicacion/perfiles.html')	
+def Perfil_Usuarios(request):
+    return render(request,'perfil/perfil.html')
 
-def Agente1(request):
-	return render(request,'perfil/agente1.html')
+class Crear(CreateView):
+    model = Perfil 
+    form_class = AltaPerfil
+    template_name = 'perfil/crear.html'
+    success_url = reverse_lazy('home')
 
-def Agente2(request):
-	return render(request,'perfil/agente2.html')
+class Editar(UpdateView):
+    model = Perfil
+    form_class = EditarPerfil
+    template_name = "perfil/editar.html"
+    success_url = reverse_lazy('home')
 
-def Agente3(request):
-	return render(request,'perfil/agente3.html')
+
+class Borrar(DeleteView):
+    model = Perfil
+    success_url = reverse_lazy("home")
+
+class ListarPerfiles(ListView):
+    model = Perfil
+    template_name = 'perfil/todos.html'

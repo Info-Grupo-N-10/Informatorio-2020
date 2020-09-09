@@ -29,20 +29,23 @@
                     {%csrf_token%}
                     <h2 class="form-title">Crear Cuenta</h2>
                     <div class="form-group">
-                        <input type="text" class="form-input" id="name" placeholder="Nombre">{{form.first_name}}
+                        <input type="text" class="form-input" id="name" placeholder="Usuario">
                     </div>
                     <div class="form-group">
-                        <input type="text" class="form-input" id="name" placeholder="Apellido">{{form.last_name}}
+                        <input type="text" class="form-input" id="name" placeholder="Nombre">
                     </div>
                     <div class="form-group">
-                        <input type="email" class="form-input" id="email" placeholder="Correo Electronico"/>{{form.email}}
+                        <input type="text" class="form-input" id="name" placeholder="Apellido">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" id="password" placeholder="Contraseña"/>{{form.password1}}
+                        <input type="email" class="form-input" id="email" placeholder="Correo Electronico"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" class="form-input" id="password" placeholder="Contraseña"/>
                         <span toggle="#password" class="toggle-password"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" id="re_password" placeholder="Repetir Contraseña"/>{{form.password2}}
+                        <input type="password" class="form-input" id="re_password" placeholder="Repetir Contraseña"/>
                     </div>
                     <div class="form-group">
                         <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />

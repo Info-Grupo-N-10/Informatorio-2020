@@ -88,7 +88,7 @@
               <h2 class="title-a">Ultimas Publicaciones</h2>
             </div>
             <div class="title-link">
-              <a href="{% url 'propiedades' %}">Ir a Todas
+              <a href="{% url 'publicacion:propiedades' %}">Ir a Todas
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -105,7 +105,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="property-single.html">206 Mount
+                    <a href="{% url 'publicacion:public' %}">206 Mount
                       <br /> Olive Road Two</a>
                   </h2>
                 </div>
@@ -113,7 +113,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="#" class="link-a">Click here to view
+                  <a href="{% url 'publicacion:public' %}" class="link-a">Click here to view
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -152,7 +152,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:publicacion' %}">157 West
+                    <a href="{% url 'publicacion:public' %}">157 West
                       <br /> Central Park</a>
                   </h2>
                 </div>
@@ -160,7 +160,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="property-single.html" class="link-a">Click here to view
+                  <a href="{% url 'publicacion:public' %}" class="link-a">Click here to view
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -199,7 +199,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:publicacion' %}">245 Azabu
+                    <a href="{% url 'publicacion:public' %}">245 Azabu
                       <br /> Nishi Park let</a>
                   </h2>
                 </div>
@@ -207,7 +207,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="{% url 'publicacion:publicacion' %}" class="link-a">Ir a la publicación
+                  <a href="{% url 'publicacion:public' %}" class="link-a">Ir a la publicación
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -246,7 +246,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="property-single.html">204 Montal
+                    <a href="{% url 'publicacion:public' %}">204 Montal
                       <br /> South Bela Two</a>
                   </h2>
                 </div>
@@ -254,7 +254,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="property-single.html" class="link-a">Ir a la publicacion
+                  <a href="{% url 'publicacion:public' %}" class="link-a">Ir a la publicacion
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -299,7 +299,7 @@
               <h2 class="title-a">Propietarios Destacados</h2>
             </div>
             <div class="title-link">
-              <a href="{% url 'perfiles' %}">Todos los Propietarios
+              <a href="{% url 'perfil:perfil' %}">Todos los Propietarios
                 <span class="ion-ios-arrow-forward"></span>
               </a>
             </div>
@@ -316,7 +316,7 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="{% url 'perfil:agente1' %}" class="link-two">Margaret Sotillo
+                    <a href="{% url 'perfil:perfil' %}" class="link-two">Margaret Sotillo
                       <br> Escala</a>
                   </h3>
                 </div>
@@ -375,7 +375,7 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="{% url 'perfil:agente2' %}" class="link-two">Stiven Spilver
+                    <a href="{% url 'perfil:perfil' %}" class="link-two">Stiven Spilver
                       <br> Darw</a>
                   </h3>
                 </div>
@@ -434,7 +434,7 @@
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="{% url 'perfil:agente3' %}" class="link-two">Emma Toledo
+                    <a href="{% url 'perfil:perfil' %}" class="link-two">Emma Toledo
                       <br> Cascada</a>
                   </h3>
                 </div>

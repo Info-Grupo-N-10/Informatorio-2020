@@ -153,18 +153,12 @@
             <a class="nav-link active" href="{% url 'home' %}">Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{% url 'propiedades' %}">Propiedades</a>
+            <a class="nav-link" href="{% url 'publicacion:propiedades' %}">Propiedades</a>
           </li>
 <!--           <li class="nav-item">
             <a class="nav-link" href="property-grid.html">Registro</a>
           </li> -->
-          <li class="nav-item">
-            <a class="nav-link" href="{% url 'perfiles' %}">Usuarios</a>
-          </li>
 
-<!--           <li class="nav-item">
-            <a class="nav-link" href="{% url 'contacto' %}">Contacto</a>
-          </li> -->
         </ul>
       </div>
       <button type="button" class="btn btn-b-n navbar-toggle-box-collapse d-none d-md-block border-right" data-toggle="collapse"
@@ -192,14 +186,15 @@
                   <h4>Ingreso</h4>
                 </div>
                 <div class="d-flex flex-column text-center">
-                  <form>
+                  <form method="POST">{%csrf_token%}
+                    {{form.errors}}
                     <div class="form-group">
-                      <input type="email" class="form-control" id="email1" placeholder="Su correo electronico">
+                      <input type="text" class="form-control" id="email1" name="username" placeholder="Nombre de Usuario">
                     </div>
                     <div class="form-group">
-                      <input type="password" class="form-control" id="password1" placeholder="Su contraseña">
+                      <input type="password" class="form-control" id="password1" name="password" placeholder="Su contraseña">
                     </div>
-                    <button type="button" class="btn btn-b-n" style="width: 100%; border-radius: 20px;">Entrar</button>
+                    <button type="submit" class="btn btn-b-n" style="width: 100%; border-radius: 20px;">Entrar</button>
                   </form>
                   
                   <div class="text-center text-muted delimiter">Use una Red Social</div>
@@ -218,7 +213,7 @@
               </div>
             </div>
               <div class="modal-footer d-flex justify-content-center">
-                <div class="signup-section">No es un Miembro? <a href="{% url 'registro' %}" class="color-b"> Registrarse Ahora</a></div>
+                <div class="signup-section">No es un Miembro? <a href="{% url 'usuarios:registro' %}" class="color-b"> Registrarse Ahora</a></div>
               </div>
           </div>
         </div>

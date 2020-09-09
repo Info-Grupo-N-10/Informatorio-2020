@@ -6,8 +6,9 @@ app_name="perfil"
 
 urlpatterns = [
 
-	path('Perfiles/', views.Perfiles, name = 'perfiles'),
-	path('agente1/', views.Agente1, name = "agente1"),
-	path('agente2/', views.Agente2, name = "agente2"),
-	path('agente3/', views.Agente3, name = "agente3"),
+    path('Perfil/', views.Perfil_Usuarios, name = 'perfil'),
+    path('Crear/', views.Crear.as_view(), name="crear"),
+    path('Borrar/<int:pk>/', views.Borrar.as_view(), name="borrar"),
+    path('Editar/<int:pk>/', views.Editar.as_view(), name="editar"),
+
 ]

@@ -162,13 +162,12 @@
         <span class="fa fa-search" aria-hidden="true"></span>
       </button>
       {% if user.is_authenticated %}
-      <p>HOLA {{user.username}}</p>
-      <a href="{% url 'logout' %}">SALIR</a>
+      <p class="text-secondary">Bienvenido, <i class="fas fa-house-user"></i>{{user.username}}<i class="far fa-user"></i></p>
+      <a href="{% url 'logout' %}" class="btn btn-b-n ">Salir <i class="fas fa-sign-out-alt"></i></a>
       <!-- Button trigger modal -->
       {% else %}
-      <button type="button" class="btn btn-b-n border-left" data-toggle="modal" data-target="#loginModal" aria-expanded="false">
-        Entrar
-      </button>
+      <input type="button" class="btn btn-b-n border-left" data-toggle="modal" data-target="#loginModal" aria-expanded="false" value="Ingresar">
+      </input>
       <!-- Modal -->
       <div class="modal fade algo" id="loginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-dialog-centered" role="document">
@@ -192,7 +191,7 @@
                     <div class="form-group">
                       <input type="password" class="form-control" id="password1" name="password" placeholder="Su contraseña">
                     </div>
-                    <input type="submit" class="btn btn-b-n" style="width: 100%; border-radius: 20px;" value="ENTRAR"></input>
+                    <input type="submit" class="btn btn-b-n" name= "" style="width: 100%; border-radius: 20px;" value="ENTRAR"></input>
                   </form>
                   
                   <div class="text-center text-muted delimiter">Use una Red Social</div>

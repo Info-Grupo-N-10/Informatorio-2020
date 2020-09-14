@@ -1,11 +1,70 @@
 {% extends 'base.html' %}
-
+{% load crispy_forms_tags %}
 {% block contenido %}
-	
-	<h1>FORMULARIO PARA CREAR PERFIL </h1>
-	<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
-		{{form.as_p}}
-		{{form.errors}}
-		<input type="submit" value="CREAR">
-
+	<section class="intro-single">
+    <div class="container">
+		<div class="wrapper wrapper--w900">
+            <div class="card card-6">
+                <div class="card-heading">
+                    <h2 class="title text-center">Actualizar Perfil</h2>
+                </div>
+                <div class="card-body">
+					<form method="POST" enctype="multipart/form-data">
+						{% csrf_token %}
+						{{form.errors}}
+                        <div class="form-row">
+                            <div class="name">Nombre</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="nombre">
+                            </div>
+						</div>
+						<div class="form-row">
+                            <div class="name">Apellido</div>
+                            <div class="value">
+                                <input class="input--style-6" type="text" name="apellido">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Correo Electronico</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="email" name="email" >
+                                </div>
+                            </div>
+						</div>
+						
+                        <div class="form-row">
+                            <div class="name">Descripcion</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <textarea class="textarea--style-6" name="descripcion" placeholder="Escribe tu informacion Personal"></textarea>
+                                </div>
+                            </div>
+						</div>
+						<div class="form-row">
+                            <div class="name">Telefono</div>
+                            <div class="value">
+                                <div class="input-group">
+                                    <input class="input--style-6" type="phone" name="telefono">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="name">Foto Personal</div>
+                            <div class="value">
+                                <div class="input-group js-input-file">
+                                    <input class="input-file" type="file" name="imagen" id="file">
+                                    <label class="label--file" for="file">Escoge una foto</label>
+                                    <span class="input-file__info">Archivo no Escogido</span>
+                                </div>
+                                <!-- <div class="label--desc">Upload your CV/Resume or any other relevant file. Tamaño maximo 50 MB</div> -->
+                            </div>
+						</div>
+						<input type="submit" class ="btn btn-b-n"value="EDITAR">
+                    </form>
+                </div>
+            </div>
+		</div>
+	  </div>
+	</section>
 {% endblock %}

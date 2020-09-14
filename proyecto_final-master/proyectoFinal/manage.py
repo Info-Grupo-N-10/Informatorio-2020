@@ -1,15 +1,3 @@
-<<<<<<< HEAD
-<<<<<<< HEAD
-
-
-=======
-#!/usr/bin/env python
-"""Django's command-line utility for administrative tasks."""
->>>>>>> 97dea7d924258b36c600a4fd74bc6f9d1fad8ffb
-=======
-
-
->>>>>>> 0214c3b7ba82f5d9d29e2288e8e03d04bfcc5c0f
 import os
 import sys
 
@@ -28,16 +16,4 @@ def main():
 
 
 if __name__ == '__main__':
-<<<<<<< HEAD
-<<<<<<< HEAD
     main()
-
-    
-=======
-    main()
->>>>>>> 97dea7d924258b36c600a4fd74bc6f9d1fad8ffb
-=======
-    main()
-
-    
->>>>>>> 0214c3b7ba82f5d9d29e2288e8e03d04bfcc5c0f

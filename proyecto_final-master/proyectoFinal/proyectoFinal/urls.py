@@ -10,13 +10,13 @@ urlpatterns = [
 
     path('admin/', admin.site.urls),
     path('', views.Home , name = 'home'),
-    path('Login', auth.LoginView.as_view(template_name="usuarios/login.html"), name='login'),
     path('Logout', auth.LogoutView.as_view(), name='logout'),
+    path('Login',auth.LoginView.as_view(template_name="home.html"),name="login"),
 
-     #urls otras app
-     path('Perfil/', include('apps.perfil.urls')),
-     path('Registro/', include('apps.usuarios.urls')),
-     path('Inmuebles/', include('apps.publicacion.urls')),
-     path('Favoritos/', include('apps.favoritos.urls')),
+    #urls otras app
+    path('Perfil/', include('apps.perfil.urls')),
+    path('Registro/', include('apps.usuarios.urls')),
+    path('Inmuebles/', include('apps.publicacion.urls')),
+    path('Favoritos/', include('apps.favoritos.urls')),
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

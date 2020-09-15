@@ -12,6 +12,8 @@
 body {
   font-family: 'Poppins', sans-serif;
   color: #555555;
+  margin: 0;
+  padding: 0;
 }
 
 h1,
@@ -31,6 +33,47 @@ a {
 a:hover {
   color: #3914AF;
   text-decoration: none;
+}
+
+form {
+  padding: 30px;
+  margin-top: 10%;
+  margin-left: 30%;
+}
+
+label {
+  font-weight: bolder;
+}
+
+textarea {
+  max-width: 650px;
+  min-height: 200px;
+}
+
+.custom-checkbox-label {
+font-weight: normal;
+}
+
+.small-form {
+  max-width: 650px;
+}
+
+.tiny-form{
+  max-width: 325px;
+}
+
+.form-title {
+  margin-top: 500px;
+  color: #000000;
+}
+
+.publish-button{
+  margin-top: 20px;
+  margin-left: 20%;
+}
+
+.check-items{
+  margin-top: 30px;
 }
 
 .modal-backdrop.fade {

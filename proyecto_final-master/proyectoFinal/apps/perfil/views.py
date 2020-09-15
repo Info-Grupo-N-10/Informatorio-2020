@@ -7,7 +7,7 @@ from .models import Perfil
 from django.urls import reverse_lazy
 
 def Perfil_Usuarios(request):
-    return render(request,'perfil/perfil.html' ,{'perfil': Perfil})
+    return render(request,'perfil/perfil.html')
 
 class Crear(CreateView):
     model = Perfil 

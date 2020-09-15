@@ -7,7 +7,6 @@ class AltaPerfil(forms.ModelForm):
     class Meta:
         model = Perfil
         fields = '__all__'
-        exclude = ['perfilUsuario_id']
 
 
 class EditarPerfil(forms.ModelForm):

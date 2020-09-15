@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">{{perfil.nombre}} {{user.last_name}}</h1>
+            <h1 class="title-single">{{user.getPerfil.nombre}} {{user.getPerfil.apellido}}</h1>
             <span class="color-text-a">Agent Immobiliari</span>
           </div>
         </div>
@@ -24,7 +24,7 @@
                 <a href="#">Propietario</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                {{user.first_name}} {{user.last_name}}
+                {{user.perfilUsuario.nombre}} {{user.perfilUsuario.apellido}}
               </li>
             </ol>
           </nav>

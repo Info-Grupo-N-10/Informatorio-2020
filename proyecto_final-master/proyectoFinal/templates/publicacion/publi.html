@@ -1,11 +1,11 @@
-{% extends 'base.html' %}
+{% extends 'propiedades.html' %}
+{% load static %}
 
 {% block contenido %}
-	<h1>SOY LA PUBLICACIÓN</h1>>
+	<h1>SOY LA PUBLICACIÓN</h1>
 
 		{% for p in object_list %}
 
-			{% if p == object_list %}
 				<p>PRECIO: {{p.precio}}</p>
 				<p>DESCRIPCION: {{p.descripcion}}</p>
 				<p>UBICACION: {{p.ubicacion}}</p>
@@ -21,25 +21,12 @@
 				<p>MASCOTAS: {{p.mascotas}}</p>
 				<p>TIPO_INMUEBLE: {{p.tipo_inmueble}}</p>
 
-				{% for p in imagenes %}
-					
-					<p>{p.img}</p>
+				{% for m in imagenes %}
+					<img src= "{{m.img.url}}" width="100" height="100"> 
+				{% endfor %} 
 
-				{% endfor %}
-			{% endif %}
 
 		{% endfor %}
-<!-- 
-			<img src= "{{p.img.url}}" width="100" height="100">  -->
-			
-		
-<!-- 			<a href= "{% url 'propiedades:editar' p.codigo %}">EDITAR PUBLICACION</a>
-
-			<form method= "POST" action="{% url 'propiedades:borrar' p.codigo %}">{% csrf_token %}
-			<button type="submit">ELIMINAR PROPIEDAD</button> -->
-
-
-
 
 
 {% endblock %}

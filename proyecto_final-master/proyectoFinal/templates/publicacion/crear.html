@@ -2,9 +2,33 @@
 
 {% block contenido %}
 
-  <form method= "POST" enctype="multipart/form-data">{% csrf_token %}
+
+	<form method= "POST" action="{% url 'publicacion:crear' %}" enctype="multipart/form-data">{% csrf_token %}
+		
 		{{form.as_p}}
 		{{form.errors}}
-		<input type="submit" value="CREAR"> 
+	
+	<div id="img"></div>
+	<input name='AltaPublicacion' value='Submit' type="submit">
+	
+	<a href = "#" id="boton">agregar imagen</a>
+	</form>
 
-{% endblock %}
+	{% endblock contenido %}
+
+
+	{% block js %}
+
+	<script type="text/javascript">
+		C=0;
+		$("#boton").click(function(event){
+			C+=1;
+			event.preventDefault();
+			var x='<label for="id_imagen">Imagen:</label><input type="file" name="imagen'+C+'" accept="image/*" required="" id="id_imagen"><br>';
+			$("#img").append(x);
+		});
+	</script>
+	
+	{% endblock js %}
+
+

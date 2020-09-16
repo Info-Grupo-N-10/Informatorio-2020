@@ -18,7 +18,7 @@ urlpatterns = [
 
      #urls otras app
 	 path('Perfil/', include('apps.perfil.urls')),
-	 path('Registro/', include('apps.usuarios.urls')),
+	 #path('Registro/', include('apps.usuarios.urls')),
      path('Inmuebles/', include('apps.publicacion.urls')),
 	 path('Favoritos/', include('apps.favoritos.urls')),
 

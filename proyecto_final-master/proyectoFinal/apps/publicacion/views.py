@@ -1,25 +1,35 @@
-from django.shortcuts import render
-from django.views.generic import CreateView, DeleteView 
+from django.shortcuts import render, redirect
+from django.views.generic import CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from .forms import *
 from .models import Publicaciones, Imagenes_Publicaciones
 from django.urls import reverse_lazy
-from django.forms import formset_factory
+from django.contrib.auth.mixins import LoginRequiredMixin
+from apps.utils.funciones import PermisosMixin
 
 
-def Publicacion(request):	
+
+def Publicacion(request):
 	return render(request,'publicacion/publi.html')
 
-def CargarImagenes(request):
-	return render(request, 'publicacion/publi.html')
 
-class Crear(CreateView):
+class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
+	rol = 'propietario'
 	model = Publicaciones
 	form_class = AltaPublicacion
 	template_name = 'publicacion/crear.html'
-	success_url = reverse_lazy('home')
+	success_url = reverse_lazy('publicacion:crear')
+	
+	def form_valid(self, form):
+		p = form.save()
+		for m in self.request.FILES:
+			Imagenes_Publicaciones.objects.create(publicaciones=p,img=m)
 
+		return redirect(self.success_url)
+
+
+	
 class Editar(UpdateView):
 	model = Publicaciones
 	form_class = EditarPublicacion
@@ -34,3 +44,16 @@ class Borrar(DeleteView):
 class ListarPublicaciones(ListView):
 	model = Publicaciones
 	template_name = 'propiedades.html'
+
+"""
+class CargarImagenes(CreateView):
+	model = Imagenes_Publicaciones
+	form_class = AgregarImagenes
+	template_name = 'publicacion/cargarImagenes.html'
+	success_url = reverse_lazy('publicacion:crear')
+"""
+def ListarImagenes(request):
+	context = {}
+	todos = Imagenes_Publicaciones.objects.all()
+	context['imagenes'] = todos
+	return render(request, 'publicacion/publi.html', context)

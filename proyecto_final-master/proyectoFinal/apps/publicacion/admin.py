@@ -9,11 +9,14 @@ admin.site.register(Servicios)
 
 admin.site.register(Tipo_Inmueble)
 
+
 class PublicacionesImagenes(admin.TabularInline):
     model = Imagenes_Publicaciones
-    extra = 1
+    extra = 5
+
+
 class PublicacionAdmin(admin.ModelAdmin):
     inlines = [ PublicacionesImagenes, ]
 
-
+admin.site.register(Imagenes_Publicaciones)
 admin.site.register(Publicaciones, PublicacionAdmin)

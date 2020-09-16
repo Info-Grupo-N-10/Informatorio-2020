@@ -3,13 +3,13 @@ from django.urls import path
 from . import views
 
 
-app_name="usuarios"
+# app_name="usuarios"
 
-urlpatterns = [
+# urlpatterns = [
 
-	path('Registrar/', views.Registro.as_view(), name='registro'),
+# 	path('Registrar/', views.Registro.as_view(), name='registro'),
 
-]
+# ]
 
 
 

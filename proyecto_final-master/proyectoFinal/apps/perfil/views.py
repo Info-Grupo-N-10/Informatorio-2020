@@ -6,12 +6,19 @@ from .forms import *
 from .models import Perfil
 from django.urls import reverse_lazy
 
+
 def Perfil_Usuarios(request):
 	return render(request,'perfil/perfil.html')
 
+class Registro(CreateView):
+	model = Perfil
+	form_class = RegistroUsuario
+	template_name = 'perfil/registro.html'
+	success_url = reverse_lazy('home')
+
 class Crear(CreateView):
 	model = Perfil 
-	form_class = AltaPerfil
+	form_class = RegistroUsuario
 	template_name = 'perfil/crear.html'
 	success_url = reverse_lazy('home')
 

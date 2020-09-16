@@ -10,6 +10,14 @@
     }
   });
 
+  C=0;
+		$("#boton").click(function(event){
+			C+=1;
+			event.preventDefault();
+			var x='<label for="id_imagen">Imagen:</label><input type="file" name="imagen'+C+'" accept="image/*" required="" id="id_imagen"><br>';
+			$("#img").append(x);
+		});
+
   // Back to top button
   $(window).scroll(function() {
     if ($(this).scrollTop() > 100) {

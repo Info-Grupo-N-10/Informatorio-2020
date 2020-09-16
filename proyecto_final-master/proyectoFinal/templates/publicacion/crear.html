@@ -2,10 +2,139 @@
 
 {% block contenido %}
 	
-	<h1>FORMULARIO PARA CREAR PERFIL </h1>
-	<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
-		{{form.as_p}}
-		{{form.errors}}
-		<input type="submit" value="CREAR">
+<form method= "POST" action="{% url 'publicacion:crear' %}" enctype="multipart/form-data">{% csrf_token %}
+ 	{{form.as_p}}
+	{{form.errors}}
+
+  {% comment %} <div class="form-group small-form">
+    <label for="inputAddress2">Titulo</label>
+    <input type="text" class="form-control" id="inputAddress2" placeholder="Ej: Alquilo amplio departamento con vista al rio..." required>
+  </div>
+  <div class="form-group small-form">
+    <label for="inputAddress2">Precio</label>
+    <input type="text" class="form-control price" id="inputAddress2" placeholder="Ej: 200" required>
+  </div>
+  <div class="form-group small-form">
+    <label for="inputAddress">Dirección</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Ej: Av Velez Sarsfield N°1354" required>
+  </div>
+    <div class="form-group small-form">
+      <label for="inputState">Localidad</label>
+      <select id="inputState" class="form-control">
+        <option selected>Barranqueras</option>
+        <option selected>Fontana</option>
+        <option selected>Puerto Tirol</option>
+        <option selected>Resistencia</option>
+        <option selected>Vilelas</option>
+      </select>
+    </div>
+    <div class="form-group tiny-form">
+      <label for="inputState">Tipo de inmueble</label>
+      <select id="inputState" class="form-control">
+        <option selected>Casa</option>
+        <option selected>Departamento</option>
+        <option selected>Duplex</option>
+        <option selected>Oficina/Local Comercial</option>
+      </select>
+    </div>
+      <div class="form-group tiny-form">
+    <label for="inputAddress">Superficie</label>
+    <input type="text" class="form-control" id="inputAddress" placeholder="Ej: 500 (en metros cuadrados)" required>
+  </div>
+    <div class="form-group tiny-form">
+      <label for="inputState">Ambientes</label>
+      <select id="inputState" class="form-control">
+        <option selected>Seleccione una opción</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+      <div class="form-group tiny-form">
+      <label for="inputState">Dormitorios</label>
+      <select id="inputState" class="form-control">
+        <option selected>Seleccione una opción</option>
+        <option>1</option>
+        <option>2</option>
+        <option>3</option>
+        <option>4</option>
+        <option>5</option>
+      </select>
+    </div>
+      <div class="form-group tiny-form">
+        <label for="inputState">Baños</label>
+        <select id="inputState" class="form-control">
+          <option selected>Seleccione una opción</option>
+          <option>1</option>
+          <option>2</option>
+          <option>3</option>
+          <option>4</option>
+          <option>5</option>
+        </select>
+      </div>
+    
+    <div class="check-items">
+    <div class="form-group">
+    <label for="inputState">Opcionales</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Cochera</label>
+    </div>
+  </div>
+      <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Patio</label>
+    </div>
+    </div>
+        <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Mascotas</label>
+    </div>
+    </div>
+        <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Niños</label>
+    </div>
+  </div>
+  </div>
+
+<div class="check-items">
+   <div class="form-group check-items">
+    <label for="inputState">Servicios</label>
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Luz</label>
+    </div>
+  </div>
+      <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Agua</label>
+    </div>
+    </div>
+        <div class="form-group">
+    <div class="form-check">
+      <input class="form-check-input" type="checkbox" id="gridCheck">
+      <label class="form-check-label custom-checkbox-label" for="gridCheck">Internet</label>
+    </div>
+    </div>
+  </div>
+  </div>
+    <div class="form-group small-form">
+      <label for="inputAddress2">Descripción</label>
+      <textarea  class="form-control price" id="inputAddress2" placeholder="Ingrese descripción..." required></textarea>
+    </div>
+  </div>
+ 
+  </div> {% endcomment %}
+   <div class="form-group" id="img"></div>
+     <input type="file" name="imagen" accept="image/*" required="" id="id_imagen"><br>
+	 <a href = "#" id="boton">agregar imagen</a>
+  {% comment %} <button type="submit" class="btn btn-primary publish-button">Publicar</button> {% endcomment %}
 
 {% endblock %}

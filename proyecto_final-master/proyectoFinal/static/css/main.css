@@ -1,10 +1,11 @@
 
 #actualizar{
-  color: #FFF;
+  color: #333;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 0px;
   font-weight: 500;
   line-height: 1.2;
+  margin-bottom: 8px; 
+  margin-top: 8px;
 }
 
 .form-row {

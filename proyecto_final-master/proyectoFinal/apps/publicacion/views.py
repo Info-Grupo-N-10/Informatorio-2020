@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DeleteView 
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
@@ -18,7 +18,13 @@ class Crear(CreateView):
     model = Publicaciones
     form_class = AltaPublicacion
     template_name = 'publicacion/crear.html'
-    success_url = reverse_lazy('home')
+    success_url = reverse_lazy('publicacion:crear')
+    def form_valid(self, form):
+        p = form.save()
+        for m in self.request.FILES:
+            Imagenes_Publicaciones.objects.create(publicacion=p,img=m)
+
+        return redirect(self.success_url)
 
 class Editar(UpdateView):
     model = Publicaciones

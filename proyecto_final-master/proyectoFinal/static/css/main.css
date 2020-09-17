@@ -14,6 +14,14 @@ body {
   -ms-background-size: cover;
   background-position: center center;
 }
+#actualizar{
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  margin-bottom: 8px; 
+  margin-top: 8px;
+}
 .form-inputt:focus {
   border: 1px solid transparent;
   -webkit-border-image-source: -webkit-linear-gradient(to right, #ffd300,#3914AF);

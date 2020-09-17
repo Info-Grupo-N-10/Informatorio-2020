@@ -8,6 +8,7 @@
 /*======================================
 //--//-->   STYLES GENERALES
 ======================================*/
+
 html {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -49,9 +50,33 @@ a:hover {
   text-decoration: none;
 }
 
+/*------------ CAMBIOS -------------*/
+
 .modal-backdrop.fade {
   z-index: 1000;
 }
+
+.estilo_servicios{
+  width: auto;
+}
+
+#id_servicios_0{
+  margin-left: 103px;
+}
+
+#id_servicios_1{
+  margin-left: 141px;
+}
+
+#id_servicios_2{
+  margin-left: 123px;
+}
+
+#id_servicios_3{
+  margin-left: 100px;
+}
+
+/*-------------------------*/
 
 .link-two {
   color: #000000;

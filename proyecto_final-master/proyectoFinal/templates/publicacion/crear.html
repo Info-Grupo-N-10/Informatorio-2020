@@ -2,7 +2,7 @@
 
 {% block contenido %}
 	
-	<h1>FORMULARIO PARA CREAR PERFIL </h1>
+	<h1>FORMULARIO PARA CREAR Publicacion</h1>
 	<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
 		{{form.as_p}}
 		{{form.errors}}

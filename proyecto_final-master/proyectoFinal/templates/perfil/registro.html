@@ -17,6 +17,7 @@
   <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
   <link rel="stylesheet" href="{% static 'css/styleRegistro.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
 </head>
 <body>
@@ -27,32 +28,62 @@
             <div class="signup-content">
                 <form method="POST" enctype="multipart/form-data" id="signup-form" class="signup-form">
                     {%csrf_token%}
-                    <h2 class="form-title">Crear Cuenta</h2>
+                    <h2 class="form-title" style="
+                    margin-bottom: 32px;
+                    margin-top: 0px;
+                ">Crear Cuenta</h2>
                     <div class="form-group">
-                        <input type="text" class="form-input" name="username" id="name" placeholder="Usuario">
-                    </div>
-                    <!-- <div class="form-group">
-                        <input type="text" class="form-input" name= "first_name" id="name" placeholder="Nombre">
-                    </div>
-                    <div class="form-group">
-                        <input type="text" class="form-input" id="name" name="last_name" placeholder="Apellido">
-                    </div> -->
-                    <div class="form-group">
-                        <input type="email" class="form-input" id="email" name="email" placeholder="Correo Electronico"/>
+                        <div class="name h6">Nombre de Usuario</div>
+                        <input type="text" class="form-input" name="username" id="name" placeholder="pepeJose">
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" id="password" name= "password1" placeholder="Contraseña"/>
+                        <div class="name h6">Nombre</div>
+                        <input type="text" class="form-input" name= "first_name" id="name" placeholder="Don Pepito">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Apellido</div>
+                        <input type="text" class="form-input" id="name" name="last_name" placeholder="Don Jose">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Correo Electronico</div>
+                        <input type="email" class="form-input" id="email" name="email" placeholder="pepejose@hotmail.com"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6 ">Telefono</div>
+                        <input type="text" class="form-input" id="name" name="telefono" placeholder="+54 9362 444-444">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Descripcion</div>
+                        <textarea class="textarea--style-6 form-input" name="descripcion" placeholder="Escribe tu informacion Personal"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Foto Personal</div>
+                        <div class="input-group js-input-file">
+                                <input class="input-file form-input" type="file" name="imagen" id="file">
+                                <label class="label--file form-input text-center" for="file">Escoge una foto</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Ingrese Contraseña</div>
+                        <input type="password" class="form-input" id="password" name= "password1" placeholder=""/>
                         <span toggle="#password" class="toggle-password"></span>
                     </div>
                     <div class="form-group">
-                        <input type="password" class="form-input" name= "password2" id="re_password" placeholder="Repetir Contraseña"/>
+                        <div class="name h6">Repita Contraseña</div>
+                        <input type="password" class="form-input" name= "password2" id="re_password" placeholder=""/>
                     </div>
-                    <div class="form-group">
-                        <input type="checkbox" name="agree-term" id="agree-term" class="agree-term" />
-                        <label for="agree-term" class="label-agree-term"><span><span></span></span>Acepto los <a href="#" class="term-service">términos y condiciones y políticas de privacidad</a></label>
-                    </div>
+                    <fieldset>
+                        <div class="form-group">
+                            <input type="checkbox" name="propietario" id="agree-term" class="agree-term"/>
+                            <label for="agree-term" class="label-agree-term"><span></span>Eres Priopietario</label>
+                        </div>
+                    </fieldset>
                     <div class="form-group">
                         <input type="submit" name="submit" id="submit" class="btn btn-b-n text-uppercase" style="width: 100%; border-radius: 25px;" value="Registrarse"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="label-agree-term " for="exampleCheck1"><span></span>Acepto los <a href="#" class="term-service">términos y condiciones y políticas de privacidad</a></label>
                     </div>
                 </form>
             </div>

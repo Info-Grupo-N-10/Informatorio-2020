@@ -273,6 +273,10 @@ input[type=checkbox]:not(old):checked + label > span:before {
   font-size: 12px;
   font-weight: 600;
   color: #555; }
+.label-agree-term1 {
+  font-size: 12px;
+  font-weight: 600;
+  color: #555; }
 
 .term-service {
   color: #3914AF; }

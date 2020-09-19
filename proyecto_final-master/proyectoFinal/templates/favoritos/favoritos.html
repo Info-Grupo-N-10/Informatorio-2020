@@ -1,5 +1,15 @@
-{% extends 'base.html' %}
+<h1>Favoritos</h1>
 
-{% block contenido %}
-	<h1>SOY FAVORITOS</h1>>
-{% endblock %}
+{% for marcar in favoritos %}
+
+<ul>
+
+<li>
+    {{marcar.objeto}}
+
+</li>
+</ul>
+
+
+
+{% endfor %}

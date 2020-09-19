@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+{% load auth_extra %}
+
 {% block contenido %}
 <!--/ Intro Single star /-->
   <section class="intro-single">
@@ -8,8 +10,8 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">304 Blaster Up</h1>
-            <span class="color-text-a">Chicago, IL 606543</span>
+            <h1 class="title-single">Falta el titulo xd</h1>
+            <span class="color-text-a">{{publicacion.ubicacion}}</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -22,7 +24,7 @@
                 <a href="{% url 'publicacion:propiedades' %}">Propiedades</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                304 Blaster Up
+                Falta el titulo xd
               </li>
             </ol>
           </nav>
@@ -38,6 +40,7 @@
       <div class="row">
         <div class="col-sm-12">
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+
             <div class="carousel-item-b">
               <img src="{% static 'img/slide-2.jpg' %}" alt="">
             </div>
@@ -47,6 +50,7 @@
             <div class="carousel-item-b">
               <img src="{% static 'img/slide-1.jpg' %}" alt="">
             </div>
+
           </div>
           <div class="row justify-content-between">
             <div class="col-md-5 col-lg-4">
@@ -56,7 +60,7 @@
                     <span class="ion-money">$</span>
                   </div>
                   <div class="card-title-c align-self-center">
-                    <h5 class="title-c">15000</h5>
+                    <h5 class="title-c">{{publicacion.precio}}</h5>
                   </div>
                 </div>
               </div>
@@ -72,37 +76,41 @@
                   <ul class="list">
                     <li class="d-flex justify-content-between">
                       <strong>ID:</strong>
-                      <span>1134</span>
+                      <span>{{publicacion.publicacion_id}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Direccion:</strong>
-                      <span>Chicago, IL 606543</span>
+                      <span>{{publicacion.ubicacion}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Tipo de Inmueble:</strong>
-                      <span>Casa</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Status:</strong>
-                      <span>En venta</span>
+                      <span>{{publicacion.tipo_inmueble}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Area:</strong>
-                      <span>340m
+                      <span>{{publicacion.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Camas:</strong>
-                      <span>4</span>
+                      <span>{{publicacion.habitaciones}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Baños:</strong>
-                      <span>2</span>
+                      <span>{{publicacion.baños}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Cochera:</strong>
-                      <span>1</span>
+                      <span>{{publicacion.cochera}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Niños:</strong>
+                      <span>{{publicacion.niños}}</span>
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Mascotas:</strong>
+                      <span>{{publicacion.mascotas}}</span>
                     </li>
                   </ul>
                 </div>
@@ -118,47 +126,84 @@
               </div>
               <div class="property-description">
                 <p class="description color-text-a">
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                  neque, auctor sit amet
-                  aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                  Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                  nibh pulvinar quam id dui posuere blandit.
-                </p>
-                <p class="description color-text-a no-margin">
-                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                  malesuada. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                  {{publicacion.descripcion}}
                 </p>
               </div>
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
-                    <h3 class="title-d">Comodidades</h3>
+                    <h3 class="title-d">Servicios Incluidos</h3>
                   </div>
                 </div>
               </div>
               <div class="amenities-list color-text-a">
                 <ul class="list-a no-margin">
-                  <li>Balcon</li>
-                  <li>Cocina</li>
-                  <li>Cable Tv</li>
-                  <li>Internet</li>
-                  <li>Estacionamiento</li>
+                  {{publicacion.servicios}}
                 </ul>
+              </div>
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Dar Favoritos</h3>
+                  </div>
+                  <div class= " amenities-list color-text-a Publicaciones">
+
+                    <button id="agregar">Agregar a Favoritos</button>
+
+                    {% comment %}
+                    {% for p in publicacion %}
+                    <!-- <div>
+                      <p>
+                        {{p.usuario}}
+                      </p>
+                      <p>
+                        {{p.texto}}
+                      </p>
+                    </div> -->
+
+<!--                     {% if p.favoritos.all|user_in:usuario %}
+                    <i class="fas fa-heart" data-type="favorito" data-id="{{p.id}}" data-action="marcador">MeGustoChe</i>
+                    <a href="{% url 'home' %}" class="like" data-type="favorito" data-id="{{p.id}}" data-action="marcador">
+          
+                    </a>
+                    {% else %}
+                    <i class="far fa-heart" data-type="favorito" data-id="{{p.id}}" data-action="marcador">YaNo</i>
+                    <a href="#" data-type="favorito" data-id="{{p.id}}" data-action="marcador">
+                    {% endif %}
+                    
+          
+                    <form method= "POST" id="formulario">
+                      {% csrf_token%}
+          
+                    
+                    <div class="accion">
+                      <button id="agregar" type="submit" data-id="{{p.id}}" data-type="marcar" data-action="favoritos" onclick="">
+                        Favoritos
+                      </button>
+                    </div>
+                  </form> -->
+                  {% endfor %}
+                  {% endcomment %}
+                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
+        
+
         <div class="col-md-10 offset-md-1">
           <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
                 aria-controls="pills-video" aria-selected="true">Video</a>
             </li>
+            {% comment %}
 <!--             <li class="nav-item">
               <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
                 aria-selected="false">Floor Plans</a>
             </li> -->
+            {% endcomment %}
             <li class="nav-item">
               <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
                 aria-selected="false">Ubicación</a>
@@ -250,4 +295,68 @@
     </div>
   </section>
   <!--/ Property Single End /-->
+
+
+
+<script type="text/javascript">
+    const handler = () => {
+    fetch("marcar/favorito/<int:pk>/marcador", {method: 'POST'}).then((response) => response.json()).then((data) => console.log(data))
+    }
+    document.getElementById("agregar").addEventListener("click", handler )
+</script>
+
+
+{% comment %}
+<!-- <script type="text/javascript">
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", 'marcar/favorito/<int:pk>/marcador', false);
+  xhr.onload = // something
+  document.getElementById("agregar").addEventListener("click",
+      function() {xhr.send(data) return xhr.response},
+      false
+);
+</script>
+
+
+  <script>
+
+    var like = document.getElementsByClassName("like");
+    for(var i=0; i<=like.length;i++){
+      console.log(like[i]);
+
+      like[i].addEventListener("click", function(){
+        alert("Agregado a Favoritos")
+      });
+    }
+
+  </script>
+
+
+<script>
+
+    function crear_favorito(){
+      console.log("Funcionando");
+      var current = $(this);
+      var type = current.data("type");
+      var pk = current.data('id');
+      var action = current.data('action');
+    
+    
+      $.ajax({
+        url : "/marcar/" + type + "/" + pk + "/" + action + "/",
+        type : "GET",
+        date : {'objeto' : pk},
+      });
+      return false;
+    }
+
+$(function(){
+   $('marcar/favorito/<int:pk>/marcador').click(crear_favorito)
+})
+
+
+</script> -->
+{% endcomment %}
+
 {% endblock %}

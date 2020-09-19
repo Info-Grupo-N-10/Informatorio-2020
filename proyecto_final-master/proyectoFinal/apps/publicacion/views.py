@@ -1,18 +1,34 @@
+# from django.shortcuts import render, redirect
+# from django.views.generic import CreateView, DeleteView 
+# from django.views.generic.edit import UpdateView
+# from django.views.generic.list import ListView
+# from .forms import *
+# from .models import Publicaciones, Imagenes_Publicaciones
+# from django.urls import reverse_lazy
+# from django.forms import formset_factory
+
 from django.shortcuts import render, redirect
-from django.views.generic import CreateView, DeleteView 
+from django.views.generic import CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
 from .forms import *
 from .models import Publicaciones, Imagenes_Publicaciones
 from django.urls import reverse_lazy
-from django.forms import formset_factory
+from django.contrib.auth.mixins import LoginRequiredMixin
+from apps.utils.funciones import PermisosMixin
+from apps.usuarios.models import Usuario
 
 
-def Publicacion(request):
-    return render(request,'publicacion/publicacion.html')
+def Publicacion(request, pk):
 
-def CargarImagenes(request):
-    return render(request, 'publicacion/publicacion.html')
+    context = {
+
+    'publicacion': Publicaciones.objects.get(publicacion_id= pk),
+
+    }
+
+    return render(request,'publicacion/publicacion.html', context)
+
 
 class Crear(CreateView):
     model = Publicaciones
@@ -26,11 +42,11 @@ class Crear(CreateView):
 
         return redirect(self.success_url)
 
-class Editar(UpdateView):
-    model = Publicaciones
-    form_class = EditarPublicacion
-    template_name = "publicacion/editar.html"
-    success_url = reverse_lazy('home')
+# class Editar(UpdateView):
+#     model = Publicaciones
+#     form_class = EditarPublicacion
+#     template_name = "publicacion/editar.html"
+#     success_url = reverse_lazy('home')
 
 
 class Borrar(DeleteView):
@@ -40,3 +56,15 @@ class Borrar(DeleteView):
 class ListarPublicaciones(ListView):
     model = Publicaciones
     template_name = 'publicacion/propiedades.html'
+
+
+def Inicio(request):
+
+    context = {
+
+        'Publicacion': Publicacion.objects.all(),
+        'form': Publicacion()
+
+    }
+
+    return render(request, 'publicacion/publicacion.html')

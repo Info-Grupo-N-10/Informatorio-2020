@@ -45,46 +45,51 @@
             </form>
           </div>
         </div>
-        <div class="col-md-4">
+
+        {% for p in object_list %}
+        <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/property-1.jpg' %}" alt="" class="img-a img-fluid">
+              <img src= "{{p.img.url}}" class="img-a img-fluid">
+              {% comment %}
+              <!-- <img src="{% static 'img/property-1.jpg' %}" alt="" class="img-a img-fluid"> -->
+              {% endcomment %}
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
                     <a href="#">204 Mount
-                      <br /> Olive Road Two</a>
+                      <br /> {{p.ubicacion}}</a>
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
+                    <span class="price-a">rent | {{p.precio}}</span>
                   </div>
-                  <a href="{% url 'publicacion:public' %}" class="link-a">Click here to view
+                  <a href="{% url 'publicacion:public' p.publicacion_id %}">Ir a la publicacion</a><br>
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
                 <div class="card-footer-a">
                   <ul class="card-info d-flex justify-content-around">
                     <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
+                      <h4 class="card-info-title">Superficie</h4>
+                      <span>{{p.superficie}} <a href="{% url 'publicacion:public' p.publicacion_id %}">IR A LA PUBLICACION</a><br>
                         <sup>2</sup>
                       </span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
+                      <h4 class="card-info-title">Habitaciones</h4>
+                      <span>{{p.habitaciones}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
+                      <span>{{p.baños}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
+                      <span>{{p.cochera}}</span>
                     </li>
                   </ul>
                 </div>
@@ -92,7 +97,10 @@
             </div>
           </div>
         </div>
-        <div class="col-md-4">
+        {% endfor %}
+
+        {% comment %}
+        <!-- <div class="col-md-4">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
               <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
@@ -355,7 +363,8 @@
           </nav>
         </div>
       </div>
-    </div>
+    </div> -->
+    {% endcomment %}
   </section>
   <!--/ Property Grid End /-->
 {% endblock %}

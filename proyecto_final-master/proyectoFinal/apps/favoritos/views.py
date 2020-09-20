@@ -3,7 +3,7 @@ from apps.publicacion.models import Publicaciones
 
 from .models import Favoritos
 import json
-from django.http import HttpResponse 
+from django.http import HttpResponse
 
 
 def Marcador(request, pk):

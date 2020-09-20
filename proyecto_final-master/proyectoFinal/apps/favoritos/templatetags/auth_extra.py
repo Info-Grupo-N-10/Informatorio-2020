@@ -1,13 +1,13 @@
-from django import template
+# from django import template
 
 
-register = template.Library()
+# register = template.Library()
 
 
-@register.filter(name='user_in')
+# @register.filter(name='user_in')
 
-def user_in(objects, user):
-    if user.is_authenticated:
-        return objects.filter(usuario=user).exists()
+# def user_in(objects, user):
+#     if user.is_authenticated:
+#         return objects.filter(usuario=user).exists()
 
-    return False
+#     return False

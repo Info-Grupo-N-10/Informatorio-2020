@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% load static %}
 
-{% load auth_extra %}
+
 
 {% block contenido %}
 <!--/ Intro Single star /-->
@@ -148,42 +148,16 @@
                   </div>
                   <div class= " amenities-list color-text-a Publicaciones">
 
-                    <button id="agregar">Agregar a Favoritos</button>
+                    {% if user.is_authenticated %}
+                    <form method="POST">
+                      {% csrf_token %}
 
-                    {% comment %}
-                    {% for p in publicacion %}
-                    <!-- <div>
-                      <p>
-                        {{p.usuario}}
-                      </p>
-                      <p>
-                        {{p.texto}}
-                      </p>
-                    </div> -->
+                      <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"></i>
 
-<!--                     {% if p.favoritos.all|user_in:usuario %}
-                    <i class="fas fa-heart" data-type="favorito" data-id="{{p.id}}" data-action="marcador">MeGustoChe</i>
-                    <a href="{% url 'home' %}" class="like" data-type="favorito" data-id="{{p.id}}" data-action="marcador">
-          
-                    </a>
-                    {% else %}
-                    <i class="far fa-heart" data-type="favorito" data-id="{{p.id}}" data-action="marcador">YaNo</i>
-                    <a href="#" data-type="favorito" data-id="{{p.id}}" data-action="marcador">
+                    </form>
                     {% endif %}
-                    
-          
-                    <form method= "POST" id="formulario">
-                      {% csrf_token%}
-          
-                    
-                    <div class="accion">
-                      <button id="agregar" type="submit" data-id="{{p.id}}" data-type="marcar" data-action="favoritos" onclick="">
-                        Favoritos
-                      </button>
-                    </div>
-                  </form> -->
-                  {% endfor %}
-                  {% endcomment %}
+
+
                 </div>
               </div>
               </div>
@@ -297,16 +271,15 @@
   <!--/ Property Single End /-->
 
 
-
-<script type="text/javascript">
+{% comment %}
+<!-- <script type="text/javascript">
     const handler = () => {
     fetch("marcar/favorito/<int:pk>/marcador", {method: 'POST'}).then((response) => response.json()).then((data) => console.log(data))
     }
     document.getElementById("agregar").addEventListener("click", handler )
-</script>
+</script> -->
 
 
-{% comment %}
 <!-- <script type="text/javascript">
 
   var xhr = new XMLHttpRequest();
@@ -316,10 +289,11 @@
       function() {xhr.send(data) return xhr.response},
       false
 );
-</script>
+</script> -->
+{% endcomment %}
 
-
-  <script>
+{% comment %}
+ <!--  <script>
 
     var like = document.getElementsByClassName("like");
     for(var i=0; i<=like.length;i++){
@@ -330,10 +304,11 @@
       });
     }
 
-  </script>
+  </script> -->
+{% endcomment %}
 
 
-<script>
+<script type="text/javascript">
 
     function crear_favorito(){
       console.log("Funcionando");
@@ -344,19 +319,23 @@
     
     
       $.ajax({
-        url : "/marcar/" + type + "/" + pk + "/" + action + "/",
+        url : "/Favoritos/marcar/" + type + "/" + pk + "/" + action + "/",
         type : "GET",
         date : {'objeto' : pk},
+
+        success : function(json){
+          console.log(json)
+        } 
+
       });
       return false;
     }
 
 $(function(){
-   $('marcar/favorito/<int:pk>/marcador').click(crear_favorito)
-})
+   $('[data-action="marcador"]').click(crear_favorito)
+});
 
+</script>
 
-</script> -->
-{% endcomment %}
 
 {% endblock %}

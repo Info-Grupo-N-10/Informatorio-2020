@@ -1,25 +1,15 @@
-{% extends 'base.html' %}
+<h1>Favoritos</h1>
 
-{% block contenido %}
-	
-	<h1>FAVORITOS </h1>
-		
-		{{object_list}}
+{% for marcar in favoritos %}
 
-		{% for p in object_list %}
-		
-			<p>NOMBRE: </p>{{p.nombre}}
-			<p>DESCRIPCION: </p>{{p.descripcion}}
-			<p>PRECIO: </p>{{p.precio}}
-			
-			<img src= "{{p.imagen.url}}" width="100" height="100">
-			<a href= "{% url 'productos:editar' p.codigo %}">EDITAR PRODUCTO</a>
+<ul>
 
-			<form method= "POST" action="{% url 'productos:editar' p.codigo %}">{% csrf_token %}
-			<button type="submit">ELIMINAR PRODUCTO</button>
-		
-		{% endfor %}
-		
-	
+<li>
+    {{marcar.objeto}}
 
-{% endblock %}
+</li>
+</ul>
+
+
+
+{% endfor %}

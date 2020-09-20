@@ -3,17 +3,35 @@
 	{% block contenido %}
 		<h1>SOY EL PERFIL</h1>
 		<div>
-			{{object_list}}
+			<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
+			{{form.as_p}}
+			{{form.errors}}
 
-			{% for p in object_list %}
 
-				<a href="{% url 'favoritos:favoritos' %}">Favoritos</a><br>
+				<p>Nombre: {{usuarios.username}}</p>
+				<p>Email: {{usuario.email}}</p>
+				<p>Descripcion: {{perfil.descripcion}}</p>
+				<p>Telefono: {{perfil.telefono}}</p>
+				
+				<p>
+					<img src= "{{i.imagen.url}} perfil.id" width="100" height="100"> 
 
-				<a href= "{% url 'perfil:editar' p.usuario_id %}">EDITAR PERFIL</a>
+				</p>
+
+
+				<a href= "{% url 'perfil:editar' perfil.id %}">EDITAR PERFIL</a>
 				
 				<form method= "POST" action="{% url 'home' p.usuario_id %}">{% csrf_token %}
 					<button type="submit">ELIMINAR PERFIL</button>
 				</form>
-			{% endfor %}
+			
+
+			</form>
 		</div>
 	{% endblock %}
+
+
+
+
+
+	

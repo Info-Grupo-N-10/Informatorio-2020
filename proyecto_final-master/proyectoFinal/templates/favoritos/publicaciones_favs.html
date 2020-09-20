@@ -1,0 +1,20 @@
+{% extends 'base.html' %}
+
+{% block contenido %}
+	
+	<h1>USUARIOS QUE AÑADIERON A FAVORITOS ESTA PUBLICACION </h1>
+		
+
+		{% for p in object_list %}
+		
+			<p>NOMBRE: </p>{{p.nombre}}
+		
+			<a href= "{% url 'perfil:perfil' %}">VER PERFIL</a>
+
+		
+		
+		{% endfor %}
+		
+	
+
+{% endblock %}

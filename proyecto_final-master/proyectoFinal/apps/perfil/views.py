@@ -5,10 +5,18 @@ from django.views.generic.list import ListView
 from .forms import *
 from .models import Perfil
 from django.urls import reverse_lazy
+from apps.usuarios.models import Usuario
 
 
-def Perfil_Usuarios(request):
-	return render(request,'perfil/perfil.html')
+def Perfil_Usuarios(request, pk):
+	
+	context = {
+
+	'perfil': Perfil.objects.get(id= pk),
+
+	}
+	
+	return render(request,'perfil/perfil.html', context)
 
 class Registro(CreateView):
 	model = Perfil
@@ -23,7 +31,7 @@ class Crear(CreateView):
 	success_url = reverse_lazy('home')
 
 class Editar(UpdateView):
-	model = Perfil
+	model = Usuario
 	form_class = EditarPerfil
 	template_name = "perfil/editar.html"
 	success_url = reverse_lazy('home')

@@ -8,6 +8,7 @@ from .models import *
 admin.site.register(Servicios)
 
 admin.site.register(Tipo_Inmueble)
+admin.site.register(Zona)
 
 
 class PublicacionesImagenes(admin.TabularInline):

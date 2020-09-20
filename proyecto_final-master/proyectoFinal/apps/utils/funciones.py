@@ -1,8 +1,6 @@
 from django.core.exceptions import PermissionDenied
 
 
-
-
 class PermisosMixin:
 	rol = None
 	def dispatch(self, request, *args, **kwargs):

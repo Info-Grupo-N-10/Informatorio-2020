@@ -3,6 +3,7 @@
 <head>
 	<title>Home</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	
 </head>
 <body>
 	<h1>INICIO</h1>
@@ -16,9 +17,11 @@
 		{% endif %}
 	<a href="{% url 'perfil:registro' %}">Registrarse</a><br>
 	<a href="{% url 'perfil:crear' %}">Crear Perfil</a><br>
-	<a href="{% url 'perfil:perfil' %}">Perfil</a><br>
+	<a href="{% url 'perfil:perfil' user.pk %}">Perfil</a><br>
+	
 	<a href="{% url 'publicacion:listar' %}">Propiedades</a><br>
-	<a href="{% url 'home' %}">Home</a><br>
+	
+
 	
 	<! -- comentado prueba -->
 </div>
@@ -33,6 +36,15 @@
 	{% block js %}
 	
 	{% endblock js %}
+
+	{% block imagenes %}
+
+	{% endblock imagenes %}
+
+	{% block extra%}
+
+
+	{% endblock extra %}
 
 </body>
 </html>

@@ -8,3 +8,6 @@ class Usuario(AbstractUser):
 	
 	def getPerfil(self):
 		return self.perfilUsuario
+
+
+

@@ -24,15 +24,13 @@
 			<p>MASCOTAS: {{p.mascotas}}</p>
 			<p>TIPO_INMUEBLE: {{p.tipo_inmueble}}</p><br><br>
 
+				
 			
-				<img src= "{{p.img.url}}" width="100" height="100">
-		
-			 <a href="{% url 'publicacion:publi' %}">IR A LA PUBLICACION</a><br> 
+			<a href="{% url 'publicacion:publi' p.publicacion_id %}">IR A LA PUBLICACION</a><br> 
 
-		{% endfor %}
-		
+	{% endfor %}
 
 		<a href="{% url 'publicacion:crear' %}">CREAR PUBLICACION</a><br>
 		
 
-	{% endblock %}
+	{% endblock contenido %}

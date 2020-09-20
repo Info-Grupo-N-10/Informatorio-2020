@@ -1,32 +1,80 @@
-{% extends 'propiedades.html' %}
-{% load static %}
+{% extends 'base.html' %}
+{%load static %}
 
 {% block contenido %}
 	<h1>SOY LA PUBLICACIÓN</h1>
 
-		{% for p in object_list %}
+		<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
+			{{form.as_p}}
+			{{form.errors}}
 
-				<p>PRECIO: {{p.precio}}</p>
-				<p>DESCRIPCION: {{p.descripcion}}</p>
-				<p>UBICACION: {{p.ubicacion}}</p>
-				<p>AMBIENTES: {{p.ambientes}}</p>
-				<p>HABITACIONES: {{p.habitaciones}}</p>
-				<p>BAÑOS: {{p.baños}}</p>
-				<p>COCHERA: {{p.cochera}}</p>
-				<p>PATIO: {{p.patio}}</p>
-				<p>MASCOTAS: {{p.mascotas}}</p>
-				<p>NIÑOS: {{p.niños}}</p>
-				<p>SUPERFICIE: {{p.superficie}}</p>
-				<p>SERVICIOS: {{p.servicios}}</p>
-				<p>MASCOTAS: {{p.mascotas}}</p>
-				<p>TIPO_INMUEBLE: {{p.tipo_inmueble}}</p>
+	
 
-				{% for m in imagenes %}
-					<img src= "{{m.img.url}}" width="100" height="100"> 
-				{% endfor %} 
+		 		<p>PRECIO: {{publicacion.precio}}</p>
+				<p>DESCRIPCION: {{publicacion.descripcion}}</p>
+				<p>UBICACION: {{publicacion.ubicacion}}</p>
+				<p>AMBIENTES: {{publicacion.ambientes}}</p>
+				<p>HABITACIONES: {{publicacion.habitaciones}}</p>
+				<p>BAÑOS: {{publicacion.baños}}</p>
+				<p>COCHERA: {{publicacion.cochera}}</p>
+				<p>PATIO: {{publicacion.patio}}</p>
+				<p>MASCOTAS: {{publicacion.mascotas}}</p>
+				<p>NIÑOS: {{publicacion.niños}}</p>
+				<p>SUPERFICIE: {{publicacion.superficie}}</p>
+				<p>SERVICIOS: {{publicacion.servicios}}</p>
+				<p>MASCOTAS: {{publicacion.mascotas}}</p>
+				<p>TIPO_INMUEBLE: {{publicacion.tipo_inmueble}}</p>
 
 
-		{% endfor %}
+				<a href="{% url 'favoritos:favPerfil' %}">ir a favoritos</a>
+				
+                <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador">ir a favoritos</i>
 
+
+
+
+
+			
+				{% for i in Imagenes %}
+				
+					<img src= "{{i.img.url}}" width="100" height="100"> 
+				
+				{% endfor %}
+
+
+			
+
+
+		</form>
 
 {% endblock %}
+				
+
+<script type="text/javascript">
+
+    function crear_favorito(){
+      console.log("Funcionando");
+      var current = $(this);
+      var type = current.data("type");
+      var pk = current.data('id');
+      var action = current.data('action');
+
+
+      $.ajax({
+        url : "/Favoritos/marcar/" + type + "/" + pk + "/" + action + "/",
+        type : "GET",
+        date : {'objeto' : pk},
+
+        success : function(json){
+          console.log(json)
+        } 
+
+      });
+      return false;
+    }
+
+$(function(){
+   $('[data-action="marcador"]').click(crear_favorito)
+});
+
+</script>

@@ -7,11 +7,21 @@ from .models import Publicaciones, Imagenes_Publicaciones
 from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.utils.funciones import PermisosMixin
+from apps.usuarios.models import Usuario
 
 
 
-def Publicacion(request):
-	return render(request,'publicacion/publi.html')
+
+
+def Publicacion(request, pk):
+
+	context = {
+
+	'publicacion': Publicaciones.objects.get(publicacion_id= pk),
+
+	}
+	
+	return render(request,'publicacion/publi.html', context)
 
 
 class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
@@ -28,14 +38,36 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
 
 		return redirect(self.success_url)
 
+	def current_user(self):
+		current_user = self.request.user
+		idd = current_user.id
+		Publicaciones.objects.filter(usuario= idd)
+
+		return redirect(self.success_url)
+
+
+def Inicio(request):
+	
+	context = {
+
+		'Publicacion': Publicacion.objects.all(),
+		'form': Publicacion()
+
+	}
+
+	return render(request, 'publicacion/publi.html')
+
 
 	
+
+
+"""
 class Editar(UpdateView):
 	model = Publicaciones
 	form_class = EditarPublicacion
 	template_name = "publicacion/editar.html"
 	success_url = reverse_lazy('home')
-
+"""
 
 class Borrar(DeleteView):
 	model = Publicaciones
@@ -52,8 +84,12 @@ class CargarImagenes(CreateView):
 	template_name = 'publicacion/cargarImagenes.html'
 	success_url = reverse_lazy('publicacion:crear')
 """
-def ListarImagenes(request):
-	context = {}
-	todos = Imagenes_Publicaciones.objects.all()
-	context['imagenes'] = todos
+def ListarImagenes(request, fk):
+
+	context = {
+
+
+		'Imagenes': Imagenes_Publicaciones.objects.get(publicacion= fk),
+	}
+
 	return render(request, 'publicacion/publi.html', context)

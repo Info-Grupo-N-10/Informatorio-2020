@@ -141,6 +141,9 @@
                   {{publicacion.servicios}}
                 </ul>
               </div>
+             
+              {% if user.is_authenticated %}
+              {% csrf_token %}
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -148,15 +151,16 @@
                   </div>
                   <div class= " amenities-list color-text-a Publicaciones">
 
-                    {% if user.is_authenticated %}
-                    <form method="POST">
-                      {% csrf_token %}
-
-                      <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"></i>
-
-                    </form>
-                    {% endif %}
-
+                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #f44336"> No me gusta</i>
+                  
+                    
+              {% else %}
+                    
+                    <i class="like fas fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"> Me gusta</i>
+                    
+                    
+              {% endif %}
+            
 
                 </div>
               </div>
@@ -292,20 +296,23 @@
 </script> -->
 {% endcomment %}
 
-{% comment %}
- <!--  <script>
+  <script>
 
     var like = document.getElementsByClassName("like");
     for(var i=0; i<=like.length;i++){
       console.log(like[i]);
 
       like[i].addEventListener("click", function(){
-        alert("Agregado a Favoritos")
+        
+        $(this).toggleClass("far").toggleClass('fas');
+        $(this).text(' No me gusta').text(' Me gusta');
+        
+       
       });
     }
 
-  </script> -->
-{% endcomment %}
+  </script>
+
 
 
 <script type="text/javascript">
@@ -325,15 +332,16 @@
 
         success : function(json){
           console.log(json)
-        } 
+
+          }
 
       });
       return false;
     }
 
-$(function(){
-   $('[data-action="marcador"]').click(crear_favorito)
-});
+    $(function(){
+      $('[data-action="marcador"]').click(crear_favorito)
+    });
 
 </script>
 

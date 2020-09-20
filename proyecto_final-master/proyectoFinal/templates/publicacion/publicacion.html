@@ -141,14 +141,26 @@
                   {{publicacion.servicios}}
                 </ul>
               </div>
+<!-- ------------------------------------ -->
+
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <a href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
+                  </div>
+                </div>
+              </div>
+
+<!-- ------------------------------------ -->
+
+              {% if user.is_authenticated %}
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
                     <h3 class="title-d">Dar Favoritos</h3>
                   </div>
-                  <div class= " amenities-list color-text-a Publicaciones">
+                  <div class= "amenities-list color-text-a Publicaciones">
 
-                    {% if user.is_authenticated %}
                     <form method="POST">
                       {% csrf_token %}
 

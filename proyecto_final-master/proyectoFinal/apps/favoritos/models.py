@@ -18,4 +18,6 @@ class Favoritos(BaseFavorito):
         db_table = "Favorito"
 
     objeto = models.ForeignKey(Publicaciones, verbose_name="Publicacion", related_name="favoritos", on_delete=models.CASCADE)
-        
+
+    def __unicode__(self):
+        return self.objeto.descripcion

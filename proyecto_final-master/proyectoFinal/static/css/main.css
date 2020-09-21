@@ -1,11 +1,43 @@
-
-#actualizar{
-  color: #FFF;
+body {
+  font-size: 14px;
+  line-height: 1.8;
+  color: #fff;
+  font-weight: 400;
   font-family: 'Poppins', sans-serif;
-  margin-bottom: 0px;
+/* background:linear-gradient(rgba(0,0,0,.5), rgba(0,0,0,.5)), url("../img/slide-3.jpg"); */
+  background-color: #ccc;
+  background-repeat: no-repeat;
+  background-size: cover;
+  -moz-background-size: cover;
+  -webkit-background-size: cover;
+  -o-background-size: cover;
+  -ms-background-size: cover;
+  background-position: center center;
+}
+#actualizar{
+  color: #333;
+  font-family: 'Poppins', sans-serif;
   font-weight: 500;
   line-height: 1.2;
+  margin-bottom: 8px; 
+  margin-top: 8px;
+  background: #fff;
 }
+.form-inputt:focus {
+  border: 1px solid transparent;
+  -webkit-border-image-source: -webkit-linear-gradient(to right, #ffd300,#3914AF);
+  -moz-border-image-source: -moz-linear-gradient(to right, #ffd300,  #3914AF);
+  -o-border-image-source: -o-linear-gradient(to right, #ffd300, #3914AF);
+  border-image-source: linear-gradient(to right, #ffd300,  #3914AF);
+  -webkit-border-image-slice: 1;
+  border-image-slice: 1;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  background-origin: border-box;
+  background-clip: content-box, border-box; }
 
 .form-row {
   display: -webkit-box;
@@ -23,6 +55,8 @@
   align-items: flex-start;
   padding: 24px 55px;
   border-bottom: 1px solid #e5e5e5;
+  margin-right: 0px;
+  margin-left: 0px;
 }
 
 .form-row .name {
@@ -64,7 +98,9 @@
    ========================================================================== */
 .wrapper {
   margin: 0 auto;
+  
 }
+
 
 .wrapper--w960 {
   max-width: 960px;
@@ -72,6 +108,7 @@
 
 .wrapper--w900 {
   max-width: 900px;
+  
 }
 
 .wrapper--w790 {
@@ -130,20 +167,8 @@ textarea {
 /* ==========================================================================
    #CARD
    ========================================================================== */
-.card {
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  background: #fff;
-}
 
-.card-6 {
-  background: transparent;
-}
 
-.card-6 .card-heading {
-  background: transparent;
-}
 
 .card-6 .card-body {
   background: #fff;
@@ -177,18 +202,51 @@ textarea {
 .card-6 .card-footer {
   background: #fff;
   border: 1px solid #FFD300;
-  border-top: none;
-  -webkit-border-bottom-left-radius: 3px;
-  -moz-border-radius-bottomleft: 3px;
-  border-bottom-left-radius: 3px;
-  -webkit-border-bottom-right-radius: 3px;
-  -moz-border-radius-bottomright: 3px;
-  border-bottom-right-radius: 3px;
-  padding: 50px 55px;
+  border-top:none;
+  -webkit-border-bottom-left-radius: 20px;
+  -moz-border-radius-bottomleft: 20px;
+  border-bottom-left-radius: 20px;
+  -webkit-border-bottom-right-radius: 20px;
+  -moz-border-radius-bottomright: 20px;
+  padding: 20px 30px;
 }
 
 @media (max-width: 767px) {
   .card-6 .card-footer {
     padding: 50px 30px;
   }
+}
+.input--style-6:focus,
+.textarea--style-6 {
+  background: transparent;
+  line-height: 38px;
+  border: 1px solid #cccccc;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  color: #666;
+  font-size: 15px;
+  -webkit-transition: all 0.4s ease;
+  -o-transition: all 0.4s ease;
+  -moz-transition: all 0.4s ease;
+  transition: all 0.4s ease;
+  padding: 0 20px;
+}
+
+.input--style-6:focus,
+.textarea--style-6:focus {
+  border: 1px solid transparent;
+  -webkit-border-image-source: -webkit-linear-gradient(to right, #ffd300,#3914AF);
+  -moz-border-image-source: -moz-linear-gradient(to right, #ffd300,  #3914AF);
+  -o-border-image-source: -o-linear-gradient(to right, #ffd300, #3914AF);
+  border-image-source: linear-gradient(to right, #ffd300,  #3914AF);
+  -webkit-border-image-slice: 1;
+  border-image-slice: 1;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  -o-border-radius: 5px;
+  -ms-border-radius: 5px;
+  background-origin: border-box;
+  background-clip: content-box, border-box; 
 }

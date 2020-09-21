@@ -1,6 +1,8 @@
 {% extends 'base.html' %}
 {% load static %}
 
+
+
 {% block contenido %}
 <!--/ Intro Single star /-->
   <section class="intro-single">
@@ -8,8 +10,8 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">304 Blaster Up</h1>
-            <span class="color-text-a">Chicago, IL 606543</span>
+            <h1 class="title-single">{{publicacion.titulo}}</h1>
+            <span class="color-text-a">{{publicacion.ubicacion}}</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -22,7 +24,7 @@
                 <a href="{% url 'publicacion:propiedades' %}">Propiedades</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                304 Blaster Up
+                {{publicacion.tipo_inmueble}}
               </li>
             </ol>
           </nav>
@@ -38,8 +40,9 @@
       <div class="row">
         <div class="col-sm-12">
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
+
             <div class="carousel-item-b">
-              <img src="{% static 'img/slide-2.jpg' %}" alt="">
+              <img src="{{publicacion.img.url}}" alt="">
             </div>
             <div class="carousel-item-b">
               <img src="{% static 'img/slide-3.jpg' %}" alt="">
@@ -47,6 +50,7 @@
             <div class="carousel-item-b">
               <img src="{% static 'img/slide-1.jpg' %}" alt="">
             </div>
+
           </div>
           <div class="row justify-content-between">
             <div class="col-md-5 col-lg-4">
@@ -56,7 +60,7 @@
                     <span class="ion-money">$</span>
                   </div>
                   <div class="card-title-c align-self-center">
-                    <h5 class="title-c">15000</h5>
+                    <h5 class="title-c">{{publicacion.precio}}</h5>
                   </div>
                 </div>
               </div>
@@ -71,38 +75,58 @@
                 <div class="summary-list">
                   <ul class="list">
                     <li class="d-flex justify-content-between">
-                      <strong>ID:</strong>
-                      <span>1134</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
                       <strong>Direccion:</strong>
-                      <span>Chicago, IL 606543</span>
+                      <span>{{publicacion.ubicacion}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Tipo de Inmueble:</strong>
-                      <span>Casa</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
-                      <strong>Status:</strong>
-                      <span>En venta</span>
+                      <span>{{publicacion.tipo_inmueble}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Area:</strong>
-                      <span>340m
+                      <span>{{publicacion.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Camas:</strong>
-                      <span>4</span>
+                      <span>{{publicacion.habitaciones}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Baños:</strong>
-                      <span>2</span>
+                      <span>{{publicacion.baños}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Cochera:</strong>
-                      <span>1</span>
+                      {% if publicacion.cochera %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Patio:</strong>
+                      {% if publicacion.patio %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Niños:</strong>
+                      {% if publicacion.niños %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Mascotas:</strong>
+                      {% if publicacion.mascotas %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                   </ul>
                 </div>
@@ -118,47 +142,76 @@
               </div>
               <div class="property-description">
                 <p class="description color-text-a">
-                  Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Donec velit
-                  neque, auctor sit amet
-                  aliquam vel, ullamcorper sit amet ligula. Cras ultricies ligula sed magna dictum porta.
-                  Curabitur aliquet quam id dui posuere blandit. Mauris blandit aliquet elit, eget tincidunt
-                  nibh pulvinar quam id dui posuere blandit.
-                </p>
-                <p class="description color-text-a no-margin">
-                  Curabitur arcu erat, accumsan id imperdiet et, porttitor at sem. Donec rutrum congue leo eget
-                  malesuada. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim. Donec sollicitudin molestie malesuada.
+                  {{publicacion.descripcion}}
                 </p>
               </div>
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
-                    <h3 class="title-d">Comodidades</h3>
+                    <h3 class="title-d">Servicios Incluidos</h3>
                   </div>
                 </div>
               </div>
               <div class="amenities-list color-text-a">
                 <ul class="list-a no-margin">
-                  <li>Balcon</li>
-                  <li>Cocina</li>
-                  <li>Cable Tv</li>
-                  <li>Internet</li>
-                  <li>Estacionamiento</li>
+                  {% for s in publicacion.servicios.all %}
+                      <li>{{s}}</li><br>
+                  {% endfor %}
                 </ul>
+              </div>
+<!-- ------------------------------------ -->
+
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <a href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
+                  </div>
+                </div>
+              </div>
+
+<!-- ------------------------------------ -->
+
+              {% if user.is_authenticated %}
+              <form method="POST">
+                {% csrf_token %}
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <h3 class="title-d">Dar Favoritos</h3>
+                  </div>
+                  <div class= "amenities-list color-text-a Publicaciones">
+
+                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #f44336"> No me gusta</i>
+                  
+                    
+              {% else %}
+                    
+                    <i class="like fas fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"> Me gusta</i>
+                    
+                    
+              {% endif %}
+            </form>
+
+                </div>
+              </div>
               </div>
             </div>
           </div>
         </div>
+        
+
         <div class="col-md-10 offset-md-1">
           <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
             <li class="nav-item">
               <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
                 aria-controls="pills-video" aria-selected="true">Video</a>
             </li>
+            {% comment %}
 <!--             <li class="nav-item">
               <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
                 aria-selected="false">Floor Plans</a>
             </li> -->
+            {% endcomment %}
             <li class="nav-item">
               <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
                 aria-selected="false">Ubicación</a>
@@ -173,8 +226,7 @@
               <img src="{% static 'img/plan2.jpg' %}" alt="" class="img-fluid">
             </div>
             <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834"
-                width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28321.926481874558!2d-59.00032386981285!3d-27.46176143365441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c62a6f5f70b%3A0xf03ac86511c2cd6d!2sResistencia%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1600661589464!5m2!1ses-419!2sar" width="100%" height="460" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
           </div>
         </div>
@@ -192,20 +244,18 @@
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="property-agent">
-                <h4 class="title-agent">Valentin Aguirre</h4>
+                <h4 class="title-agent">{{user.first_name}} {{user.last_name}}</h4>
                 <p class="color-text-a">
-                  Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                  dui. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim.
+                  {{user.getPerfil.descripcion}}
                 </p>
                 <ul class="list-unstyled">
                   <li class="d-flex justify-content-between">
                     <strong>Teléfono:</strong>
-                    <span class="color-text-a">(222) 4568932</span>
+                    <span class="color-text-a">{{user.getPerfil.telefono}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Email:</strong>
-                    <span class="color-text-a">chicho@example.com</span>
+                    <span class="color-text-a">{{user.email}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Instagram:</strong>
@@ -250,4 +300,77 @@
     </div>
   </section>
   <!--/ Property Single End /-->
+
+
+{% comment %}
+<!-- <script type="text/javascript">
+    const handler = () => {
+    fetch("marcar/favorito/<int:pk>/marcador", {method: 'POST'}).then((response) => response.json()).then((data) => console.log(data))
+    }
+    document.getElementById("agregar").addEventListener("click", handler )
+</script> -->
+
+
+<!-- <script type="text/javascript">
+
+  var xhr = new XMLHttpRequest();
+  xhr.open("GET", 'marcar/favorito/<int:pk>/marcador', false);
+  xhr.onload = // something
+  document.getElementById("agregar").addEventListener("click",
+      function() {xhr.send(data) return xhr.response},
+      false
+);
+</script> -->
+{% endcomment %}
+
+  <script>
+
+    var like = document.getElementsByClassName("like");
+    for(var i=0; i<=like.length;i++){
+      console.log(like[i]);
+
+      like[i].addEventListener("click", function(){
+        
+        $(this).toggleClass("far").toggleClass('fas');
+        $(this).text(' No me gusta').text(' Me gusta');
+        
+       
+      });
+    }
+
+  </script>
+
+
+
+<script type="text/javascript">
+
+    function crear_favorito(){
+      console.log("Funcionando");
+      var current = $(this);
+      var type = current.data("type");
+      var pk = current.data('id');
+      var action = current.data('action');
+    
+    
+      $.ajax({
+        url : "/Favoritos/marcar/" + type + "/" + pk + "/" + action + "/",
+        type : "GET",
+        date : {'objeto' : pk},
+
+        success : function(json){
+          console.log(json)
+
+          }
+
+      });
+      return false;
+    }
+
+    $(function(){
+      $('[data-action="marcador"]').click(crear_favorito)
+    });
+
+</script>
+
+
 {% endblock %}

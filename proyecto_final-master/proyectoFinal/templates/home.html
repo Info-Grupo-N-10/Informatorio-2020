@@ -96,46 +96,49 @@
         </div>
       </div>
       <div id="property-carousel" class="owl-carousel owl-theme">
-        <div class="carousel-item-b">
+
+        {% comment %}
+        {% for p in object_list %}
+        <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/property-6.jpg' %}" alt="" class="img-a img-fluid">
+              <img src= "{{p.img.url}}" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:public' %}">206 Mount
-                      <br /> Olive Road Two</a>
+                    <a href="#">204 Mount
+                      <br /> {{p.ubicacion}}</a>
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
+                    <span class="price-a">rent | {{p.precio}}</span>
                   </div>
-                  <a href="{% url 'publicacion:public' %}" class="link-a">Click here to view
+                  <a href="{% url 'publicacion:public' p.publicacion_id %}">Ir a la publicacion</a><br>
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
                 <div class="card-footer-a">
                   <ul class="card-info d-flex justify-content-around">
                     <li>
-                      <h4 class="card-info-title">Area</h4>
-                      <span>340m
+                      <h4 class="card-info-title">Superficie</h4>
+                      <span>{{p.superficie}} <a href="{% url 'publicacion:public' p.publicacion_id %}">IR A LA PUBLICACION</a><br>
                         <sup>2</sup>
                       </span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
+                      <h4 class="card-info-title">Habitaciones</h4>
+                      <span>{{p.habitaciones}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
+                      <span>{{p.baños}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
+                      <span>{{p.cochera}}</span>
                     </li>
                   </ul>
                 </div>
@@ -143,24 +146,28 @@
             </div>
           </div>
         </div>
+        {% endfor %}
+        {% endcomment %}
+
+        {% for p in object_list %}
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{% static 'img/property-3.jpg' %}" alt="" class="img-a img-fluid">
+              <img src="{{p.img.url}}" alt="" class="img-a img-fluid">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:public' %}">157 West
-                      <br /> Central Park</a>
+                    <a href="{% url 'publicacion:public'  p.publicacion_id%}">157 West
+                      <br> {{p.ubicacion}}</a>
                   </h2>
                 </div>
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | $ 12.000</span>
+                    <span class="price-a">rent | {{p.precio}}</span>
                   </div>
-                  <a href="{% url 'publicacion:public' %}" class="link-a">Click here to view
+                  <a href="{% url 'publicacion:public' p.publicacion_id %}" class="link-a">Click here to view
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -168,21 +175,21 @@
                   <ul class="card-info d-flex justify-content-around">
                     <li>
                       <h4 class="card-info-title">Area</h4>
-                      <span>340m
+                      <span>{{p.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Beds</h4>
-                      <span>2</span>
+                      <span>{{p.habitaciones}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Baths</h4>
-                      <span>4</span>
+                      <span>{{p.baños}}</span>
                     </li>
                     <li>
                       <h4 class="card-info-title">Garages</h4>
-                      <span>1</span>
+                      <span>{{p.cochera}}</span>
                     </li>
                   </ul>
                 </div>
@@ -190,7 +197,10 @@
             </div>
           </div>
         </div>
-        <div class="carousel-item-b">
+        {% endfor %}
+
+        {% comment %}
+        <!-- <div class="carousel-item-b">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
               <img src="{% static 'img/property-7.jpg' %}" alt="" class="img-a img-fluid">
@@ -199,7 +209,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:public' %}">245 Azabu
+                    <a href="{% url 'publicacion:publi' p.publicacion_id %}">245 Azabu
                       <br /> Nishi Park let</a>
                   </h2>
                 </div>
@@ -207,7 +217,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="{% url 'publicacion:public' %}" class="link-a">Ir a la publicación
+                  <a href="{% url 'publicacion:publi' p.publicacion_id %}" class="link-a">Ir a la publicación
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -246,7 +256,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:public' %}">204 Montal
+                    <a href="{% url 'publicacion:publi' p.publicacion_id %}">204 Montal
                       <br /> South Bela Two</a>
                   </h2>
                 </div>
@@ -254,7 +264,7 @@
                   <div class="price-box d-flex">
                     <span class="price-a">rent | $ 12.000</span>
                   </div>
-                  <a href="{% url 'publicacion:public' %}" class="link-a">Ir a la publicacion
+                  <a href="{% url 'publicacion:publi' p.publicacion_id %}" class="link-a">Ir a la publicacion
                     <span class="ion-ios-arrow-forward"></span>
                   </a>
                 </div>
@@ -282,8 +292,10 @@
                 </div>
               </div>
             </div>
+
           </div>
-        </div>
+        </div> -->
+        {% endcomment %}
       </div>
     </div>
   </section>

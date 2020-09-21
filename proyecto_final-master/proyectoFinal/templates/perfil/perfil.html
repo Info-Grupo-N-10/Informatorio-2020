@@ -3,15 +3,20 @@
 
 
 {% block contenido %}
-
   <!--/ Intro Single star /-->
   <section class="intro-single">
     <div class="container">
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">{{perfil.nombre}} {{user.last_name}}</h1>
-            <span class="color-text-a">Agent Immobiliari</span>
+            <h1 class="title-single">{{user.first_name}} {{user.last_name}}</h1>
+            <span class="color-text-a">
+              {% if user.propietario %}
+              Propietario
+              {% else%}
+              Usuario
+            </span>
+            {% endif %}
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -42,29 +47,29 @@
           <div class="row">
             <div class="col-md-6">
               <div class="agent-avatar-box">
-                <img src="{% static 'img/agent-7.jpg' %}" alt="" class="agent-avatar img-fluid">
+                <img src="{{user.getPerfil.imagen.url}}" alt="" class="agent-avatar img-fluid">
               </div>
             </div>
             <div class="col-md-5 section-md-t3">
               <div class="agent-info-box">
                 <div class="agent-title">
                   <div class="title-box-d">
-                    <h3 class="title-d">{{perfil.nombre}} {{perfil.apellido}}
-                      <br> Escala</h3>
+                    <h3 class="title-d">{{user.username}}
+                      <br></h3>
                   </div>
                 </div>
                 <div class="agent-content mb-3">
                   <p class="content-d color-text-a">
-                    {{perfil.descripcion}}
+                    {{user.getPerfil.descripcion}}
                   </p>
                   <div class="info-agents color-a">
                     <p>
                       <strong>Telefono: </strong>
-                      <span class="color-text-a"> {{perfil.telefono}}</span>
+                      <span class="color-text-a"> {{user.getPerfil.telefono}}</span>
                     </p>
                     <p>
                       <strong>Correo Electronico: </strong>
-                      <span class="color-text-a"> {{perfil.email}}</span>
+                      <span class="color-text-a"> {{user.email}}</span>
                     </p>
                   </div>
                 </div>

@@ -1,0 +1,110 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>EstateAgency</title>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <meta content="" name="keywords">
+  <meta content="" name="description">
+
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+  <link rel="stylesheet" href="{% static 'css/styleRegistro.css' %}">
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+<body>
+  {{form.errors}}
+<div class="main">
+    <section class="signup">
+        <div class="container">
+            <div class="signup-content">
+                <form method="POST" enctype="multipart/form-data" id="signup-form" class="signup-form">
+                    {%csrf_token%}
+                    <h2 class="form-title" style="
+                    margin-bottom: 32px;
+                    margin-top: 0px;
+                ">Crear Cuenta</h2>
+                    <div class="form-group">
+                        <div class="name h6">Nombre de Usuario</div>
+                        <input type="text" class="form-input" name="username" id="name" placeholder="pepeJose">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Nombre</div>
+                        <input type="text" class="form-input" name= "first_name" id="name" placeholder="Don Pepito">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Apellido</div>
+                        <input type="text" class="form-input" id="name" name="last_name" placeholder="Don Jose">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Correo Electronico</div>
+                        <input type="email" class="form-input" id="email" name="email" placeholder="pepejose@hotmail.com"/>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6 ">Telefono</div>
+                        <input type="text" class="form-input" id="name" name="telefono" placeholder="+54 9362 444-444">
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Descripcion</div>
+                        <textarea class="textarea--style-6 form-input" name="descripcion" placeholder="Escribe tu informacion Personal"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Foto Personal</div>
+                        <div class="input-group js-input-file">
+                                <input class="input-file form-input" type="file" name="imagen" id="file">
+                                <label class="label--file form-input text-center" for="file">Escoge una foto</label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Ingrese Contraseña</div>
+                        <input type="password" class="form-input" id="password" name= "password1" placeholder=""/>
+                        <span toggle="#password" class="toggle-password"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="name h6">Repita Contraseña</div>
+                        <input type="password" class="form-input" name= "password2" id="re_password" placeholder=""/>
+                    </div>
+                    <fieldset>
+                        <div class="form-group">
+                            <input type="checkbox" name="propietario" id="agree-term" class="agree-term"/>
+                            <label for="agree-term" class="label-agree-term"><span></span>Eres Priopietario</label>
+                        </div>
+                    </fieldset>
+                    <div class="form-group">
+                        <input type="submit" name="submit" id="submit" class="btn btn-b-n text-uppercase" style="width: 100%; border-radius: 25px;" value="Registrarse"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                        <label class="label-agree-term " for="exampleCheck1"><span></span>Acepto los <a href="#" class="term-service">términos y condiciones y políticas de privacidad</a></label>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+    </section>
+</div>
+
+<script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %}"></script>
+  <!-- Contact Form JavaScript File -->
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+  <!-- Template Main Javascript File -->
+  
+  <script src="{% static 'js/main.js' %}"></script>
+
+</body>
+</html>

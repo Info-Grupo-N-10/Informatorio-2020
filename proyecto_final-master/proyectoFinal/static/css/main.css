@@ -21,6 +21,7 @@ body {
   line-height: 1.2;
   margin-bottom: 8px; 
   margin-top: 8px;
+  background: #fff;
 }
 .form-inputt:focus {
   border: 1px solid transparent;
@@ -167,21 +168,7 @@ textarea {
    #CARD
    ========================================================================== */
 
-.card {
-  -webkit-border-radius: 20px;
-  -moz-border-radius: 20px;
-  border-radius: 20px;
-  background: #fff;
-  
-}
 
-.card-heading{
-  background: #fff;
-  color: #333;
-  font-family: 'Poppins', sans-serif;
-  font-weight: 500;
-  line-height: 1.2;
-}
 
 .card-6 .card-body {
   background: #fff;

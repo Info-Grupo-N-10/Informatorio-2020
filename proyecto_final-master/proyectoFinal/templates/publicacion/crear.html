@@ -3,57 +3,55 @@
 {% block contenido %}
 	
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-  <meta charset="utf-8">
-  <title>EstateAgency</title>
-  <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <meta content="" name="keywords">
-  <meta content="" name="description">
+	<title>EstateAgency</title>
+  	<meta charset="utf-8">
+  	<meta content="width=device-width, initial-scale=1.0" name="viewport">
+  	<meta content="" name="keywords">
+  	<meta content="" name="description">
 
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
-  <link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
-  <link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
-  <link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
-  <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
-
-  <link rel="stylesheet" href="{% static 'css/main.css' %}">
-  <link rel="stylesheet" href="{% static 'css/style.css' %}">
-
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+	<link href="{% static 'lib/font-awesome/css/font-awesome.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/animate/animate.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/ionicons/css/ionicons.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/owlcarousel/assets/owl.carousel.min.css' %}" rel="stylesheet">
+	<link href="{% static 'lib/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'fonts/material-icon/css/material-design-iconic-font.min.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
 </head>
-
 <body>
-
 <section class="intro-single">
-
-	<form method= "POST" action="{% url 'publicacion:crear' %}" enctype="multipart/form-data">{% csrf_token %}
+	<form method= "POST" action="{% url 'publicacion:crear' %}" enctype="multipart/form-data">
+		{% csrf_token %}
 		{{form.errors}}
-
 		<div class="container">
-			<div class="wrapper wrapper--w900">
+			<div class="wrapper wrapper--w680">
             	<div class="card card-6">
                 	<div class="card-heading">
                     	<h2 class="text-center" id="actualizar"><b>Crear Publicacion</b></h2>
                 	</div>
-
                 	<div class="card-body">
+						<div class="form-row">
+                            <div class="name">Titulo</div>
+                            	<div class="value">
+                                	<input name="titulo" type="text" class="input--style-6" placeholder="Alquilo Hogar en Resistencia" required>
+                            	</div>
+						</div>
                         <div class="form-row">
                             <div class="name">Precio</div>
                             	<div class="value">
-                                	<input name="precio" type="text" class="input--style-6" placeholder="Ej: 200" required>
+                                	<input name="precio" type="number" class="input--style-6" placeholder="Ej: 200" required>
                             	</div>
 						</div>
-
 						<div class="form-row">
                             <div class="name">Descripción</div>
                             	<div class="value">
                                 	<textarea name="descripcion" class="textarea--style-6" placeholder="Ej: Alquilo amplio departamento con vista al rio..." required></textarea>
                             	</div>
                         </div>
-
                         <div class="form-row">
                             <div class="name">Ubicación</div>
                             	<div class="value">
@@ -62,7 +60,6 @@
                                 	</div>
                             	</div>
 						</div>
-						
                         <div class="form-row">
                             <div class="name">Ambientes</div>
                             	<div class="value">
@@ -71,7 +68,6 @@
                                 	</div>
                             	</div>
 						</div>
-
 						<div class="form-row">
                             <div class="name">Habitaciones</div>
                             	<div class="value">
@@ -80,7 +76,6 @@
                                 	</div>
                             	</div>
                         </div>
-
                         <div class="form-row">
                             <div class="name">Baños</div>
                             	<div class="value">
@@ -89,7 +84,6 @@
                                 	</div>
                             	</div>
                         </div>
-
                         <div class="form-row">
                             <div class="name">Superficie</div>
                             	<div class="value">
@@ -98,56 +92,70 @@
                                 	</div>
                             	</div>
                         </div>
-
-
-                            <div class="form-row">
-                            	<div class="name">Servicios</div>
+                    <div class="form-row">
+						<div class="col-6">		
+							<div class="name">Servicios</div>
 	                            	<div class="value">
 	                                	<div class="input-group">
 		                                    <div id="id_servicios">
-
-
-											    	<label for="id_servicios_0">Internet</label>
-											    	<input class="estilo_servicios" type="checkbox" name="servicios" value="1" id="id_servicios_0"><br>
-
-
-
-
-											    	<br><label for="id_servicios_1">Luz</label>
-											    	<input class="estilo_servicios" type="checkbox" name="servicios" value="2" id="id_servicios_1"><br>
-
-
-
-
-											    	<br><label for="id_servicios_2">Agua</label>
-											    	<input class="estilo_servicios" type="checkbox" name="servicios" value="3" id="id_servicios_2"><br>
-
-
-
-
-											    	<br><label for="id_servicios_3">Cloaca</label>
-											    	<input class="estilo_servicios" type="checkbox" name="servicios" value="4" id="id_servicios_3">
-
-
+												<br>
+												<div class="row">
+												<div class="col-6">
+													<label style="margin-bottom: -10px;" for="id_servicios_0">Internet</label><br>
+													<label style="margin-bottom: -10px;" for="id_servicios_1">Luz</label><br>
+													<label style="margin-bottom: -10px;" for="id_servicios_2">Agua</label><br>
+													<label style="margin-bottom: -10px;" for="id_servicios_3">Cloaca</label>
+												</div>
+												<div class="col-6">
+													<input class="estilo_servicios" type="checkbox" name="servicios" value="1" id="id_servicios_0">
+													<input class="estilo_servicios" type="checkbox" name="servicios" value="2" id="id_servicios_1">
+													<input class="estilo_servicios" type="checkbox" name="servicios" value="3" id="id_servicios_2">
+													<input class="estilo_servicios" type="checkbox" name="servicios" value="4" id="id_servicios_3">
+												</div>
 											</div>
 										</div>
-									</div>		
-	                        </div>
-
+									</div>
+								</div>
+						</div>
+						
+							<div class="col-6 border-left" style="padding-left: 40px;">		
+								<div class="name">Especificaciones</div>
+	                            	<div class="value">
+	                                	<div class="input-group">
+		                                    <div id="id_servicios">
+												<br>
+												<div class="row">
+												<div class="col-6">
+													<label style="margin-bottom: -10px;" for="especificacion0">Cochera</label><br>
+													<label style="margin-bottom: -10px;" for="especificacion1">Patio</label><br>
+													<label style="margin-bottom: -10px;" for="especificacion2">Mascotas</label><br>
+													<label style="margin-bottom: -10px;" for="especificacion3">Niños</label>
+												</div>
+												<div class="col-6">
+													<input class="estilo_servicios" type="checkbox" name="cochera" value="1" id="especificacion0">
+													<input class="estilo_servicios" type="checkbox" name="patio" value="2" id="especificacion1">
+													<input class="estilo_servicios" type="checkbox" name="mascotas" value="3" id="especificacion2">
+													<input class="estilo_servicios" type="checkbox" name="niños" value="4" id="especificacion3">
+												</div>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
 	                    <div class="form-row">
                             <div class="name">Tipo Inmueble</div>
 	                            <div class="value">
 		                            <div class="input-group">
 				                        <select name="tipo_inmueble" required="" id="id_tipo_inmueble">
-										  <option value="" selected="">---------</option>
-										  <option value="1">Habitación</option>
-										  <option value="2">Duplex</option>
-										  <option value="3">Departamento</option>
+										  	<option value="" selected="">---------</option>
+										  	<option value="1">Habitación</option>
+										  	<option value="2">Duplex</option>
+										  	<option value="3">Departamento</option>
 										</select>
 									</div>
 								</div>
 						</div>
-
 						<div class="form-row">
                             <div class="name">Imagenes</div>
                             	<div class="value">
@@ -156,16 +164,12 @@
 										<a href = "#" id="boton">Agregar imagen</a>
                             	</div>
 						</div>
-
 						<input type="submit" class ="btn btn-b-n"value="Crear">
-
 					</div>
 				</div>
 			</div>
 		</div>
-
 	</form>
-
 </section>
 
 	{% block js %}

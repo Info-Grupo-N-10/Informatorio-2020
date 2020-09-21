@@ -23,7 +23,7 @@ class Tipo_Inmueble(models.Model):
 
 class Publicaciones(models.Model):
     publicacion_id = models.AutoField(primary_key=True)
-    # titulo = models.CharField(max_length=150)
+    titulo = models.CharField(max_length=150)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     descripcion = models.TextField()
     ubicacion = models.CharField(max_length= 100)
@@ -44,7 +44,6 @@ class Publicaciones(models.Model):
     # def getServicios(self):
     #     return self.servicios
     
-
 
 #ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA
 

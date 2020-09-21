@@ -60,19 +60,19 @@ a:hover {
   width: auto;
 }
 
-#id_servicios_0{
-  margin-left: 103px;
+#id_servicios_0, #especificacion0{
+  margin-left: 100px;
 }
 
-#id_servicios_1{
-  margin-left: 141px;
+#id_servicios_1, #especificacion1{
+  margin-left: 100px;
 }
 
-#id_servicios_2{
-  margin-left: 123px;
+#id_servicios_2, #especificacion2{
+  margin-left: 100px;
 }
 
-#id_servicios_3{
+#id_servicios_3, #especificacion3{
   margin-left: 100px;
 }
 
@@ -384,7 +384,7 @@ a:hover {
 
 .owl-theme .owl-dots {
   text-align: center;
-  margin-top: 18px;
+  /* margin-top: 18px; */
 }
 
 .owl-theme .owl-dots .owl-dot {
@@ -912,7 +912,7 @@ a:hover {
 
 .intro .owl-theme .owl-dots {
   position: absolute;
-  bottom: 70px;
+  bottom: 20px;
   right: 50px;
 }
 
@@ -2369,11 +2369,19 @@ textarea {
 }
 
 .card-6 {
-  background: transparent;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  border-radius: 20px;
+  background: #fff !important;
 }
 
 .card-6 .card-heading {
-  background: transparent;
+  background: #fff !important;
+  color: #333;
+  font-family: 'Poppins', sans-serif;
+  font-weight: 500;
+  line-height: 1.2;
+  background: #fff !important
 }
 
 .card-6 .card-body {

@@ -21,3 +21,6 @@ class Favoritos(BaseFavorito):
 
     def __unicode__(self):
         return self.objeto.descripcion
+
+    def __str__(self):
+        return self.objeto

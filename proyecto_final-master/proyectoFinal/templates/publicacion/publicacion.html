@@ -10,7 +10,7 @@
       <div class="row">
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
-            <h1 class="title-single">Falta el titulo xd</h1>
+            <h1 class="title-single">{{publicacion.titulo}}</h1>
             <span class="color-text-a">{{publicacion.ubicacion}}</span>
           </div>
         </div>
@@ -24,7 +24,7 @@
                 <a href="{% url 'publicacion:propiedades' %}">Propiedades</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
-                Falta el titulo xd
+                {{publicacion.tipo_inmueble}}
               </li>
             </ol>
           </nav>
@@ -42,7 +42,7 @@
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
 
             <div class="carousel-item-b">
-              <img src="{% static 'img/slide-2.jpg' %}" alt="">
+              <img src="{{publicacion.img.url}}" alt="">
             </div>
             <div class="carousel-item-b">
               <img src="{% static 'img/slide-3.jpg' %}" alt="">
@@ -75,10 +75,6 @@
                 <div class="summary-list">
                   <ul class="list">
                     <li class="d-flex justify-content-between">
-                      <strong>ID:</strong>
-                      <span>{{publicacion.publicacion_id}}</span>
-                    </li>
-                    <li class="d-flex justify-content-between">
                       <strong>Direccion:</strong>
                       <span>{{publicacion.ubicacion}}</span>
                     </li>
@@ -102,15 +98,35 @@
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Cochera:</strong>
-                      <span>{{publicacion.cochera}}</span>
+                      {% if publicacion.cochera %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
+                    </li>
+                    <li class="d-flex justify-content-between">
+                      <strong>Patio:</strong>
+                      {% if publicacion.patio %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Niños:</strong>
-                      <span>{{publicacion.niños}}</span>
+                      {% if publicacion.niños %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                     <li class="d-flex justify-content-between">
                       <strong>Mascotas:</strong>
-                      <span>{{publicacion.mascotas}}</span>
+                      {% if publicacion.mascotas %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                   </ul>
                 </div>
@@ -138,7 +154,9 @@
               </div>
               <div class="amenities-list color-text-a">
                 <ul class="list-a no-margin">
-                  {{publicacion.servicios}}
+                  {% for s in publicacion.servicios.all %}
+                      <li>{{s}}</li><br>
+                  {% endfor %}
                 </ul>
               </div>
 <!-- ------------------------------------ -->
@@ -154,6 +172,8 @@
 <!-- ------------------------------------ -->
 
               {% if user.is_authenticated %}
+              <form method="POST">
+                {% csrf_token %}
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -161,7 +181,6 @@
                   </div>
                   <div class= "amenities-list color-text-a Publicaciones">
 
-<<<<<<< HEAD
                     <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #f44336"> No me gusta</i>
                   
                     
@@ -171,17 +190,7 @@
                     
                     
               {% endif %}
-            
-=======
->>>>>>> 961133018d529e19537a2a6340d4078643728b3d
-                    <form method="POST">
-                      {% csrf_token %}
-
-                      <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"></i>
-
-                    </form>
-                    {% endif %}
-
+            </form>
 
                 </div>
               </div>
@@ -217,8 +226,7 @@
               <img src="{% static 'img/plan2.jpg' %}" alt="" class="img-fluid">
             </div>
             <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3022.1422937950147!2d-73.98731968482413!3d40.75889497932681!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c25855c6480299%3A0x55194ec5a1ae072e!2sTimes+Square!5e0!3m2!1ses-419!2sve!4v1510329142834"
-                width="100%" height="460" frameborder="0" style="border:0" allowfullscreen></iframe>
+              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28321.926481874558!2d-59.00032386981285!3d-27.46176143365441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c62a6f5f70b%3A0xf03ac86511c2cd6d!2sResistencia%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1600661589464!5m2!1ses-419!2sar" width="100%" height="460" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
             </div>
           </div>
         </div>
@@ -236,20 +244,18 @@
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="property-agent">
-                <h4 class="title-agent">Valentin Aguirre</h4>
+                <h4 class="title-agent">{{user.first_name}} {{user.last_name}}</h4>
                 <p class="color-text-a">
-                  Nulla porttitor accumsan tincidunt. Vestibulum ac diam sit amet quam vehicula elementum sed sit amet
-                  dui. Quisque velit nisi,
-                  pretium ut lacinia in, elementum id enim.
+                  {{user.getPerfil.descripcion}}
                 </p>
                 <ul class="list-unstyled">
                   <li class="d-flex justify-content-between">
                     <strong>Teléfono:</strong>
-                    <span class="color-text-a">(222) 4568932</span>
+                    <span class="color-text-a">{{user.getPerfil.telefono}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Email:</strong>
-                    <span class="color-text-a">chicho@example.com</span>
+                    <span class="color-text-a">{{user.email}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Instagram:</strong>

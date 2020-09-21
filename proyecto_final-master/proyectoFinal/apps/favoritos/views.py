@@ -31,3 +31,10 @@ def lista_de_favoritos(request):
     context = {'favoritos': queryset}
 
     return render(request, "favoritos/favoritos.html", context)
+
+def lista_perfiles_favoritos(request):
+     querys = request.user.favoritos.all()
+
+     context = {'favoritosPublicacion': querys}
+
+     return render(request, "favoritos/publicaciones_favs.html", context)

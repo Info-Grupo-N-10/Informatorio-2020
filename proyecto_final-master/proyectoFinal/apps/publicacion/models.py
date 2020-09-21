@@ -7,8 +7,8 @@ class Servicios(models.Model):
     def __str__(self):
         return self.nombre
     
-    def getServicio(self):
-        return self.miServicios
+    # def getServicio(self):
+    #     return self.miServicios
 
 
 class Tipo_Inmueble(models.Model):
@@ -17,8 +17,8 @@ class Tipo_Inmueble(models.Model):
     def __str__(self):
         return self.nombre
 
-    def getInmueble(self):
-        return self.tipoInmueble
+    # def getInmueble(self):
+    #     return self.tipoInmueble
 
 
 class Publicaciones(models.Model):
@@ -38,11 +38,11 @@ class Publicaciones(models.Model):
     servicios = models.ManyToManyField(Servicios, related_name='miServicios')
     tipo_inmueble = models.ForeignKey('Tipo_Inmueble', related_name='tipoInmueble', null=True, on_delete=models.SET_NULL)
 
-    def getInmueble(self):
-        return self.tipo_inmueble
+    # def getInmueble(self):
+    #     return self.tipo_inmueble
 
-    def getServicios(self):
-        return self.servicios
+    # def getServicios(self):
+    #     return self.servicios
     
 
 
@@ -52,8 +52,8 @@ class Imagenes_Publicaciones(models.Model):
     img = models.ImageField(upload_to= "publicaciones", null=False, blank=False)
     publicacion = models.ForeignKey(Publicaciones,related_name='imgInmueble', null=True, on_delete=models.SET_NULL)#me parece que esto no va...
     
-    def getImagen(self):
-        return self.imgInmueble
+    # def getImagen(self):
+    #     return self.imgInmueble
 
-    def getPublicacion(self):
-        return self.publicacion
+    # def getPublicacion(self):
+    #     return self.publicacion

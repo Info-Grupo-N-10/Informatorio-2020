@@ -141,11 +141,6 @@
                   {{publicacion.servicios}}
                 </ul>
               </div>
-<<<<<<< HEAD
-             
-              {% if user.is_authenticated %}
-              {% csrf_token %}
-=======
 <!-- ------------------------------------ -->
 
               <div class="row section-t3">
@@ -159,7 +154,6 @@
 <!-- ------------------------------------ -->
 
               {% if user.is_authenticated %}
->>>>>>> 961133018d529e19537a2a6340d4078643728b3d
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -167,7 +161,6 @@
                   </div>
                   <div class= "amenities-list color-text-a Publicaciones">
 
-<<<<<<< HEAD
                     <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #f44336"> No me gusta</i>
                   
                     
@@ -178,7 +171,6 @@
                     
               {% endif %}
             
-=======
                     <form method="POST">
                       {% csrf_token %}
 
@@ -187,7 +179,6 @@
                     </form>
                     {% endif %}
 
->>>>>>> 961133018d529e19537a2a6340d4078643728b3d
 
                 </div>
               </div>

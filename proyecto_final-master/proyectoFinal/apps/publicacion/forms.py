@@ -11,6 +11,9 @@ class AltaPublicacion(forms.ModelForm):
 
 
 class EditarPublicacion(forms.ModelForm):
-     class Meta:
-         model = Publicaciones
-         fields =  ["precio", "descripcion", "ubicacion", "ambientes", "habitaciones", "baños", "cochera", "patio", "mascotas","niños", "superficie", "servicios", "tipo_inmueble"]
+    servicios = forms.ModelMultipleChoiceField(queryset=Servicios.objects.all(), widget=forms.CheckboxSelectMultiple(), required=False)
+    
+    class Meta:
+        model = Publicaciones
+        fields = '__all__'
+        exclude = ['publicacion_id']

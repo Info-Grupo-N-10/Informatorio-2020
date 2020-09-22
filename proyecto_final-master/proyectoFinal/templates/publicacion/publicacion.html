@@ -160,7 +160,7 @@
                 </ul>
               </div>
 <!-- ------------------------------------ -->
-
+{% comment %}
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -168,6 +168,21 @@
                   </div>
                 </div>
               </div>
+
+              {% if user.propietario %}
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <a href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+
+              <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+                   <button type="submit" class="btn btn-b-n">ELIMINAR PUBLICACION</button>
+              </form>
+{% endcomment %}
 
 <!-- ------------------------------------ -->
 
@@ -177,7 +192,7 @@
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
-                    <h3 class="title-d">Dar Favoritos</h3>
+                    <h3 class="title-d">Acciones</h3>
                   </div>
                   <div class= "amenities-list color-text-a Publicaciones">
 
@@ -190,6 +205,30 @@
                     
                     
               {% endif %}
+            </div>
+             <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
+                  </div>
+                </div>
+              </div>
+
+              {% if user.propietario %}
+              <div class="row section-t3">
+                <div class="col-sm-12">
+                  <div class="title-box-d">
+                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+                  </div>
+                </div>
+              </div>
+              {% endif %}
+
+              <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">
+                   <button type="submit" class="btn btn-b-n">Eliminar Publicación</button>
+              </form>
+        </div>
+          </div>
             </form>
 
                 </div>

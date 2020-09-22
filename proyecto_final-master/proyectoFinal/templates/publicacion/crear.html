@@ -56,8 +56,18 @@
                             <div class="name">Ubicación</div>
                             	<div class="value">
                                 	<div class="input-group">
-                                    	<input name="ubicacion" type="text" class="input--style-6" placeholder="Ej: Av Velez Sarsfield N°1354" required>
-                                	</div>
+				                        <select name="ubicacion" required="" id="id_tipo_inmueble">
+										  	<option value="" selected="">---------</option>
+										  	{% for u in publicacion.ubicacion.all %}
+										  		<option>{{u}}</option>
+										  	{% endfor %}
+										  	{% comment %}
+										  	<!-- <option value="1">Habitación</option>
+										  	<option value="2">Duplex</option>
+										  	<option value="3">Departamento</option> -->
+										  	{% endcomment %}
+										</select>
+									</div>
                             	</div>
 						</div>
                         <div class="form-row">

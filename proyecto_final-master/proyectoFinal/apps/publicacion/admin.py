@@ -1,11 +1,13 @@
 from django.contrib import admin
 from .models import *
+from .forms import EditarPublicacion
 
 
 
 admin.site.register(Servicios)
 
 admin.site.register(Tipo_Inmueble)
+admin.site.register(Zona)
 
 class PublicacionesImagenes(admin.TabularInline):
     model = Imagenes_Publicaciones
@@ -15,3 +17,5 @@ class PublicacionAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Publicaciones, PublicacionAdmin)
+
+

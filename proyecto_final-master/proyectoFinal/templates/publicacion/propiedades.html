@@ -98,6 +98,26 @@
           </div>
         </div>
         {% endfor %}
+              
+        <div>
+          <form method='GET' action="{% url 'publicacion:propiedades' %}" %}>
+              {{ publicaciones.form.as_p }}
+              
+          
+              {% for obj in context.qs %}
+              <p> ID: {{ obj.publicacion_id}} </p><br/>
+              <p> Nombre: {{ obj.habitaciones }} </p><br/>
+              <p> precio: {{ obj.precio }} </p><br/>
+              <p> Cantidad de Baños: {{ obj.baños }} </p><br/>
+              {% endfor %}
+          
+              <button class="btn btn-primary" type="submit">Buscar</button>
+          
+          
+          </form>
+          
+          
+          </div>
 
         {% comment %}
         <!-- <div class="col-md-4">

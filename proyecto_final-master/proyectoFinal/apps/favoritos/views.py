@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from apps.publicacion.models import Publicaciones
-
+from django.views.generic.list import ListView
 from .models import Favoritos
 import json
 from django.http import HttpResponse
@@ -32,9 +32,7 @@ def lista_de_favoritos(request):
 
     return render(request, "favoritos/favoritos.html", context)
 
-def lista_perfiles_favoritos(request):
-     querys = request.user.favoritos.all()
 
-     context = {'favoritosPublicacion': querys}
-
-     return render(request, "favoritos/publicaciones_favs.html", context)
+class lista_perfiles_favoritos(ListView):
+    model = Favoritos
+    template_name = 'favoritos/publicaciones_favs.html'

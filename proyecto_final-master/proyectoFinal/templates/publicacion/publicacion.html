@@ -141,6 +141,13 @@
                   {{publicacion.servicios}}
                 </ul>
               </div>
+
+              <a href="{% url 'publicacion:editar' publicacion.publicacion_id %}">EDITAR PUBLICACION</a>
+
+              <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+                   <button type="submit">ELIMINAR PUBLICACION</button>
+              </form>
+    
 <!-- ------------------------------------ -->
 
               <div class="row section-t3">

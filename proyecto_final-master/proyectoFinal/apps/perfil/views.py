@@ -6,8 +6,10 @@ from .forms import EditarPerfil, RegistroUsuario
 from .models import Perfil
 from django.urls import reverse_lazy
 from apps.usuarios.models import Usuario
+from django.contrib.auth.mixins import LoginRequiredMixin
 
-def Perfil_Usuarios(request):  
+
+def Perfil_Usuarios(request):
     return render(request,'perfil/perfil.html')
 
 class Registro(CreateView):
@@ -22,16 +24,19 @@ class Crear(CreateView):
     template_name = 'perfil/crear.html'
     success_url = reverse_lazy('home')
 
-class Editar(UpdateView):
+class Editar(LoginRequiredMixin, UpdateView):
     model = Usuario
     form_class = EditarPerfil
     template_name = "perfil/editar.html"
     success_url = reverse_lazy('home')
 
-class Borrar(DeleteView):
-    model = Perfil
+class Borrar(LoginRequiredMixin,DeleteView):  
+    model = Usuario
     success_url = reverse_lazy("home")
-
+    
 class ListarPerfiles(ListView):
     model = Perfil
     template_name = 'perfil/todos.html'
+
+
+  

@@ -9,9 +9,8 @@ app_name="publicacion"
 urlpatterns = [
 
 	path('Publicacion/<int:pk>/', views.Publicacion, name='public'),
-	path('Propiedades/', views.ListarPublicaciones.as_view(), name='propiedades'),
+	path('Propiedades/', views.ListarPublicaciones, name='propiedades'),
 	path('Crear/', views.Crear.as_view(), name="crear"),
-	path('Borrar/', views.Borrar.as_view(), name="borrar"),
-	# path('Editar/<str:pk>/', views.Editar.as_view(), name="editar"),
-
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+	path('Borrar/<int:pk>', views.Borrar.as_view(), name="borrar"),
+	path('Editar/<int:pk>/', views.Editar.as_view(), name="editar"),
+] 

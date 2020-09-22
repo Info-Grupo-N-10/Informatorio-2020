@@ -38,7 +38,9 @@
     </div>
   </section>
   <!--/ Intro Single End /-->
-
+ <form method= "POST" action="{% url 'perfil:borrar' user.id %}">{% csrf_token %}
+      <button type="submit">ELIMINAR MI CUENTA</button>
+  </form>
   <!--/ Agent Single Star /-->
   <section class="agent-single">
     <div class="container">

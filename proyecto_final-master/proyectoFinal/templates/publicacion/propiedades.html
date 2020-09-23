@@ -50,32 +50,32 @@
         <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src= "{{p.img.url}}" class="img-a img-fluid">
-              {% comment %}
-              <!-- <img src="{% static 'img/property-1.jpg' %}" alt="" class="img-a img-fluid"> -->
-              {% endcomment %}
+              <img src="{{p.getImagen.img.url}}" class="img-a img-fluid" style="height: 300px;">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="#">204 Mount
-                      <br /> {{p.ubicacion}}</a>
+                    <a href="#">{{p.titulo}} 
+                      <br> {{p.ubicacion}}</a>
                   </h2>
                 </div>
                 <div class="card-body-a">
+                  <!-- ----------------------------------  -->
+
+                  <!-- --------------------------------------- -->
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | {{p.precio}}</span>
+                    <span class="price-a">alquila | {{p.precio}}</span>
                   </div>
-                  <a href="{% url 'publicacion:public' p.publicacion_id %}">Ir a la publicacion</a><br>
-                    <span class="ion-ios-arrow-forward"></span>
+                  <span class="ion-ios-arrow-forward"></span>
+                  <a href="{% url 'publicacion:public' p.publicacion_id %}" class="ir">Ir a la publicacion</a><br>
                   </a>
                 </div>
                 <div class="card-footer-a">
                   <ul class="card-info d-flex justify-content-around">
                     <li>
                       <h4 class="card-info-title">Superficie</h4>
-                      <span>{{p.superficie}} <a href="{% url 'publicacion:public' p.publicacion_id %}">IR A LA PUBLICACION</a><br>
+                      <span>{{p.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
@@ -88,8 +88,12 @@
                       <span>{{p.baños}}</span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>{{p.cochera}}</span>
+                      <h4 class="card-info-title">Cochera</h4>
+                      {% if p.cochera %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                   </ul>
                 </div>
@@ -98,6 +102,7 @@
           </div>
         </div>
         {% endfor %}
+      </section>
 
         {% comment %}
         <!-- <div class="col-md-4">
@@ -365,6 +370,6 @@
       </div>
     </div> -->
     {% endcomment %}
-  </section>
+
   <!--/ Property Grid End /-->
 {% endblock %}

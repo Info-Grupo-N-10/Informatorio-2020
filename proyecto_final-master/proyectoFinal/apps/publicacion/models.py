@@ -44,11 +44,18 @@ class Publicaciones(models.Model):
     servicios = models.ManyToManyField(Servicios, related_name='miServicios')
     tipo_inmueble = models.ForeignKey('Tipo_Inmueble', related_name='tipoInmueble', null=True, on_delete=models.SET_NULL)
 
-    # def getInmueble(self):
-    #     return self.tipo_inmueble
+    def getImagen(self):
+        print(self.imgInmueble.all())
+        if self.imgInmueble.all():
+            return self.imgInmueble.all()[0]
+        else:
+            return None
 
-    # def getServicios(self):
-    #     return self.servicios
+    def mostrarTodas(self):
+        if self.imgInmueble.all():
+            return self.imgInmueble.all()
+        else:
+            return None
     
 
 #ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA

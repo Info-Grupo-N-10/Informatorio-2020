@@ -27,7 +27,7 @@
 <body>
 	<section class="intro-single">
     <div class="container">
-		<div class="wrapper wrapper--w900">
+		<div class="wrapper wrapper--w680">
             <div class="card card-6">
                 <div class="card-heading">
                     <h2 class="text-center" style="margin-bottom: 8px; margin-top: 8px;" id="actualizar"><b>Actualizar Perfil</b></h2>
@@ -40,51 +40,40 @@
                     	<div class="form-row">
 							<label for="id_first_name" class="name">Nombre:</label>
                             <div class="value">
-								<input type="text"
-								class="input--style-6 " name="first_name" value="" maxlength="30" id="id_first_name">
+								{{form.first_name}}
                         	</div>
 						</div>
 						<div class="form-row">
 							<label for="id_first_name" class="name">Apellido:</label>
                             <div class="value">
-								<input type="text"
-								class="input--style-6" name="last_name" value="" maxlength="30" id="id_first_name">
+								{{form.last_name}}
                         	</div>
                     	</div>
 						<div class="form-row">
 							<label for="id_email" class="name">Dirección de email:</label>
                             <div class="value">
                                 <div class="input-group">
-									<input type="email" name="email" maxlength="254" id="id_email" value="" class="input--style-6">
+									{{form.email}}
                                 </div>
                             </div>
 						</div> 
 						<div class="form-row">
                             <label for="id_first_name" class="name">Telefono:</label>
                             <div class="value">
-								<input type="text"
-								class="input--style-6" name="telefono" value="" maxlength="30" id="id_first_name">
+								{{form.telefono}}
                         	</div>
                         </div>
                         <div class="form-row">
                            <label for="id_first_name" class="name">Descripcion:</label>
                             <div class="value">
                                 <div class="input-group">
-                                    <textarea class="textarea--style-6" name="descripcion" placeholder="Escribe tu informacion Personal"></textarea>
+                                    {{form.descripcion}}
                                 </div>
                             </div>
 						</div>
                         <div class="form-row">
 							<label for="" class="name">Imagen Personal:</label>
-                            <div class="value">
-                                <div class="input-group js-input-file">
-									 <input type="file" name="imagen" accept="image/*" id="id_imagen" class="input-file">
-									 <label class="label--file" for="id_imagen" >Modificar foto</label>
-									  <!-- Actualmente: <a href="#"> perfiles/Imagen1.png</a> -->
-								</div>
-								
-                                    
-                            </div>
+                            {{form.imagen}}
                             </div>
 						</div>
 					<div class="card-footer">

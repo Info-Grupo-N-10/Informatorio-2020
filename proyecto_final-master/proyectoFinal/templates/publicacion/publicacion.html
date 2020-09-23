@@ -41,15 +41,11 @@
         <div class="col-sm-12">
           <div id="property-single-carousel" class="owl-carousel owl-arrow gallery-property">
 
-            <div class="carousel-item-b">
-              <img src="{{publicacion.img.url}}" alt="">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{% static 'img/slide-3.jpg' %}" alt="">
-            </div>
-            <div class="carousel-item-b">
-              <img src="{% static 'img/slide-1.jpg' %}" alt="">
-            </div>
+            {% for m in publicacion.mostrarTodas %}
+              <div class="carousel-item-b">
+                <img style="text-align: center; margin-left: auto; margin-right: auto; width: 50%;" src= "{{m.img.url}}">
+              </div>
+            {% endfor %}
 
           </div>
           <div class="row justify-content-between">
@@ -161,7 +157,7 @@
               </div>
 <!-- ------------------------------------ -->
 {% comment %}
-              <div class="row section-t3">
+              <!-- <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
                     <a href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
@@ -171,50 +167,68 @@
 
               {% if user.propietario %}
               <div class="row section-t3">
-                <div class="col-sm-12">
+                <div class="col-6 col-sm-12">
                   <div class="title-box-d">
-                    <a href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
                   </div>
                 </div>
+                <div class="col-6 col-sm-12">
+                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
+                  </form>
+                </div>
+
               </div>
-              {% endif %}
-
-              <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
-                   <button type="submit" class="btn btn-b-n">ELIMINAR PUBLICACION</button>
-              </form>
+              {% endif %} -->
 {% endcomment %}
-
 <!-- ------------------------------------ -->
+              <div class="row">
 
               {% if user.is_authenticated %}
               <form method="POST">
                 {% csrf_token %}
-              <div class="row section-t3">
-                <div class="col-sm-12">
+                <div class="col-4">
                   <div class="title-box-d">
                     <h3 class="title-d">Acciones</h3>
                   </div>
                   <div class= "amenities-list color-text-a Publicaciones">
 
-                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #f44336"> No me gusta</i>
-                  
+                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #FFD300"> No me gusta</i>
+
                     
               {% else %}
-                    
-                    <i class="like fas fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"> Me gusta</i>
-                    
+                        <i class="like fas fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"> Me gusta</i>
+                    </div>
+                  </div>
+                </form>
                     
               {% endif %}
-            </div>
-             <div class="row section-t3">
-                <div class="col-sm-12">
+
+                <div class="col-4">
                   <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
+                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' %}">Ver los favoritos</a>
                   </div>
                 </div>
-              </div>
+
 
               {% if user.propietario %}
+
+                <div class="col-4">
+                  <div class="title-box-d">
+                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+                  </div>
+                </div>
+                <div class="col-6">
+                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
+                  </form>
+                </div>
+
+              {% endif %}
+          </div>
+
+              {% comment %}
+              <!-- {% if user.propietario %}
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
@@ -226,7 +240,8 @@
 
               <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">
                    <button type="submit" class="btn btn-b-n">Eliminar Publicación</button>
-              </form>
+              </form -->
+              {% endcomment %}
         </div>
           </div>
             </form>
@@ -370,7 +385,7 @@
 
       like[i].addEventListener("click", function(){
         
-        $(this).toggleClass("far").toggleClass('fas');
+        $(this).toggleClass("btn").toggleClass('btn');
         $(this).text(' No me gusta').text(' Me gusta');
         
        

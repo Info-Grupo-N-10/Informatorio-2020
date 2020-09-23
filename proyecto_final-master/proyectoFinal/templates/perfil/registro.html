@@ -34,43 +34,39 @@
                 ">Crear Cuenta</h2>
                     <div class="form-group">
                         <div class="name h6">Nombre de Usuario</div>
-                        <input type="text" class="form-input" name="username" id="name" placeholder="pepeJose">
+                        {{form.username}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Nombre</div>
-                        <input type="text" class="form-input" name= "first_name" id="name" placeholder="Don Pepito">
+                        {{form.first_name}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Apellido</div>
-                        <input type="text" class="form-input" id="name" name="last_name" placeholder="Don Jose">
+                        {{form.last_name}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Correo Electronico</div>
-                        <input type="email" class="form-input" id="email" name="email" placeholder="pepejose@hotmail.com"/>
+                        {{form.email}}
                     </div>
                     <div class="form-group">
                         <div class="name h6 ">Telefono</div>
-                        <input type="text" class="form-input" id="name" name="telefono" placeholder="+54 9362 444-444">
+                        {{form.telefono}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Descripcion</div>
-                        <textarea class="textarea--style-6 form-input" name="descripcion" placeholder="Escribe tu informacion Personal"></textarea>
+                        {{form.descripcion}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Foto Personal</div>
-                        <div class="input-group js-input-file">
-                                <input class="input-file form-input" type="file" name="imagen" id="file">
-                                <label class="label--file form-input text-center" for="file">Escoge una foto</label>
-                        </div>
+                        {{form.imagen}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Ingrese Contraseña</div>
-                        <input type="password" class="form-input" id="password" name= "password1" placeholder=""/>
-                        <span toggle="#password" class="toggle-password"></span>
+                        {{form.password1}}
                     </div>
                     <div class="form-group">
                         <div class="name h6">Repita Contraseña</div>
-                        <input type="password" class="form-input" name= "password2" id="re_password" placeholder=""/>
+                        {{form.password2}}
                     </div>
                     <fieldset>
                         <div class="form-group">

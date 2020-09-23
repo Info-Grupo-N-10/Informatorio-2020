@@ -1,12 +1,3 @@
-# from django.shortcuts import render, redirect
-# from django.views.generic import CreateView, DeleteView 
-# from django.views.generic.edit import UpdateView
-# from django.views.generic.list import ListView
-# from .forms import *
-# from .models import Publicaciones, Imagenes_Publicaciones
-# from django.urls import reverse_lazy
-# from django.forms import formset_factory
-
 from django.shortcuts import render, redirect
 from django.views.generic import CreateView, DeleteView
 from django.views.generic.edit import UpdateView
@@ -30,7 +21,8 @@ def Publicacion(request, pk):
     return render(request,'publicacion/publicacion.html', context)
 
 
-class Crear(CreateView):
+class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
+    rol = 'propietario'
     model = Publicaciones
     form_class = AltaPublicacion
     template_name = 'publicacion/crear.html'
@@ -42,16 +34,17 @@ class Crear(CreateView):
 
         return redirect(self.success_url)
 
-# class Editar(UpdateView):
-#     model = Publicaciones
-#     form_class = EditarPublicacion
-#     template_name = "publicacion/editar.html"
-#     success_url = reverse_lazy('home')
+class Editar(UpdateView):
+     model = Publicaciones
+     form_class = EditarPublicacion
+     template_name = "publicacion/editar.html"
+     success_url = reverse_lazy('publicacion:propiedades')
 
 
-class Borrar(DeleteView):
+class Borrar(LoginRequiredMixin,PermisosMixin,DeleteView):
+    rol = 'propietario'
     model = Publicaciones
-    success_url = reverse_lazy("publicacion:propiedades")
+    success_url = reverse_lazy('home')
 
 class ListarPublicaciones(ListView):
     model = Publicaciones

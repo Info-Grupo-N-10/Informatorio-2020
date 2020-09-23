@@ -11,6 +11,12 @@ class Servicios(models.Model):
     #     return self.miServicios
 
 
+class Zona(models.Model):
+    ubicacion =  models.CharField(max_length= 100)
+
+    def __str__(self):
+        return self.ubicacion
+
 class Tipo_Inmueble(models.Model):
     nombre = models.CharField(max_length=50, default=False)
 
@@ -26,7 +32,7 @@ class Publicaciones(models.Model):
     titulo = models.CharField(max_length=150)
     precio = models.DecimalField(max_digits=10, decimal_places=2)
     descripcion = models.TextField()
-    ubicacion = models.CharField(max_length= 100)
+    ubicacion =  models.ForeignKey('Zona',related_name='zonaInmueble', null=True, on_delete=models.SET_NULL)
     ambientes = models.IntegerField()
     habitaciones = models.IntegerField()
     baños = models.IntegerField()

@@ -71,6 +71,9 @@
                       <strong>Correo Electronico: </strong>
                       <span class="color-text-a"> {{user.email}}</span>
                     </p>
+                    <form method= "POST" action="{% url 'perfil:borrar' user.id %}">{% csrf_token %}
+                      <button type="submit" class="btn btn-b-n">ELIMINAR MI CUENTA</button>
+                  </form>
                   </div>
                 </div>
                 <div class="socials-footer">

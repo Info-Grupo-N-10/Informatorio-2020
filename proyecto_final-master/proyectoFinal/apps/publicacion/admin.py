@@ -7,6 +7,8 @@ admin.site.register(Servicios)
 
 admin.site.register(Tipo_Inmueble)
 
+admin.site.register(Zona)
+
 class PublicacionesImagenes(admin.TabularInline):
     model = Imagenes_Publicaciones
     extra = 1

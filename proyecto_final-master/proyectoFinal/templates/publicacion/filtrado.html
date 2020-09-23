@@ -7,11 +7,11 @@
 </head>
 <body>
 
-    <form method="get" action="">
+    <form method="GET" action="">
         {{ context.form.as_p }}
         <button type="submit">Search</button>
         
-    </form>
+    
     
     
     {% for publicacion in context.qs %}
@@ -20,7 +20,7 @@
         <p>----------------------------------------------</p>
 
     {% endfor %}
-
+    </form>
 
 </body>
 </html>

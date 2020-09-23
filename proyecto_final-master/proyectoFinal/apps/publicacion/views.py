@@ -69,9 +69,9 @@ def Inicio(request):
 
 def Filtros(request):
     context = {}
-    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all())
+    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.order_by("-precio"))
     context["publicaciones"] = publicaciones
-    return render(request, "publicacion/filtrado.html",context)
+    return render(request, "publicacion/filtrado.html", context)
 
 
 

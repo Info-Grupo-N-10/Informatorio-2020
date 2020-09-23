@@ -19,11 +19,10 @@ class FiltroPublicacion (django_filters.FilterSet):
     
     precio__lte = django_filters.NumberFilter(name='precio', lookup_expr='lte')
     servicios = django_filters.ModelMultipleChoiceFilter(queryset=Servicios.objects.all(),
-        widget=forms.CheckboxSelectMultiple )
-    tipo_inmueble = django_filters.ModelChoiceFilter(queryset=Tipo_Inmueble.objects.all())
-
+                                                         widget= forms.CheckboxSelectMultiple )
+    tipo_inmueble = django_filters.ModelChoiceFilter(to_field_name='tipo_inmueble', queryset=Tipo_Inmueble.objects.all(),
+                                                     widget = CheckboxSelect )
     
-
     class Meta:
 
         model = Publicaciones

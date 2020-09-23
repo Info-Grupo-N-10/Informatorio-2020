@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <form method="get" action="">
+        {{ context.form.as_p }}
+        <button type="submit">Search</button>
+        
+    </form>
+    
+    
+    {% for publicacion in context.qs %}
+        <p>----------------------------------------------</p>
+        {{ publicacion.precio }} - ${{ publicacion.tipo_inmueble }}<br/>
+        <p>----------------------------------------------</p>
+
+    {% endfor %}
+
+
+</body>
+</html>

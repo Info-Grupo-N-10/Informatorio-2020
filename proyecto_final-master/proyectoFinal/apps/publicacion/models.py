@@ -1,4 +1,5 @@
 from django.db import models
+from apps.usuarios.models import Usuario
 
 
 class Servicios(models.Model):
@@ -43,6 +44,7 @@ class Publicaciones(models.Model):
     superficie = models.CharField(max_length= 50)
     servicios = models.ManyToManyField(Servicios, related_name='miServicios')
     tipo_inmueble = models.ForeignKey('Tipo_Inmueble', related_name='tipoInmueble', null=True, on_delete=models.SET_NULL)
+    usuario = models.ForeignKey(Usuario, related_name='publicacionUsuario', null=True, on_delete=models.CASCADE)
 
     def getImagen(self):
         print(self.imgInmueble.all())

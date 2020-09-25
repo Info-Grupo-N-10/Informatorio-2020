@@ -17,3 +17,10 @@ def check(request, rol):
         return True
     else:
         return False
+
+def borrarPublicacion(request, permiso):
+    u = request.user
+    if u.propietario and permiso == 'permitido':
+        return True
+    else:
+        return False

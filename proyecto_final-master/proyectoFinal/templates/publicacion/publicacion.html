@@ -211,7 +211,7 @@
                 </div>
 
 
-              {% if user.propietario %}
+              {% if publicacion.usuario == request.user %}
 
                 <div class="col-4">
                   <div class="title-box-d">
@@ -226,7 +226,6 @@
 
               {% endif %}
           </div>
-
               {% comment %}
               <!-- {% if user.propietario %}
               <div class="row section-t3">

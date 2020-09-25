@@ -68,7 +68,7 @@ a:hover {
 }
 
 .agent-avatar-box img{
-  width: 190px;
+  width: auto;
   height: auto;
   float: right;
 

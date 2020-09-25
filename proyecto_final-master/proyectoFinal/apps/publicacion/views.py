@@ -27,23 +27,29 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
     form_class = AltaPublicacion
     template_name = 'publicacion/crear.html'
     success_url = reverse_lazy('publicacion:crear')
+
     def form_valid(self, form):
         p = form.save()
         for m in self.request.FILES:
-            Imagenes_Publicaciones.objects.create(publicacion=p,img=m)
+            Imagenes_Publicaciones.objects.create(publicaciones=p,img=m)
 
         return redirect(self.success_url)
 
-class Editar(UpdateView):
-     model = Publicaciones
-     form_class = EditarPublicacion
-     template_name = "publicacion/editar.html"
-     success_url = reverse_lazy('publicacion:propiedades')
+class Editar(PermisosMixin, UpdateView):
+    rol = 'propietario'
+    model = Publicaciones
+    form_class = EditarPublicacion
+    template_name = "publicacion/editar.html"
+    success_url = reverse_lazy('publicacion:public')
 
 
 class Borrar(LoginRequiredMixin,PermisosMixin,DeleteView):
     rol = 'propietario'
     model = Publicaciones
+    def borrar(request):
+         u = request.user
+         if publicacion.usuario == u.id:
+             permiso = 'permitido'
     success_url = reverse_lazy('home')
 
 class ListarPublicaciones(ListView):

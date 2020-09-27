@@ -1,26 +1,110 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+
+    {% comment %}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/mdb.min.css">
+<link rel="stylesheet" href="node_modules/mdbootstrap/css/style.css">
 </head>
 <body>
+    
+    <div >
 
-    <form method="GET" action="">
-        {{ context.form.as_p }}
-        <button type="submit">Search</button>
+            <!-- <div class="form-group">
+                <label for="formControlRange">Example Range input</label>
+                <input type="range" class="form-control-range" id="formControlRange">
+              </div>
+
+            <input id="ex14" type="range" data-slider-ticks="[0, 100, 200, 300, 400]" data-slider-ticks-snap-bounds="30" data-slider-ticks-labels='["$0", "$100", "$200", "$300", "$400"]' data-slider-ticks-positions="[0, 30, 70, 90, 100]" />
+
+            <div class="d-flex justify-content-center my-4">
+                <div class="w-75">
+                  <input type="range" class="custom-range" id="customRange11" data-slider-ticks="[0, 1000, 5000, 10000]" data-slider-ticks-labels='[0, 1000, 5000, 10000]' min="0" max="10000">
+                </div>
+                <span class="font-weight-bold text-primary ml-2 valueSpan2"></span>
+              </div>
+
+            <div class="d-flex justify-content-center my-4">
+                
+                <input name="precio__lte" id="slider11" class="border-0" type="range" min="0" max="10000" />
+                
+                <span  class="font-weight-bold text-primary ml-2 mt-1 valueSpan"></span>
+            </div> -->
+            {% endcomment %} 
+              
+        <form method='GET' action="{% url 'publicacion:filtrado' %}">
+
+            {{ publicaciones.form.as_p }}                 
         
-    
-    
-    
-    {% for publicacion in context.qs %}
-        <p>----------------------------------------------</p>
-        {{ publicacion.precio }} - ${{ publicacion.tipo_inmueble }}<br/>
-        <p>----------------------------------------------</p>
+            {% for obj in publicaciones.qs %}
 
-    {% endfor %}
-    </form>
+                <p>-----------------------------------------------</p>
+                <p> ID: {{ obj.publicacion_id}} </p>
+                <p> Titulo: {{ obj.titulo }} </p>
+                <p> Precio: {{ obj.precio }} </p>
+                <p> Tipo de Inmueble: {{obj.tipo_inmueble}}</p>
+                <p> Descripcion: {{obj.descripcion}}</p>
+                <p> Ubicacion: {{obj.ubicacion}}</p>
+                <p> Ambientes: {{obj.ambientes}}</p>
+                <p> Habitaciones: {{ obj.habitaciones }} </p>
+                <p> Baños: {{obj.baños}}</p>
+                <p> Cochera: {{obj.cochera}}</p>
+                <p> Patio: {{obj.patio}}</p>
+                <p> Mascotas: {{obj.niños}}</p>
+                <p> Superficie: {{obj.superficie}}</p>
+                <p> Servicios: {{obj.Servicios}}</p>
+            {% endfor %}            
+                         
+            <button class="btn btn-primary" type="submit">Buscar</button>
+        
+        </form>        
+        
+    </div>
 
 </body>
+{% comment %}
+<script type="text/javascript" >
+$(document).ready(function() {
+
+const $valueSpan = $('.valueSpan');
+const $value = $('#slider11');
+$valueSpan.html($value.val());
+$value.on('input change', () => {
+
+  $valueSpan.html($value.val());
+});
+});
+
+$("#ex14").slider({
+    ticks: [0, 100, 200, 300, 400],
+    ticks_positions: [0, 30, 70, 90, 100],
+    ticks_labels: ['$0', '$100', '$200', '$300', '$400'],
+    ticks_snap_bounds: 30
+});
+$(document).ready(function() {
+
+const $valueSpan = $('.valueSpan2');
+const $value = $('#customRange11');
+$valueSpan.html($value.val());
+$value.on('input change', () => {
+
+  $valueSpan.html($value.val());
+});
+});
+
+</script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/jquery.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/popper.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/bootstrap.min.js"></script>
+<script type="text/javascript" src="node_modules/mdbootstrap/js/mdb.min.js"></script>
+{% endcomment %}   
+
 </html>
+

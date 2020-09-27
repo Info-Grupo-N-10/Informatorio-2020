@@ -68,9 +68,10 @@ def Inicio(request):
 
 
 def Filtros(request):
-    context = {}
-    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.order_by("-precio"))
-    context["publicaciones"] = publicaciones
+    
+    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("-precio"))
+    context = { "publicaciones" : publicaciones }
+    #precio_max = Publicaciones.objects.
     return render(request, "publicacion/filtrado.html", context)
 
 

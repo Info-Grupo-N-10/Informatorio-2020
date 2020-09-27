@@ -1633,7 +1633,7 @@ footer .credits {
   position: relative;
 }
 
-.form-a select.form-control-lg:not([size]):not([multiple]) {
+.form-a select.-lg:not([size]):not([multiple]) {
   height: 3.5rem;
 }
 

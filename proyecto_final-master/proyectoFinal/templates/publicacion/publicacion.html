@@ -182,18 +182,18 @@
               {% endif %} -->
 {% endcomment %}
 <!-- ------------------------------------ -->
-              <div class="row">
+              <div class="row" style="display: inline;">
 
               {% if user.is_authenticated %}
               <form method="POST">
                 {% csrf_token %}
-                <div class="col-4">
+                <div class="col-6">
                   <div class="title-box-d">
                     <h3 class="title-d">Acciones</h3>
                   </div>
-                  <div class= "amenities-list color-text-a Publicaciones">
+                  <div class= "amenities-list color-text-a Publicaciones" style="width: 100%;">
 
-                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #FFD300"> No me gusta</i>
+                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #FFD300" style=""> No me gusta</i>
 
                     
               {% else %}
@@ -204,7 +204,7 @@
                     
               {% endif %}
 
-                <div class="col-4">
+                <div class="col-6">
                   <div class="title-box-d">
                     <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' %}">Ver los favoritos</a>
                   </div>
@@ -213,7 +213,7 @@
 
               {% if publicacion.usuario == request.user %}
 
-                <div class="col-4">
+                <div class="col-6">
                   <div class="title-box-d">
                     <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
                   </div>

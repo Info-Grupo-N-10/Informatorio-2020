@@ -65,9 +65,3 @@ class Publicaciones(models.Model):
 class Imagenes_Publicaciones(models.Model):
     img = models.ImageField(upload_to= "publicaciones", null=False, blank=False)
     publicacion = models.ForeignKey(Publicaciones,related_name='imgInmueble', null=True, on_delete=models.SET_NULL)#me parece que esto no va...
-    
-    # def getImagen(self):
-    #     return self.imgInmueble
-
-    # def getPublicacion(self):
-    #     return self.publicacion

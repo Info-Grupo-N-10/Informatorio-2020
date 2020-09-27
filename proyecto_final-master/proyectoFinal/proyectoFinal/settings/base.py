@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.0/ref/settings/
 from django.urls import reverse_lazy
 from pathlib import Path
 import os
+import django_filters
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -35,6 +36,7 @@ INSTALLED_APPS = [
     'apps.perfil',
     'apps.publicacion',
     'apps.favoritos',
+    'django_filters',
 ]
 
 MIDDLEWARE = [

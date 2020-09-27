@@ -11,6 +11,7 @@ class AltaPublicacion(forms.ModelForm):
     class Meta:
         model = Publicaciones
         fields = '__all__'
+        exclude = ['publicacion_id', 'usuario']
 
     def __init__(self,*args,**kwargs):
         super().__init__(*args, **kwargs)

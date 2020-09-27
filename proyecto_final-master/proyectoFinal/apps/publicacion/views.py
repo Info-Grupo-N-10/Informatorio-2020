@@ -8,6 +8,7 @@ from django.urls import reverse_lazy
 from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.utils.funciones import PermisosMixin
 from apps.usuarios.models import Usuario
+from apps.publicacion.filters import FiltroPublicacion
 
 
 def Publicacion(request, pk):
@@ -31,7 +32,7 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
     def form_valid(self, form):
         p = form.save()
         for m in self.request.FILES:
-            Imagenes_Publicaciones.objects.create(publicaciones=p,img=m)
+            Imagenes_Publicaciones.objects.create(publicacion=p, img=m)
 
         return redirect(self.success_url)
 
@@ -47,9 +48,9 @@ class Borrar(LoginRequiredMixin,PermisosMixin,DeleteView):
     rol = 'propietario'
     model = Publicaciones
     def borrar(request):
-         u = request.user
-         if publicacion.usuario == u.id:
-             permiso = 'permitido'
+        u = request.user
+        if publicacion.usuario == u.id:
+            permiso = 'permitido'
     success_url = reverse_lazy('home')
 
 class ListarPublicaciones(ListView):
@@ -67,3 +68,12 @@ def Inicio(request):
     }
 
     return render(request, 'publicacion/publicacion.html')
+
+
+def Filtros(request):
+    
+    inmuebles = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("-precio"))
+    context = { "inmuebles" : inmuebles }
+    print(context)
+    #precio_max = Publicaciones.objects.
+    return render(request, "publicacion/filtrado.html", context)

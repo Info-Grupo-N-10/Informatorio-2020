@@ -72,8 +72,8 @@ def Inicio(request):
 
 def Filtros(request):
     
-    inmuebles = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("-precio"))
-    context = { "inmuebles" : inmuebles }
+    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("-precio"))
+    context = { "inmuebles" : publicaciones }
     print(context)
     #precio_max = Publicaciones.objects.
     return render(request, "publicacion/filtrado.html", context)

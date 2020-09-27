@@ -22,13 +22,11 @@ class FiltroPublicacion (django_filters.FilterSet):
                                                       widget = forms.Select, required = False )
     ubicacion = django_filters.ModelChoiceFilter(queryset = Zona.objects.all(), widget = forms.Select,
                                                  required = False)
-    mascotas = django_filters.BooleanFilter(field_name="mascotas", widget = BooleanWidget, required = False)
+    mascotas = django_filters.BooleanFilter(field_name="mascotas", widget = forms.CheckboxInput, required = False)
     patio = django_filters.BooleanFilter(field_name="patio", widget = forms.CheckboxInput, required = False)
     cochera = django_filters.BooleanFilter(field_name="cochera", widget = forms.CheckboxInput, required = False)
     niños = django_filters.BooleanFilter(field_name="niños", widget = forms.CheckboxInput, required = False)
-    
-    # puntuacion = django_filters.NumberFilter(field_name="ACA VA EL CAMPO PUNTUACIONES DE PUBLICACIONES",
-    #                                          lookup_expr="gte")
+
     
     class Meta:
         model = Publicaciones

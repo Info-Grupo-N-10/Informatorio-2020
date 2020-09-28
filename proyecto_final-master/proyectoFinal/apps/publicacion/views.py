@@ -33,9 +33,8 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
         p = form.save(commit=False)
         p.usuario = self.request.user
         p.save()
-        for m in self.request.FILES:
-            print(m)
-            Imagenes_Publicaciones.objects.create(publicacion=p, img=m)
+        for m, j in self.request.FILES.items():
+            Imagenes_Publicaciones.objects.create(publicacion=p, img=j)
 
         return redirect(self.success_url)
 
@@ -74,9 +73,18 @@ def Inicio(request):
 
 
 def Filtros(request):
+    context = {}
+    orden = request.GET.get("orden", None)
+        
+    if orden:
+        if orden == "1":
+            publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().
+                                              order_by("precio"))
+        elif orden == "2":
+            publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().
+                                              order_by("-precio"))
+    else:
+        publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all())      
+    context["publicaciones"] = publicaciones 
     
-    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("-precio"))
-    context = { "inmuebles" : publicaciones }
-    print(context)
-    #precio_max = Publicaciones.objects.
     return render(request, "publicacion/filtrado.html", context)

@@ -7,7 +7,6 @@ class AltaPublicacion(forms.ModelForm):
     tipo_inmueble = forms.ModelChoiceField(queryset=Tipo_Inmueble.objects.all(), widget=forms.Select(attrs={'class':'form-control'}),required=False)
     ubicacion = forms.ModelChoiceField(queryset=Zona.objects.all(), widget=forms.Select(attrs={'class':'form-control'}), required=False)
 
-
     class Meta:
         model = Publicaciones
         fields = '__all__'

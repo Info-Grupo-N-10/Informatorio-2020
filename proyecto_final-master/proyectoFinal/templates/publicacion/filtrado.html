@@ -5,15 +5,22 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
-</head>   
 
-<body>    
-    <div>    
+
+              
         <form method='GET' action="{% url 'publicacion:filtrado' %}">
 
-            {{ inmuebles.form.as_p }}                 
-
-            {% for obj in publicaciones.qs %}
+          {{ publicaciones.form.as_p }}             
+          <button class="btn btn-primary" type="submit">Buscar</button>          
+         
+          <select type="submit" name="orden" class="custom-select">
+            <option value="1">De Menor a Mayor</option>
+            <option value="2">De Mayor a Menor</option>
+          </select>
+          <button class="btn btn-primary" type="submit">Ordenar por Precio:</button>
+          
+          
+          {% for obj in publicaciones.qs %}
 
                 <p>-----------------------------------------------</p>
                 <p> ID: {{ obj.publicacion_id}} </p>
@@ -33,16 +40,14 @@
                 {% for s in obj.servicios.all %}
                       <li>{{s}}</li><br>
                 {% endfor %}
-                
-            {% endfor %}            
-                         
-            <button class="btn btn-primary" type="submit">Buscar</button>
+            {% endfor %} 
+
+        </form>       
         
-        </form>        
     </div>
-    
 
 </body>
+
 
 </html>
 

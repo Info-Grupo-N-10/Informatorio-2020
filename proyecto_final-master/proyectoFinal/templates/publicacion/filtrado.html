@@ -29,6 +29,10 @@
                 <p> Patio: {{obj.patio}}</p>
                 <p> Mascotas: {{obj.niños}}</p>
                 <p> Superficie: {{obj.superficie}}</p>
+                <p> Servicios: </p>
+                {% for s in obj.servicios.all %}
+                      <li>{{s}}</li><br>
+                {% endfor %}
                 
             {% endfor %}            
                          

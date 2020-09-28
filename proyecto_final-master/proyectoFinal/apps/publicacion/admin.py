@@ -9,11 +9,7 @@ admin.site.register(Tipo_Inmueble)
 
 admin.site.register(Zona)
 
-class PublicacionesImagenes(admin.TabularInline):
-    model = Imagenes_Publicaciones
-    extra = 1
-class PublicacionAdmin(admin.ModelAdmin):
-    inlines = [ PublicacionesImagenes, ]
+admin.site.register(Imagenes_Publicaciones)
 
 
-admin.site.register(Publicaciones, PublicacionAdmin)
+admin.site.register(Publicaciones)

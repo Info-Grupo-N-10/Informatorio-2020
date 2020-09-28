@@ -29,7 +29,7 @@
 
 <body>
 <section class="intro-single">
-	<form method= "POST" action="{% url 'publicacion:crear' %}" enctype="multipart/form-data">
+	<form method= "POST" action="{% url 'publicacion:editar' %}" enctype="multipart/form-data">
 		{% csrf_token %}
 
 		{{form.errors}}
@@ -150,7 +150,7 @@
 										<a href = "#" id="boton">Agregar imagen</a>
                             	</div>
 						</div>
-						<input type="submit" class ="btn btn-b-n"value="Crear">
+						<input type="submit" class ="btn btn-b-n"value="Editar">
 					</div>
 				</div>
 			</div>

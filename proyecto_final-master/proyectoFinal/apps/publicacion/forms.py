@@ -21,10 +21,10 @@ class AltaPublicacion(forms.ModelForm):
         self.fields['ambientes'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
         self.fields['habitaciones'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
         self.fields['baños'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
-        self.fields['cochera'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['patio'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['mascotas'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['niños'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
+        self.fields['cochera'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['patio'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['mascotas'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['niños'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
         self.fields['superficie'].widget = forms.TextInput(attrs={'class':'input--style-6 form-input'})
 
 
@@ -46,8 +46,8 @@ class EditarPublicacion(forms.ModelForm):
         self.fields['ambientes'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
         self.fields['habitaciones'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
         self.fields['baños'].widget = forms.NumberInput(attrs={'class':'input--style-6'})
-        self.fields['cochera'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['patio'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['mascotas'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
-        self.fields['niños'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'}) #Arreglar
+        self.fields['cochera'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['patio'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['mascotas'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
+        self.fields['niños'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
         self.fields['superficie'].widget = forms.TextInput(attrs={'class':'input--style-6 form-input'})

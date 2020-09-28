@@ -156,8 +156,8 @@
                 </ul>
               </div>
 <!-- ------------------------------------ -->
-{% comment %}
-              <!-- <div class="row section-t3">
+
+              <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
                     <a href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
@@ -179,10 +179,10 @@
                 </div>
 
               </div>
-              {% endif %} -->
-{% endcomment %}
+              {% endif %}
+  
+
 <!-- ------------------------------------ -->
-              <div class="row" style="display: inline;">
 
               {% if user.is_authenticated %}
               <form method="POST">
@@ -210,22 +210,23 @@
                   </div>
                 </div>
 
-
               {% if publicacion.usuario == request.user %}
 
-                <div class="col-6">
+              <div class="row section-t3">
+                <div class="col-6 col-sm-12">
                   <div class="title-box-d">
                     <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
                   </div>
                 </div>
-                <div class="col-6">
+                <div class="col-6 col-sm-12">
                   <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
                     <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
                   </form>
                 </div>
 
+              </div>
+
               {% endif %}
-          </div>
               {% comment %}
               <!-- {% if user.propietario %}
               <div class="row section-t3">

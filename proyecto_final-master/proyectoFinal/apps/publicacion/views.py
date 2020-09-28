@@ -30,8 +30,11 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
     success_url = reverse_lazy('publicacion:crear')
 
     def form_valid(self, form):
-        p = form.save()
+        p = form.save(commit=False)
+        p.usuario = self.request.user
+        p.save()
         for m in self.request.FILES:
+            print(m)
             Imagenes_Publicaciones.objects.create(publicacion=p, img=m)
 
         return redirect(self.success_url)

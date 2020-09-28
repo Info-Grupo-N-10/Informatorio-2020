@@ -96,58 +96,6 @@
       </div>
       <div id="property-carousel" class="owl-carousel owl-theme">
 
-        {% comment %}
-        {% for p in object_list %}
-        <div class="col-md-4" enctype="multipart/form-data">
-          <div class="card-box-a card-shadow">
-            <div class="img-box-a">
-              <img src= "{{p.img.url}}" class="img-a img-fluid">
-            </div>
-            <div class="card-overlay">
-              <div class="card-overlay-a-content">
-                <div class="card-header-a">
-                  <h2 class="card-title-a">
-                    <a href="#">204 Mount
-                      <br /> {{p.ubicacion}}</a>
-                  </h2>
-                </div>
-                <div class="card-body-a">
-                  <div class="price-box d-flex">
-                    <span class="price-a">rent | {{p.precio}}</span>
-                  </div>
-                  <a href="{% url 'publicacion:public' p.publicacion_id %}">Ir a la publicacion</a><br>
-                    <span class="ion-ios-arrow-forward"></span>
-                  </a>
-                </div>
-                <div class="card-footer-a">
-                  <ul class="card-info d-flex justify-content-around">
-                    <li>
-                      <h4 class="card-info-title">Superficie</h4>
-                      <span>{{p.superficie}} <a href="{% url 'publicacion:public' p.publicacion_id %}">IR A LA PUBLICACION</a><br>
-                        <sup>2</sup>
-                      </span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Habitaciones</h4>
-                      <span>{{p.habitaciones}}</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Baths</h4>
-                      <span>{{p.baños}}</span>
-                    </li>
-                    <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>{{p.cochera}}</span>
-                    </li>
-                  </ul>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        {% endfor %}
-        {% endcomment %}
-
         {% for p in object_list %}
         <div class="carousel-item-b">
           <div class="card-box-a card-shadow">

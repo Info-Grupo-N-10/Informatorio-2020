@@ -59,74 +59,134 @@
           
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label>Tipo de Inmueble</label>
+              <label>Tipo de Inmueble:</label>
               <select class="form-control form-control-lg form-control-a" name="tipo_inmueble" id="id_tipo_inmueble">
                 <option value="" selected="">---------</option>
-                {% for o in publicaciones.form.tipo_inmueble %}
-                  <option value="">{{o}}</option>
-                {% endfor %}
-<!--                 <option value="2">Casa</option>
-                <option value="3">Habitacion</option>
-                <option value="4">Duplex</option> -->
+                <option value="1">Departamento</option>
+                <option value="2">Casa</option>
+                <option value="3">Habitación</option>
+                <option value="4">Duplex</option>
               </select>
+              {% comment %}
+                <!-- {{formulario.tipo_inmueble}} -->
+              {% endcomment %}
             </div>
           </div>
 
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="city">City</label>
-              <select class="form-control form-control-lg form-control-a" id="city">
-                <option>All City</option>
-                <option>Alabama</option>
-                <option>Arizona</option>
-                <option>California</option>
-                <option>Colorado</option>
+              <label>Zona:</label>
+              <select class="form-control form-control-lg form-control-a" name="ubicacion" id="id_ubicacion">
+                <option value="" selected="">---------</option>
+                <option value="1">Villa San Martín</option>
+                <option value="2">Centro</option>
+                <option value="3">Zona UNNE</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bedrooms">Bedrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bedrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
+              <p>
+                <label for="id_precio__lte">Precio (máximo):</label>
+                <input type="number" name="precio__lte" step="any" id="id_precio__lte" class="form-control form-control-lg form-control-a">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <p>
+                <label for="id_ambientes__gte">Ambientes (mínimo):</label>
+                <input type="number" name="ambientes__gte" step="any" id="id_ambientes__gte" class="form-control form-control-lg form-control-a">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <p>
+                <label for="id_superficie__gte">Superficie (mínimo):</label>
+                <input type="number" name="superficie__gte" step="any" id="id_superficie__gte" class="form-control form-control-lg form-control-a">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <p>
+                <label for="id_baños__gte">Baños (mínimo):</label>
+                <input type="number" name="baños__gte" step="any" id="id_baños__gte" class="form-control form-control-lg form-control-a">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <p>
+                <label for="id_habitaciones__gte">Habitaciones (mínimo):</label>
+                <input type="number" name="habitaciones__gte" step="any" id="id_habitaciones__gte" class="form-control form-control-lg form-control-a">
+              </p>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label>Servicio esencial:</label>
+              <select class="form-control form-control-lg form-control-a" id="id_ubicacion">
+                <option value="" selected="">---------</option>
+                <option name="servicios" value="1" id="id_servicios_0">Agua</option>
+                <option name="servicios" value="2" id="id_servicios_1">Luz</option>
+                <option name="servicios" value="3" id="id_servicios_2">Cloaca</option>
+              </select>
+              <!-- <ul id="id_servicios">
+                <li>
+                  <label for="id_servicios_0">
+                    <input type="checkbox" name="servicios" value="1" id="id_servicios_0">Agua</label>
+                </li>
+
+                <li>
+                  <label for="id_servicios_1">
+                    <input type="checkbox" name="servicios" value="2" id="id_servicios_1">Luz</label>
+                </li>
+
+                <li>
+                  <label for="id_servicios_2">
+                    <input type="checkbox" name="servicios" value="3" id="id_servicios_2">Cloaca</label>
+                </li>
+              </ul> -->
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-group">
+              <label for="id_cochera">Cochera:</label>
+              <select name="cochera" id="id_cochera" class="form-control form-control-lg form-control-a">
+                <option value="" selected="">---------</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="garages">Garages</label>
-              <select class="form-control form-control-lg form-control-a" id="garages">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-                <option>04</option>
+              <label for="id_mascotas">Mascotas:</label>
+              <select name="mascotas" id="id_mascotas" class="form-control form-control-lg form-control-a">
+                <option value="" selected="">---------</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-md-6 mb-2">
+            <div class="form-patio">Patio:</label>
+              <select name="patio" id="id_patio" class="form-control form-control-lg form-control-a">
+                <option value="" selected="">---------</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
               </select>
             </div>
           </div>
           <div class="col-md-6 mb-2">
             <div class="form-group">
-              <label for="bathrooms">Bathrooms</label>
-              <select class="form-control form-control-lg form-control-a" id="bathrooms">
-                <option>Any</option>
-                <option>01</option>
-                <option>02</option>
-                <option>03</option>
-              </select>
-            </div>
-          </div>
-          <div class="col-md-6 mb-2">
-            <div class="form-group">
-              <label for="price">Min Price</label>
-              <select class="form-control form-control-lg form-control-a" id="price">
-                <option>Unlimite</option>
-                <option>$50,000</option>
-                <option>$100,000</option>
-                <option>$150,000</option>
-                <option>$200,000</option>
+              <label for="id_niños">Niños:</label>
+              <select name="niños" id="id_niños" class="form-control form-control-lg form-control-a">
+                <option value="" selected="">---------</option>
+                <option value="true">Sí</option>
+                <option value="false">No</option>
               </select>
             </div>
           </div>

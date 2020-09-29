@@ -10,7 +10,7 @@
               
         <form method='GET' action="{% url 'publicacion:filtrado' %}">
 
-          {{ publicaciones.form.as_p }}             
+          {{formulario.tipo_inmueble }}             
           <button class="btn btn-primary" type="submit">Buscar</button>          
          
           <select type="submit" name="orden" class="custom-select">
@@ -20,7 +20,7 @@
           <button class="btn btn-primary" type="submit">Ordenar por Precio:</button>
           
           
-          {% for obj in publicaciones.qs %}
+          {% for obj in publicaciones %}
 
                 <p>-----------------------------------------------</p>
                 <p> ID: {{ obj.publicacion_id}} </p>

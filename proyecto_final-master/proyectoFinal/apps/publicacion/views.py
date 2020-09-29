@@ -85,6 +85,8 @@ def Filtros(request):
                                               order_by("-precio"))
     else:
         publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all())      
-    context["publicaciones"] = publicaciones 
+    
+    context["publicaciones"] = publicaciones.qs
+    context["formulario"] = publicaciones.form
     
     return render(request, "publicacion/filtrado.html", context)

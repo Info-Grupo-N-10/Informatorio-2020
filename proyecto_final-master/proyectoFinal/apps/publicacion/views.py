@@ -27,7 +27,7 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
     model = Publicaciones
     form_class = AltaPublicacion
     template_name = 'publicacion/crear.html'
-    success_url = reverse_lazy('publicacion:crear')
+    success_url = reverse_lazy('publicacion:propiedades')
 
     def form_valid(self, form):
         p = form.save(commit=False)
@@ -46,9 +46,11 @@ class Editar(PermisosMixin, UpdateView):
     success_url = reverse_lazy('publicacion:public')
 
 
+
 class Borrar(LoginRequiredMixin,PermisosMixin,DeleteView):
     rol = 'propietario'
     model = Publicaciones
+
     def borrar(request):
         u = request.user
         if publicacion.usuario == u.id:

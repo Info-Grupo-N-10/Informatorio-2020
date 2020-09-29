@@ -23,4 +23,4 @@ class Favoritos(BaseFavorito):
         return self.objeto.descripcion
 
     def __str__(self):
-        return self.objeto
+        return self.objeto.titulo

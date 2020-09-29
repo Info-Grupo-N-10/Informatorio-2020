@@ -2,7 +2,6 @@
 {% load static %}
 
 
-
 {% block contenido %}
 <!--/ Intro Single star /-->
   <section class="intro-single">
@@ -160,12 +159,12 @@
               <div class="row section-t3">
                 <div class="col-sm-12">
                   <div class="title-box-d">
-                    <a href="{% url 'favoritos:favPerfil' %}">Ir a favoritos</a>
+                    <a href="{% url 'favoritos:favPerfil' publicacion.publicacion_id %}">Ir a favoritos</a>
                   </div>
                 </div>
               </div>
 
-              {% if user.propietario %}
+              {% if publicacion.usuario == request.user %}
               <div class="row section-t3">
                 <div class="col-6 col-sm-12">
                   <div class="title-box-d">
@@ -206,42 +205,9 @@
 
                 <div class="col-6">
                   <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' %}">Ver los favoritos</a>
+                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' publicacion.publicacion_id %}">Ver los favoritos</a>
                   </div>
                 </div>
-
-              {% if publicacion.usuario == request.user %}
-
-              <div class="row section-t3">
-                <div class="col-6 col-sm-12">
-                  <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-12">
-                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
-                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
-                  </form>
-                </div>
-
-              </div>
-
-              {% endif %}
-              {% comment %}
-              <!-- {% if user.propietario %}
-              <div class="row section-t3">
-                <div class="col-sm-12">
-                  <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
-                  </div>
-                </div>
-              </div>
-              {% endif %}
-
-              <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">
-                   <button type="submit" class="btn btn-b-n">Eliminar Publicación</button>
-              </form -->
-              {% endcomment %}
         </div>
           </div>
             </form>
@@ -260,12 +226,6 @@
               <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
                 aria-controls="pills-video" aria-selected="true">Video</a>
             </li>
-            {% comment %}
-<!--             <li class="nav-item">
-              <a class="nav-link" id="pills-plans-tab" data-toggle="pill" href="#pills-plans" role="tab" aria-controls="pills-plans"
-                aria-selected="false">Floor Plans</a>
-            </li> -->
-            {% endcomment %}
             <li class="nav-item">
               <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
                 aria-selected="false">Ubicación</a>

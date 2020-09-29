@@ -9,7 +9,7 @@ from . import views
 urlpatterns = [
 
     path('admin/', admin.site.urls),
-    path('', views.Home , name = 'home'),
+    path('', views.Home.as_view(), name = 'home'),
     path('Logout', auth.LogoutView.as_view(), name='logout'),
     path('Login',auth.LoginView.as_view(template_name="home.html"),name="login"),
 

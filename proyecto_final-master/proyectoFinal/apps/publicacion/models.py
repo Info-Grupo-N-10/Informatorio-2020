@@ -6,26 +6,20 @@ class Servicios(models.Model):
     nombre = models.CharField(max_length=50, default=False)
 
     def __str__(self):
-        return self.nombre
-    
-    # def getServicio(self):
-    #     return self.miServicios
-
+        return str(self.nombre)
 
 class Zona(models.Model):
     ubicacion =  models.CharField(max_length= 100)
 
     def __str__(self):
-        return self.ubicacion
+        return str(self.ubicacion)
 
 class Tipo_Inmueble(models.Model):
     nombre = models.CharField(max_length=50, default=False)
 
     def __str__(self):
-        return self.nombre
+        return str(self.nombre)
 
-    # def getInmueble(self):
-    #     return self.tipoInmueble
 
 
 class Publicaciones(models.Model):
@@ -58,6 +52,9 @@ class Publicaciones(models.Model):
             return self.imgInmueble.all()
         else:
             return None
+
+    def __str__(self):
+        return str(self.titulo)
     
 
 #ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA

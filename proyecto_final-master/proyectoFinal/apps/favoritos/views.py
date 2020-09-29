@@ -32,6 +32,13 @@ def lista_de_favoritos(request):
 
     return render(request, "favoritos/favoritos.html", context)
 
-class lista_perfiles_favoritos(ListView):
-    model = Favoritos
-    template_name = 'favoritos/publicaciones_favs.html'
+def lista_perfiles_favoritos(request, pk):
+    queryset = Favoritos.objects.filter(objeto=pk)
+    
+    context = {'perfiles':queryset}
+
+    return render(request, "favoritos/publicaciones_favs.html", context)
+
+# class lista_perfiles_favoritos(ListView):
+#     model = Favoritos
+#     template_name = 'favoritos/publicaciones_favs.html'

@@ -97,46 +97,51 @@
       <div id="property-carousel" class="owl-carousel owl-theme">
 
         {% for p in object_list %}
-        <div class="carousel-item-b">
+        <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-a card-shadow">
             <div class="img-box-a">
-              <img src="{{p.img.url}}" alt="" class="img-a img-fluid">
+              <img src="{{p.getImagen.img.url}}" class="img-a img-fluid" style="height: 300px; width: auto;">
             </div>
             <div class="card-overlay">
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="{% url 'publicacion:public'  p.publicacion_id%}">157 West
+                    <a href="#">{{p.titulo}} 
                       <br> {{p.ubicacion}}</a>
                   </h2>
                 </div>
+
                 <div class="card-body-a">
                   <div class="price-box d-flex">
-                    <span class="price-a">rent | {{p.precio}}</span>
+                    <span class="price-a">alquila | {{p.precio}}</span>
                   </div>
-                  <a href="{% url 'publicacion:public' p.publicacion_id %}" class="link-a">Click here to view
-                    <span class="ion-ios-arrow-forward"></span>
+                  <span class="ion-ios-arrow-forward"></span>
+                  <a href="{% url 'publicacion:public' p.publicacion_id %}" class="ir">Ir a la publicacion</a><br>
                   </a>
                 </div>
                 <div class="card-footer-a">
                   <ul class="card-info d-flex justify-content-around">
                     <li>
-                      <h4 class="card-info-title">Area</h4>
+                      <h4 class="card-info-title">Superficie</h4>
                       <span>{{p.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Beds</h4>
+                      <h4 class="card-info-title">Habitaciones</h4>
                       <span>{{p.habitaciones}}</span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Baths</h4>
+                      <h4 class="card-info-title">Baños</h4>
                       <span>{{p.baños}}</span>
                     </li>
                     <li>
-                      <h4 class="card-info-title">Garages</h4>
-                      <span>{{p.cochera}}</span>
+                      <h4 class="card-info-title">Cochera</h4>
+                      {% if p.cochera %}
+                        <span>Si</span>
+                      {% else %}
+                        <span>No</span>
+                      {% endif %}
                     </li>
                   </ul>
                 </div>
@@ -266,6 +271,7 @@
         </div>
       </div>
       <div class="row">
+
         <div class="col-md-4">
           <div class="card-box-d">
             <div class="card-img-d">

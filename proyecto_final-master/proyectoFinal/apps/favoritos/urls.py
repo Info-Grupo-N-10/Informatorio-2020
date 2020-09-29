@@ -8,5 +8,5 @@ urlpatterns = [
 
 	path('Favoritos/', views.lista_de_favoritos, name = 'fav'),
 	path('marcar/favorito/<int:pk>/marcador/', views.Marcador, name = 'marcar'),
-	path('FavoritosPublicacion/', views.lista_perfiles_favoritos.as_view(), name = 'favPerfil'),
+	path('FavoritosPublicacion/<int:pk>/', views.lista_perfiles_favoritos, name = 'favPerfil'),
 ]

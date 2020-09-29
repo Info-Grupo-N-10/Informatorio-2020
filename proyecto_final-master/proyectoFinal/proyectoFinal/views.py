@@ -2,8 +2,18 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.urls import reverse_lazy
 
-def Home(request):
-	return render(request, 'home.html')#home
+from apps.publicacion.models import Publicaciones
+from django.views.generic.list import ListView
+
+class Home(ListView):
+    model = Publicaciones
+    template_name = 'home.html'
+
+# def Home(request):
+# 	ultimas_propiedades = Publicaciones.objects.all().order_by("-precio")
+# 	context = {"ultimas":ultimas_propiedades}
+
+# 	return render(request, 'home.html', context)
 
 def Registro(request):
 	return render(request, 'registro.html') #home

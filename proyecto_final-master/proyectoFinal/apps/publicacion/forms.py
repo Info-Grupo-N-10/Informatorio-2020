@@ -1,4 +1,4 @@
-from .models import Publicaciones, Imagenes_Publicaciones, Servicios, Tipo_Inmueble, Zona
+from .models import Publicaciones, Imagenes_Publicaciones, Servicios, Tipo_Inmueble, Zona, Reseña
 from django import forms
 
 
@@ -50,3 +50,15 @@ class EditarPublicacion(forms.ModelForm):
         self.fields['mascotas'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
         self.fields['niños'].widget = forms.CheckboxInput(attrs={'class':'form-input estilo_servicios'})
         self.fields['superficie'].widget = forms.TextInput(attrs={'class':'input--style-6 form-input'})
+
+
+class Reseñas(forms.ModelForm):
+
+    class Meta:
+        model = Reseña
+        fields = ['mensaje',]
+
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.fields['mensaje'].widget = forms.TextInput(attrs={'class':'textarea--style-6'})

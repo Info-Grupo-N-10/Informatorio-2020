@@ -1,5 +1,6 @@
 from django.db import models
 from apps.usuarios.models import Usuario
+from django.utils import timezone
 
 
 class Servicios(models.Model):
@@ -55,6 +56,12 @@ class Publicaciones(models.Model):
 
     def __str__(self):
         return str(self.titulo)
+
+    def getReseñas(self):
+        if self.reseña.all():
+            return self.reseña.all()
+        else:
+            return None
     
 
 #ARREGAR SERVICIOS, TIPO DE INMUEBLE Y AGREGAR FECHA DE PUBLICACION AL MODEL, AGREGAR UNA CLASS ZONA
@@ -62,3 +69,12 @@ class Publicaciones(models.Model):
 class Imagenes_Publicaciones(models.Model):
     img = models.ImageField(upload_to= "publicaciones", null=False, blank=False)
     publicacion = models.ForeignKey(Publicaciones,related_name='imgInmueble', null=True, on_delete=models.SET_NULL)#me parece que esto no va...
+
+class Reseña(models.Model):
+    post = models.ForeignKey(Publicaciones, on_delete=models.CASCADE, related_name='reseña')
+    usuario = models.ForeignKey(Usuario, related_name='reseñaUsuario', null=True, blank=True, on_delete=models.CASCADE)
+    mensaje = models.TextField(max_length=500)
+    fecha_creacion = models.DateTimeField(default=timezone.now)
+ 
+    def __str__(self):
+        return self.mensaje

@@ -3,6 +3,8 @@
 
 
 {% block contenido %}
+
+
 <!--/ Intro Single star /-->
   <section class="intro-single">
     <div class="container">
@@ -179,8 +181,27 @@
 
               </div>
               {% endif %}
-  
 
+{% comment %}
+<!-- {% if publicacion.usuario == request.user %}
+
+              <div class="row section-t3">
+                <div class="col-6 col-sm-12">
+                  <div class="title-box-d">
+                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+                  </div>
+                </div>
+                <div class="col-6 col-sm-12">
+                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
+                  </form>
+                </div>
+
+              </div>
+
+              {% endif %} -->
+{% endcomment %}
+                
 <!-- ------------------------------------ -->
 
               {% if user.is_authenticated %}
@@ -209,42 +230,92 @@
                   </div>
                 </div>
         </div>
+
           </div>
+
             </form>
 
+            </div>
+            
+          </div>
+        </div>
+            </section>
+
+
+
+        <div class="col-md-10 offset-md-1" style="padding-top: 48px;">
+          <div class="title-box-d">
+                    <h3 class="title-d">Añade tu comentario</h3>
+                  </div>
+            <form method='POST' enctype="multipart/form-data">
+                {% csrf_token %}
+                {{reseña_form.as_p}}
+                <input type="submit" value="Publicar" class="btn btn-b-n">
+            </form>
+{% comment %}
+               <!-- {% for r in publicacion.getReseñas %}
+                <div class="container">
+                  <strong>{{ r.usuario }}</strong>
+                  <div class="card">
+                    <div class="card-body">{{ r.mensaje|linebreaks }}</div>
+                    <br>
+                    <div class="date">{{ r.fecha_creacion| date}}</div>
+                  </div>
+                </div>
+              <br>
+                {% if r.usuario == request.user %}
+                    <form method= "POST" action="{% url 'publicacion:borrarReseña' r.pk %}">{% csrf_token %}
+                    <button type="submit" class="btn btn-b-n">Eliminar comentario</button>
+                    </form>
+                {% endif %}
+              {% empty %}
+
+              <p>No hay comentarios</p>
+
+              {% endfor %} -->
+{% endcomment %}
+
+              <section class="section-testimonials section-t8 nav-arrow-a">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="title-wrap d-flex justify-content">
+            <div class="title-box-d">
+                <h3 class="title-d">Comentarios</h3>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+
+        {% for r in publicacion.getReseñas %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+
+              <div class="col-sm-12 col-md-6" style="max-width: 100%">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote"></span>
+                </div>
+                <div class="testimonials-content">
+                  <p class="testimonial-text">
+                    {{r.mensaje|truncatewords:10}}<br>
+                    {{r.fecha_creacion}}
+                  </p>
+                </div>
+                <div class="testimonial-author-box">
+                  <img src="{{r.usuario.getPerfil.imagen.url}}" alt="" class="testimonial-avatar">
+                  <h5 class="testimonial-author">{{ r.usuario }}</h5>
                 </div>
               </div>
-              </div>
-            </div>
           </div>
         </div>
-        
+        {% endfor %}
+      </div>
+    </div>
+  </section>
 
-        <div class="col-md-10 offset-md-1">
-          <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
-            <li class="nav-item">
-              <a class="nav-link active" id="pills-video-tab" data-toggle="pill" href="#pills-video" role="tab"
-                aria-controls="pills-video" aria-selected="true">Video</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
-                aria-selected="false">Ubicación</a>
-            </li>
-          </ul>
-          <div class="tab-content" id="pills-tabContent">
-            <div class="tab-pane fade show active" id="pills-video" role="tabpanel" aria-labelledby="pills-video-tab">
-              <iframe src="https://player.vimeo.com/video/73221098" width="100%" height="460" frameborder="0"
-                webkitallowfullscreen mozallowfullscreen allowfullscreen></iframe>
-            </div>
-            <div class="tab-pane fade" id="pills-plans" role="tabpanel" aria-labelledby="pills-plans-tab">
-              <img src="{% static 'img/plan2.jpg' %}" alt="" class="img-fluid">
-            </div>
-            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
-              <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d28321.926481874558!2d-59.00032386981285!3d-27.46176143365441!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x94450c62a6f5f70b%3A0xf03ac86511c2cd6d!2sResistencia%2C%20Chaco!5e0!3m2!1ses-419!2sar!4v1600661589464!5m2!1ses-419!2sar" width="100%" height="460" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-12">
+
+              <div class="col-md-12">
           <div class="row section-t3">
             <div class="col-sm-12">
               <div class="title-box-d">
@@ -270,10 +341,6 @@
                   <li class="d-flex justify-content-between">
                     <strong>Email:</strong>
                     <span class="color-text-a">{{user.email}}</span>
-                  </li>
-                  <li class="d-flex justify-content-between">
-                    <strong>Instagram:</strong>
-                    <span class="color-text-a">chicky_aguirre</span>
                   </li>
                 </ul>
                 <div class="socials-a">
@@ -310,32 +377,14 @@
 
           </div>
         </div>
+
+
+        </div>
+
       </div>
     </div>
   </section>
   <!--/ Property Single End /-->
-
-
-{% comment %}
-<!-- <script type="text/javascript">
-    const handler = () => {
-    fetch("marcar/favorito/<int:pk>/marcador", {method: 'POST'}).then((response) => response.json()).then((data) => console.log(data))
-    }
-    document.getElementById("agregar").addEventListener("click", handler )
-</script> -->
-
-
-<!-- <script type="text/javascript">
-
-  var xhr = new XMLHttpRequest();
-  xhr.open("GET", 'marcar/favorito/<int:pk>/marcador', false);
-  xhr.onload = // something
-  document.getElementById("agregar").addEventListener("click",
-      function() {xhr.send(data) return xhr.response},
-      false
-);
-</script> -->
-{% endcomment %}
 
   <script>
 

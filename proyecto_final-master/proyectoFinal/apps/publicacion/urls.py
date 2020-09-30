@@ -15,5 +15,7 @@ urlpatterns = [
 	path('Borrar/<int:pk>/', views.Borrar.as_view(), name="borrar"),
 	path('Editar/<int:pk>/', views.Editar.as_view(), name="editar"),
 	path('Buscar/', views.Filtros, name='filtrado'),
+	path('BorrarReseña/<int:pk>/', views.borrarReseña.as_view(), name="borrarReseña")
+
 
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

@@ -2,18 +2,28 @@ from django.shortcuts import render
 from django.views.generic import View
 from django.urls import reverse_lazy
 
+from apps.favoritos.models import Favoritos
 from apps.publicacion.models import Publicaciones
 from django.views.generic.list import ListView
 
-class Home(ListView):
-    model = Publicaciones
-    template_name = 'home.html'
+# class Home(ListView):
+#     model = Publicaciones
+#     template_name = 'home.html'
 
-# def Home(request):
-# 	ultimas_propiedades = Publicaciones.objects.all().order_by("-precio")
-# 	context = {"ultimas":ultimas_propiedades}
+#     def get_context_data(self, **kwargs):
+#         context = super(Home, self).get_context_data(**kwargs)
+#         context['publicaciones'] = Publicaciones.objects.all().order_by('-publicacion_id')
+#         return context
 
-# 	return render(request, 'home.html', context)
+def Home(request):
+    p = Publicaciones.objects.all()
+    f = Favoritos.objects.all()
+
+    context = {
+    'publis': p,
+    'favs': f, }
+
+    return render(request, 'home.html', context)
 
 def Registro(request):
 	return render(request, 'registro.html') #home

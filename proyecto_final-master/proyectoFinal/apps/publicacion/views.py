@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, reverse
 from django.views.generic import CreateView, DeleteView
 from django.views.generic.edit import UpdateView
 from django.views.generic.list import ListView
@@ -9,15 +9,30 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.utils.funciones import PermisosMixin
 from apps.usuarios.models import Usuario
 from apps.publicacion.filters import FiltroPublicacion
+from django.http import HttpResponse, HttpResponseRedirect
 
 
 def Publicacion(request, pk):
+    p = Publicaciones.objects.get(publicacion_id= pk)
+    r = Reseña.objects.filter(post=p).order_by('id')
 
-    context = {
+    if request.method == 'POST':
+        reseña_form = Reseñas(request.POST or None)
+        if reseña_form.is_valid():
+            mensaje = request.POST.get('mensaje')
+            r = Reseña.objects.create(post=p, usuario=request.user, mensaje=mensaje)
+            r.save()
+            return HttpResponseRedirect(reverse('publicacion:public', args=[(pk)]))
+    else:
+        reseña_form = Reseñas()
 
-    'publicacion': Publicaciones.objects.get(publicacion_id= pk),
 
+
+    context = { 
+                'publicacion': p, 
+                'reseña_form': reseña_form, 
     }
+
 
     return render(request,'publicacion/publicacion.html', context)
 
@@ -92,3 +107,8 @@ def Filtros(request):
     context["formulario"] = publicaciones.form
     
     return render(request, "publicacion/filtrado.html", context)
+
+
+class borrarReseña(DeleteView):
+    model = Reseña
+    success_url = reverse_lazy('publicacion:propiedades')

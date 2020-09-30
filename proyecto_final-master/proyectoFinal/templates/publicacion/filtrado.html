@@ -34,13 +34,13 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="grid-option">
-
             <form method='GET' action="{% url 'publicacion:filtrado' %}">
-                <select type="submit" name="orden" class="custom-select">
+                <select name="orden" class="custom-select">
                     <option selected>Ordenar</option>
-                    <option value="1" type="submit">De Menor a Mayor</option>
-                    <option value="2" type="submit">De Mayor a Menor</option>
+                    <option value="1">Menor Precio</option>
+                    <option value="2">Mayor Precio</option>
                 </select>
+                <button type="submit" class="btn btn-b-n"> Ordenar</button>
             </form>
           </div>
         </div>

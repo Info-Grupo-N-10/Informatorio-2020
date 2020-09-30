@@ -62,7 +62,7 @@
                     <p class="intro-title-top">Central Norte, Resistencia Chaco
                       <br>      </p>
                     <h1 class="intro-title mb-4">
-                      <span class="color-b">Torre Harmony </span>"Ameghino N°1043" </h1>
+                      <span class="color-b">Torre Harmony </span>"Ameghino N° 1043" </h1>
                     <p class="intro-subtitle intro-price">
                       <a href="#"><span class="price-a">Alquilar | $ 12.000</span></a>
                     </p>
@@ -106,13 +106,13 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="#">{{p.titulo}} 
+                    <a>{{p.titulo}} 
                       <br> {{p.ubicacion}}</a>
                   </h2>
                 </div>
 
                 <div class="card-body-a">
-                  <div class="rate-stars">
+                  <!-- <div class="rate-stars">
                     <fieldset class="rating">
                           <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
                           <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
@@ -125,7 +125,7 @@
                           <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
                           <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
                     </fieldset>
-                  </div>
+                  </div> -->
                   <div class="price-box d-flex">
                     <span class="price-a">alquila | {{p.precio}}</span>
                   </div>
@@ -186,139 +186,45 @@
           </div>
         </div>
       </div>
-      <div class="row">
 
-        {% for m in favs %}
-        <div class="col-md-4">
+<div class="row">
+        {% for m in usuarios %}
+        <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-d">
             <div class="card-img-d" style="width: 300px; height: 400px">
-              <img src="{{m.usuario.getPerfil.imagen.url}}" alt="" class="img-d" style="height: 100%; width: auto;">
+              <img src="{{m.getPerfil.imagen.url}}" alt="" class="img-d" style="height: 100%; width: auto;">
             </div>
             <div class="card-overlay card-overlay-hover">
               <div class="card-header-d">
                 <div class="card-title-d align-self-center">
                   <h3 class="title-d">
-                    <a href="#" class="link-two">{{m.usuario.first_name}}
-                      <br> {{m.usuario.last_name}}</a>
+                    <a class="link-two">{{m.first_name}}
+                      <br> {{m.last_name}}</a>
                   </h3>
                 </div>
               </div>
               <div class="card-body-d">
-                <p class="content-d color-text-a">{{m.usuario.getPerfil.descripcion}}</p>
+                <p class="content-d color-text-a">{{m.getPerfil.descripcion}}</p>
                 <div class="info-agents color-a">
                   <p>
-                    <strong>Telefono: </strong>{{m.usuario.getPerfil.telefono}}</p>
+                    <strong>Telefono: </strong>{{m.getPerfil.telefono}}</p>
                   <p>
-                    <strong>Email: </strong>{{m.usuario.email}}</p>
+                    <strong>Email: </strong>{{m.email}}</p>
                 </div>
               </div>
-              <div class="card-footer-d">
-                <div class="socials-footer d-flex justify-content-center">
-                   <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#" class="link-one">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
-              </div>
+              
             </div>
           </div>
         </div>
 {% endfor %}
+      </div>
+    </div>
     </div>
   </section>
   <!--/ Agents End /-->
 
   <!--/ Testimonials Star /-->
-  <section class="section-testimonials section-t8 nav-arrow-a">
-    <div class="container">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="title-wrap d-flex justify-content-between">
-            <div class="title-box">
-              <h2 class="title-a">Reseñas</h2>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div id="testimonial-carousel" class="owl-carousel owl-arrow">
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="{% static 'img/testimonial-1.jpg' %}" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    Alto dpto.
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="{% static 'img/mini-testimonial-1.jpg' %}" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">YonIii</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="carousel-item-a">
-          <div class="testimonials-box">
-            <div class="row">
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-img">
-                  <img src="{% static 'img/testimonial-2.jpg' %}" alt="" class="img-fluid">
-                </div>
-              </div>
-              <div class="col-sm-12 col-md-6">
-                <div class="testimonial-ico">
-                  <span class="ion-ios-quote"></span>
-                </div>
-                <div class="testimonials-content">
-                  <p class="testimonial-text">
-                    "He utilizado muchas plataformas para concilar un alquiler, pero entre el trabajo, los estudios y mi escaso tiempo me era muy difcil
-                    poder coordinar con el dueño de las propiedades para poder conocerlas, pero con Yango estoy fue mucho mas facil y rapido, tengo Todo
-                    a la mano, desde que servicios tiene disponibles hasta si podré estacionar mi vehiculo en un lugar seguro, lo recomiendo."
-                  </p>
-                </div>
-                <div class="testimonial-author-box">
-                  <img src="{% static 'img/mini-testimonial-2.jpg' %}" alt="" class="testimonial-avatar">
-                  <h5 class="testimonial-author">Cristian</h5>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </section>
+
   <!--/ Testimonials End /-->
 
   {% endblock %}

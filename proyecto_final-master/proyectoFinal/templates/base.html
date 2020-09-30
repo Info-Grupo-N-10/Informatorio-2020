@@ -10,8 +10,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <!--   <link href="img/favicon.png" rel="icon">
-  <link href="img/apple-touch-icon.png" rel="apple-touch-icon"> -->
+  <link href="img/favicon.ico" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -127,28 +126,15 @@
           <div class="col-md-6 mb-2">
             <div class="form-group">
               <label>Servicio esencial:</label>
-              <select class="form-control form-control-lg form-control-a" id="id_ubicacion">
+              <select class="form-control form-control-lg form-control-a" id="id_servicios">
                 <option value="" selected="">---------</option>
-                <option name="servicios" value="1" id="id_servicios_0">Agua</option>
-                <option name="servicios" value="2" id="id_servicios_1">Luz</option>
-                <option name="servicios" value="3" id="id_servicios_2">Cloaca</option>
+                <option name="servicios" value="1" id="id_servicios_0">Agua Corriente</option>
+                <option name="servicios" value="2" id="id_servicios_1">Electricidad</option>
+                <option name="servicios" value="3" id="id_servicios_2">Gas Natural</option>
+                <option name="servicios" value="4" id="id_servicios_3">Seguridad</option>
+                <option name="servicios" value="5" id="id_servicios_4">Teléfono</option>
+                <option name="servicios" value="6" id="id_servicios_5">Videocable</option>
               </select>
-              <!-- <ul id="id_servicios">
-                <li>
-                  <label for="id_servicios_0">
-                    <input type="checkbox" name="servicios" value="1" id="id_servicios_0">Agua</label>
-                </li>
-
-                <li>
-                  <label for="id_servicios_1">
-                    <input type="checkbox" name="servicios" value="2" id="id_servicios_1">Luz</label>
-                </li>
-
-                <li>
-                  <label for="id_servicios_2">
-                    <input type="checkbox" name="servicios" value="3" id="id_servicios_2">Cloaca</label>
-                </li>
-              </ul> -->
             </div>
           </div>
           <div class="col-md-6 mb-2">
@@ -191,7 +177,7 @@
             </div>
           </div>
           <div class="col-md-12">
-            <button type="submit" class="btn btn-b">Buscar Propiedad</button>
+            <button type="submit" class="btn btn-b-n">Buscar Propiedad</button>
           </div>
         </div>
       </form>
@@ -395,51 +381,22 @@
           <nav class="nav-footer">
             <ul class="list-inline">
               <li class="list-inline-item">
-                <a href="#">Home</a>
+                <a href="{% url 'home' %}">Home</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Sobre Nosotros</a>
+                <a href="{% url 'publicacion:propiedades' %}">Propiedades</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Propiedades</a>
+                <a href="{% url 'perfil:registro' %}">Registrate</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Blog</a>
+                <a href="#">Buscar</a>
               </li>
               <li class="list-inline-item">
                 <a href="#">Contacto</a>
               </li>
             </ul>
           </nav>
-          <div class="socials-a">
-            <ul class="list-inline">
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-facebook" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-twitter" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-instagram" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                </a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">
-                  <i class="fa fa-dribbble" aria-hidden="true"></i>
-                </a>
-              </li>
-            </ul>
-          </div>
           <div class="copyright-footer">
             <p class="copyright color-text-a">
               &copy; Copyright-2020

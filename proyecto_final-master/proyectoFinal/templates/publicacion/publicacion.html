@@ -325,53 +325,24 @@
           </div>
           <div class="row">
             <div class="col-md-6 col-lg-4">
-              <img src="{% static 'img/agent-1.jpg' %}" alt="" class="img-fluid">
+              <img src="{{publicacion.usuario.getPerfil.imagen.url}}" alt="" class="img-fluid">
             </div>
             <div class="col-md-6 col-lg-4">
               <div class="property-agent">
-                <h4 class="title-agent">{{user.first_name}} {{user.last_name}}</h4>
+                <h4 class="title-agent">{{publicacion.usuario.first_name}} {{publicacion.usuario.last_name}}</h4>
                 <p class="color-text-a">
-                  {{user.getPerfil.descripcion}}
+                  {{publicacion.usuario.getPerfil.descripcion}}
                 </p>
                 <ul class="list-unstyled">
                   <li class="d-flex justify-content-between">
                     <strong>Teléfono:</strong>
-                    <span class="color-text-a">{{user.getPerfil.telefono}}</span>
+                    <span class="color-text-a">{{publicacion.usuario.getPerfil.telefono}}</span>
                   </li>
                   <li class="d-flex justify-content-between">
                     <strong>Email:</strong>
-                    <span class="color-text-a">{{user.email}}</span>
+                    <span class="color-text-a">{{publicacion.usuario.email}}</span>
                   </li>
                 </ul>
-                <div class="socials-a">
-                  <ul class="list-inline">
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-facebook" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-twitter" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-instagram" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                    <li class="list-inline-item">
-                      <a href="#">
-                        <i class="fa fa-dribbble" aria-hidden="true"></i>
-                      </a>
-                    </li>
-                  </ul>
-                </div>
               </div>
             </div>
 

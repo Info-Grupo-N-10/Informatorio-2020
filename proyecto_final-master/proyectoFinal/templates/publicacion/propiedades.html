@@ -9,7 +9,6 @@
         <div class="col-md-12 col-lg-8">
           <div class="title-single-box">
             <h1 class="title-single">Propiedades del Sitio</h1>
-            <span class="color-text-a">Propiedades Destacadas</span>
           </div>
         </div>
         <div class="col-md-12 col-lg-4">
@@ -35,13 +34,13 @@
       <div class="row">
         <div class="col-sm-12">
           <div class="grid-option">
-            <form>
-              <select class="custom-select">
-                <option selected>Todas</option>
-                <option value="1">Estrenos</option>
-                <option value="2">Alquieres</option>
-                <option value="3">Ventas</option>
-              </select>
+            <form method='GET' action="{% url 'publicacion:filtrado' %}">
+                <select name="orden" class="custom-select">
+                    <option selected>Ordenar</option>
+                    <option value="1">Menor Precio</option>
+                    <option value="2">Mayor Precio</option>
+                </select>
+                <button type="submit" class="btn btn-b-n"> Ordenar</button>
             </form>
           </div>
         </div>

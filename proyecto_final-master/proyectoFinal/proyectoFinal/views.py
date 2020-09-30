@@ -8,15 +8,6 @@ from django.views.generic.list import ListView
 
 import random
 
-# class Home(ListView):
-#     model = Publicaciones
-#     template_name = 'home.html'
-
-#     def get_context_data(self, **kwargs):
-#         context = super(Home, self).get_context_data(**kwargs)
-#         context['publicaciones'] = Publicaciones.objects.all().order_by('-publicacion_id')
-#         return context
-
 def Home(request):
     u = list(Usuario.objects.all())
     p = Publicaciones.objects.all()

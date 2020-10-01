@@ -100,7 +100,7 @@ body {
   padding: 115px 0; }
 
 .container {
-  width: 500px;
+  width: 40%;
   position: relative;
   margin: 0 auto; }
 
@@ -145,7 +145,7 @@ body {
   -webkit-border-radius: 10px;
   -o-border-radius: 10px;
   -ms-border-radius: 10px;
-  padding: 25px 25px; }
+  padding: 25px 75px; }
 
 .form-group {
   overflow: hidden;

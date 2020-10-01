@@ -72,7 +72,7 @@
                 <div class="summary-list">
                   <ul class="list">
                     <li class="d-flex justify-content-between">
-                      <strong>Direccion:</strong>
+                      <strong>Ubicacion:</strong>
                       <span>{{publicacion.ubicacion}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
@@ -80,13 +80,13 @@
                       <span>{{publicacion.tipo_inmueble}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
-                      <strong>Area:</strong>
+                      <strong>Superficie:</strong>
                       <span>{{publicacion.superficie}}
                         <sup>2</sup>
                       </span>
                     </li>
                     <li class="d-flex justify-content-between">
-                      <strong>Camas:</strong>
+                      <strong>Habitaciones:</strong>
                       <span>{{publicacion.habitaciones}}</span>
                     </li>
                     <li class="d-flex justify-content-between">
@@ -152,83 +152,58 @@
               <div class="amenities-list color-text-a">
                 <ul class="list-a no-margin">
                   {% for s in publicacion.servicios.all %}
-                      <li>{{s}}</li><br>
+                      <li style="width: 100%">{{s}}</li><br>
                   {% endfor %}
                 </ul>
               </div>
 <!-- ------------------------------------ -->
-
-              <div class="row section-t3">
-                <div class="col-sm-12">
-                  <div class="title-box-d">
-                    <a href="{% url 'favoritos:favPerfil' publicacion.publicacion_id %}">Ir a favoritos</a>
-                  </div>
-                </div>
-              </div>
-
-              {% if publicacion.usuario == request.user %}
-              <div class="row section-t3">
-                <div class="col-6 col-sm-12">
-                  <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-12">
-                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
-                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
-                  </form>
-                </div>
-
-              </div>
-              {% endif %}
-
-{% comment %}
-<!-- {% if publicacion.usuario == request.user %}
-
-              <div class="row section-t3">
-                <div class="col-6 col-sm-12">
-                  <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
-                  </div>
-                </div>
-                <div class="col-6 col-sm-12">
-                  <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
-                    <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
-                  </form>
-                </div>
-
-              </div>
-
-              {% endif %} -->
-{% endcomment %}
-                
-<!-- ------------------------------------ -->
-
-              {% if user.is_authenticated %}
-              <form method="POST">
-                {% csrf_token %}
-                <div class="col-6">
-                  <div class="title-box-d">
-                    <h3 class="title-d">Acciones</h3>
-                  </div>
-                  <div class= "amenities-list color-text-a Publicaciones" style="width: 100%;">
-
-                    <i class="like far fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador" style="color: #FFD300" style=""> No me gusta</i>
-
-                    
-              {% else %}
-                        <i class="like fas fa-heart fa-2x" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador"> Me gusta</i>
+                  <div class="row section-t3">
+                    <div class="col-sm-12">
+                      <div class="title-box-d">
+                        <h3 class="title-d">Acciones</h3>
+                      </div>
                     </div>
                   </div>
-                </form>
-                    
-              {% endif %}
+                {% if user.is_authenticated %}
+                  <form method="POST">
+                  {% csrf_token %}
+                      <div class= "like color-text-a cursor-pointer d-flex w-100" style="width: 100%; font-family: sans-serif;color: #FF7D1B" data-type="favorito" data-id="{{publicacion.publicacion_id}}" data-action="marcador">
+                        <i class="like fas fa-thumbs-down fa-2x" ></i>
+                        <h2 class="ml-3">  Quitar Favorito</h2>
+                      </div>
+                  </form>
+                {% endif %}
+            </div>
+          </div>
+    </div>
+  </div>
+  <div class="col-md-12">
+    <div class="row section-t3">
+      <div class="col-sm-12">
+        <div class="title-box-d">
+          <h3 class="title-d">Operaciones</h3>
+        </div>
+      </div>
+    </div>
+    <div class="row " style="justify-content: center; ">
+        <div class="title-box-d mx-2">
+          <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' publicacion.publicacion_id %}">Ver los favoritos</a>
+        </div>
 
-                <div class="col-6">
-                  <div class="title-box-d">
-                    <a class="btn btn-b-n" href="{% url 'favoritos:favPerfil' publicacion.publicacion_id %}">Ver los favoritos</a>
-                  </div>
-                </div>
+
+        {% if publicacion.usuario == request.user %}
+        <div class="title-box-d mx-2">
+          <a class="btn btn-b-n" href="{% url 'publicacion:editar' publicacion.publicacion_id %}">Editar Publicacion</a>
+        </div>
+
+        <div class="title-box-d mx-2">
+          <form method= "POST" action="{% url 'publicacion:borrar' publicacion.publicacion_id %}">{% csrf_token %}
+            <button type="submit" class="btn btn-b-n">Eliminar Publicacion</button>
+          </form>
+        </div>
+    </div>
+        {% endif %}
+</div>
         </div>
 
           </div>
@@ -252,28 +227,6 @@
                 {{reseña_form.as_p}}
                 <input type="submit" value="Publicar" class="btn btn-b-n">
             </form>
-{% comment %}
-               <!-- {% for r in publicacion.getReseñas %}
-                <div class="container">
-                  <strong>{{ r.usuario }}</strong>
-                  <div class="card">
-                    <div class="card-body">{{ r.mensaje|linebreaks }}</div>
-                    <br>
-                    <div class="date">{{ r.fecha_creacion| date}}</div>
-                  </div>
-                </div>
-              <br>
-                {% if r.usuario == request.user %}
-                    <form method= "POST" action="{% url 'publicacion:borrarReseña' r.pk %}">{% csrf_token %}
-                    <button type="submit" class="btn btn-b-n">Eliminar comentario</button>
-                    </form>
-                {% endif %}
-              {% empty %}
-
-              <p>No hay comentarios</p>
-
-              {% endfor %} -->
-{% endcomment %}
 
               <section class="section-testimonials section-t8 nav-arrow-a">
     <div class="container">
@@ -298,7 +251,7 @@
                 </div>
                 <div class="testimonials-content">
                   <p class="testimonial-text">
-                    {{r.mensaje|truncatewords:10}}<br>
+                    {{r.mensaje}}<br>
                     {{r.fecha_creacion}}
                   </p>
                 </div>
@@ -360,19 +313,16 @@
   <script>
 
     var like = document.getElementsByClassName("like");
-    for(var i=0; i<=like.length;i++){
-      console.log(like[i]);
+      $('.like').click(() => {
+        $('.like i').toggleClass("fa-thumbs-down").toggleClass('fa-thumbs-up');
+        if ($('.like h2').text()== ' Quitar Favorito'){
+            $('.like h2').text(' Añadir Favorito')
+        }else{
+          $('.like h2').text(' Quitar Favorito');
 
-      like[i].addEventListener("click", function(){
-        
-        $(this).toggleClass("btn").toggleClass('btn');
-        $(this).text(' No me gusta').text(' Me gusta');
-        
-       
-      });
-    }
-
-  </script>
+        }
+      })
+</script>
 
 
 

@@ -5,6 +5,7 @@
   <!--/ Carousel Star /-->
   <div class="intro intro-carousel">
     <div id="carousel" class="owl-carousel owl-theme">
+
       <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-1.jpg)' %}">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
@@ -28,7 +29,8 @@
           </div>
         </div>
       </div>
-      <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-2.jpg' %})">
+      
+<!--       <div class="carousel-item-a intro-item bg-image" style="background-image: url({% static 'img/slide-2.jpg' %})">
         <div class="overlay overlay-a"></div>
         <div class="intro-content display-table">
           <div class="table-cell">
@@ -72,7 +74,7 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
     </div>
   </div>
   <!--/ Carousel end /-->
@@ -106,28 +108,13 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a>{{p.titulo}} 
-                      <br> {{p.ubicacion}}</a>
+                    <a>{{p.titulo}}</a>
                   </h2>
                 </div>
 
                 <div class="card-body-a">
-                  <!-- <div class="rate-stars">
-                    <fieldset class="rating">
-                          <input type="radio" id="star5" name="rating" value="5" /><label class = "full" for="star5" title="Awesome - 5 stars"></label>
-                          <input type="radio" id="star4half" name="rating" value="4 and a half" /><label class="half" for="star4half" title="Pretty good - 4.5 stars"></label>
-                          <input type="radio" id="star4" name="rating" value="4" /><label class = "full" for="star4" title="Pretty good - 4 stars"></label>
-                          <input type="radio" id="star3half" name="rating" value="3 and a half" /><label class="half" for="star3half" title="Meh - 3.5 stars"></label>
-                          <input type="radio" id="star3" name="rating" value="3" /><label class = "full" for="star3" title="Meh - 3 stars"></label>
-                          <input type="radio" id="star2half" name="rating" value="2 and a half" /><label class="half" for="star2half" title="Kinda bad - 2.5 stars"></label>
-                          <input type="radio" id="star2" name="rating" value="2" /><label class = "full" for="star2" title="Kinda bad - 2 stars"></label>
-                          <input type="radio" id="star1half" name="rating" value="1 and a half" /><label class="half" for="star1half" title="Meh - 1.5 stars"></label>
-                          <input type="radio" id="star1" name="rating" value="1" /><label class = "full" for="star1" title="Sucks big time - 1 star"></label>
-                          <input type="radio" id="starhalf" name="rating" value="half" /><label class="half" for="starhalf" title="Sucks big time - 0.5 stars"></label>
-                    </fieldset>
-                  </div> -->
                   <div class="price-box d-flex">
-                    <span class="price-a">alquila | {{p.precio}}</span>
+                    <span class="price-a">{{p.precio}}</span>
                   </div>
                   <span class="ion-ios-arrow-forward"></span>
                   <a href="{% url 'publicacion:public' p.publicacion_id %}" class="ir">Ir a la publicacion</a><br>
@@ -170,18 +157,13 @@
   <!--/ Property End /-->
 
   <!--/ Agents Star /-->
-  <section class="section-agents section-t8">
+  <section class="section-agents section-t8" style="margin-bottom: 40px;">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
           <div class="title-wrap d-flex justify-content-between">
             <div class="title-box">
-              <h2 class="title-a">Propietarios Destacados</h2>
-            </div>
-            <div class="title-link">
-              <a href="{% url 'perfil:perfil' %}">Todos los Propietarios
-                <span class="ion-ios-arrow-forward"></span>
-              </a>
+              <h2 class="title-a">Algunos Usuarios</h2>
             </div>
           </div>
         </div>
@@ -191,8 +173,8 @@
         {% for m in usuarios %}
         <div class="col-md-4" enctype="multipart/form-data">
           <div class="card-box-d">
-            <div class="card-img-d" style="width: 300px; height: 400px">
-              <img src="{{m.getPerfil.imagen.url}}" alt="" class="img-d" style="height: 100%; width: auto;">
+            <div class="card-img-d photo-wrapper" style="height: 400px; display: inline-block;">
+              <img src="{{m.getPerfil.imagen.url}}" alt="" class="img-d" style="object-fit: cover; object-position: top;display: block; height: 100%; width: 100%;">
             </div>
             <div class="card-overlay card-overlay-hover">
               <div class="card-header-d">

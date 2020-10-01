@@ -31,6 +31,18 @@
   <section class="property-grid grid">
     <div class="container">
       <div class="row">
+        <div class="col-sm-12">
+          <div class="grid-option">
+            <form method='GET' action="{% url 'publicacion:filtrado' %}">
+                <select name="orden" class="custom-select">
+                    <option selected>Ordenar</option>
+                    <option value="1">Menor Precio</option>
+                    <option value="2">Mayor Precio</option>
+                </select>
+                <button type="submit" class="btn btn-b-n"> Ordenar</button>
+            </form>
+          </div>
+        </div>
 
 {% for marcar in favoritos %}
         <div class="col-md-4" enctype="multipart/form-data">
@@ -42,8 +54,7 @@
               <div class="card-overlay-a-content">
                 <div class="card-header-a">
                   <h2 class="card-title-a">
-                    <a href="#">{{marcar.objeto.titulo}}
-                      <br /> {{marcar.objeto.ubicacion}}</a>
+                    <a href="#">{{marcar.objeto.titulo}}</a>
                   </h2>
                 </div>
                 <div class="card-body-a">

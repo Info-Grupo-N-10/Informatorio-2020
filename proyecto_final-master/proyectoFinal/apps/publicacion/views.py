@@ -48,6 +48,11 @@ class Crear(LoginRequiredMixin,PermisosMixin,CreateView):
         p = form.save(commit=False)
         p.usuario = self.request.user
         p.save()
+
+        for i in form.cleaned_data['servicios']:
+            x = Servicios.objects.get(nombre=i)
+            p.servicios.add(x)
+
         for m, j in self.request.FILES.items():
             Imagenes_Publicaciones.objects.create(publicacion=p, img=j)
 
@@ -58,7 +63,9 @@ class Editar(PermisosMixin, UpdateView):
     model = Publicaciones
     form_class = EditarPublicacion
     template_name = "publicacion/editar.html"
-    success_url = reverse_lazy('publicacion:public')
+
+    def get_success_url(self):
+        return reverse_lazy('publicacion:public',kwargs={'pk':self.kwargs['pk'] })
 
 
 
@@ -75,19 +82,6 @@ class Borrar(LoginRequiredMixin,PermisosMixin,DeleteView):
 class ListarPublicaciones(ListView):
     model = Publicaciones
     template_name = 'publicacion/propiedades.html'
-
-
-def Inicio(request):
-
-    context = {
-
-        'Publicacion': Publicacion.objects.all(),
-        'form': Publicacion()
-
-    }
-
-    return render(request, 'publicacion/publicacion.html')
-
 
 def Filtros(request):
     context = {}

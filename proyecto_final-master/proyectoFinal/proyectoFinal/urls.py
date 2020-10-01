@@ -12,6 +12,7 @@ urlpatterns = [
     path('', views.Home, name = 'home'),
     path('Logout', auth.LogoutView.as_view(), name='logout'),
     path('Login',auth.LoginView.as_view(template_name="home.html"),name="login"),
+    path('Terminos/', views.Terminos, name = 'terminos'),
 
     #urls otras app
     path('Perfil/', include('apps.perfil.urls')),

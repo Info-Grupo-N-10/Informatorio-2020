@@ -9,15 +9,14 @@ from django.views.generic.list import ListView
 import random
 
 def Home(request):
-    u = list(Usuario.objects.all())
+    u = list(Usuario.objects.all())[1:]
+    # u = Usuario.objects.all()
     p = Publicaciones.objects.all()
     r = random.sample(u, 3)
 
     context = {
     'publis': p,
     'usuarios': r, }
-
-    return render(request, 'home.html', context)
 
     return render(request, 'home.html', context)
 
@@ -29,5 +28,8 @@ def Usuarios(request):
 
 class LogoutView(View):
 	success_url = reverse_lazy('home')
+
+def Terminos(request):
+    return render(request, 'terminos.html')
 
 #Registro, Perfil, Usuarios, Propiedades, Publicación, Favoritos

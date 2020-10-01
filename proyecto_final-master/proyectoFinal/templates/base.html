@@ -10,7 +10,7 @@
   <meta content="" name="description">
 
   <!-- Favicons -->
-  <link href="img/favicon.ico" rel="icon">
+  <link href="https://img.icons8.com/nolan/64/cottage.png" rel="icon">
 
   <!-- Google Fonts -->
   <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700" rel="stylesheet">
@@ -65,6 +65,10 @@
                 <option value="2">Casa</option>
                 <option value="3">Habitación</option>
                 <option value="4">Duplex</option>
+                <option value="5">Pensión</option>
+                <option value="6">Residencia Universitaria</option>
+                <option value="7">Monoambiente</option>
+
               </select>
               {% comment %}
                 <!-- {{formulario.tipo_inmueble}} -->
@@ -77,9 +81,12 @@
               <label>Zona:</label>
               <select class="form-control form-control-lg form-control-a" name="ubicacion" id="id_ubicacion">
                 <option value="" selected="">---------</option>
-                <option value="1">Villa San Martín</option>
-                <option value="2">Centro</option>
-                <option value="3">Zona UNNE</option>
+                <option value="1">Zona Sur</option>
+                <option value="2">Zona Norte</option>
+                <option value="3">Zona Este</option>
+                <option value="4">Zona Oeste</option>
+                <option value="5">Microcentro</option>
+                <option value="6">Macrocentro</option>
               </select>
             </div>
           </div>
@@ -128,12 +135,11 @@
               <label>Servicio esencial:</label>
               <select class="form-control form-control-lg form-control-a" id="id_servicios">
                 <option value="" selected="">---------</option>
-                <option name="servicios" value="1" id="id_servicios_0">Agua Corriente</option>
-                <option name="servicios" value="2" id="id_servicios_1">Electricidad</option>
-                <option name="servicios" value="3" id="id_servicios_2">Gas Natural</option>
-                <option name="servicios" value="4" id="id_servicios_3">Seguridad</option>
-                <option name="servicios" value="5" id="id_servicios_4">Teléfono</option>
-                <option name="servicios" value="6" id="id_servicios_5">Videocable</option>
+                <option name="servicios" value="1" id="id_servicios_0">Gas Natural</option>
+                <option name="servicios" value="2" id="id_servicios_1">Seguridad</option>
+                <option name="servicios" value="3" id="id_servicios_2">Teléfono</option>
+                <option name="servicios" value="4" id="id_servicios_3">Videocable</option>
+                <option name="servicios" value="5" id="id_servicios_4">Internet</option>
               </select>
             </div>
           </div>
@@ -195,7 +201,7 @@
         <span></span>
         <span></span>
       </button>
-      <a class="navbar-brand text-brand" href="{% url 'home' %}">Y⌂n<span class="color-b">Go</span></a>
+      <a class="logo" href="{% url 'home' %}"></a>
       <button type="button" class="btn btn-link nav-search navbar-toggle-box-collapse d-md-none" data-toggle="collapse"
         data-target="#navbarTogglerDemo01" aria-expanded="false">
         <span class="fa fa-search" aria-hidden="true"></span>
@@ -219,7 +225,7 @@
         <button class="btn btn-b-n dropdown-toggle" type="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Bienvenido, {{user.username}} <i class="far fa-user"></i></button>
         <div class="dropdown-menu " aria-labelledby="dropdownMenuLink">
           {% if user.propietario %}
-          <a class="dropdown-item" href="{% url 'publicacion:crear' %}">Crear Publicacion</a>
+          <a class="dropdown-item" href="{% url 'publicacion:crear' %}">Publicar Inmueble</a>
           {% endif %}
           <a class="dropdown-item" href="{% url 'favoritos:fav' %}">Ver Favoritos</a>
           <div class="dropdown-divider"></div>
@@ -258,17 +264,7 @@
                       <input type="submit" class="btn btn-b-n" name= "" style="width: 100%; border-radius: 20px;" value="ENTRAR"></input>
                     </form>
                     
-                    <div class="text-center text-muted delimiter">Use una Red Social</div>
                     <div class="d-flex justify-content-center social-buttons">
-                      <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Twitter">
-                        <i class="fa fa-twitter"></i>
-                      </button>
-                      <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Facebook">
-                        <i class="fab fa-facebook"></i>
-                      </button>
-                      <button type="button" class="btn btn-secondary btn-round" data-toggle="tooltip" data-placement="top" title="Linkedin">
-                        <i class="fa fa-linkedin"></i>
-                      </button>
                     </di>
                   </div>
                 </div>
@@ -390,10 +386,7 @@
                 <a href="{% url 'perfil:registro' %}">Registrate</a>
               </li>
               <li class="list-inline-item">
-                <a href="#">Buscar</a>
-              </li>
-              <li class="list-inline-item">
-                <a href="#">Contacto</a>
+                <a href="{% url 'terminos' %}" >Términos y Condiciones</a>
               </li>
             </ul>
           </nav>

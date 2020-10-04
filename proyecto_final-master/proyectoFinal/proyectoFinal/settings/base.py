@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'apps.publicacion',
     'apps.favoritos',
     'django_filters',
+    'apps.mapas',
 ]
 
 MIDDLEWARE = [

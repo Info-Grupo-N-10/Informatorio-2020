@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block contenido%}
+
+
+	<div id="mapa" class= "capas" id="form_coords"></div>
+		<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
+			
+			<!-- <label for="id_lat">Latitud:</label>
+			<input type="text" name="lat" maxlength="100" required="" id="id_lat">
+			<label for="id_lng">Longitud:</label>
+			<input type="text" name="lng" maxlength="100" required="" id="id_lng">
+			<label for="id_publicacion">Publicacion:</label> -->
+			
+			{{ form.as_p }}
+     
+			<p><input type="submit" name="Guardar Ubicacion" id="form_submit"></p>
+
+		</form>
+
+	<div id="mapa" class= "capas"></div>
+
+ <script type="text/javascript">
+
+ 	let marker;
+
+
+ 
+ 	var mymap = L.map('mapa').setView([-27.451275, -58.986868], 13);
+
+	 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVsaTQyIiwiYSI6ImNrZnQza3IwajA1aWMycnE2OHdwcWtvNnkifQ.LutiE7gB3tp6QRRqIbxLOw', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/%22%3EOpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/%22%3ECC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/%22%3EMapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+}).addTo(mymap);
+
+    marker = L.marker([-27.451275, -58.986868]).addTo(mymap);
+	
+	mymap.on('click', function(e){
+       	marker.setLatLng(e.latlng);
+      
+       	let body = {lat: e.latlng.lat, lng: e.latlng.lng};
+       	console.log(e)
+
+       	id_lat.value = marker._latlng.lat;
+ 		id_lng.value = marker._latlng.lng;
+
+ 	
+     //   	$.ajax({
+     //    	url : "/Mapas/Localizacion/",
+     //    	type : "POST",
+	    //     data : body, 
+	    //     beforeSend: function(xhr) {
+	    // 		xhr.setRequestHeader('X-CSRFToken', '{{csrf_token}}')
+	 		 // },
+	  		// success: function(data) {},
+	  		// error: function(error) {}
+
+     //  	});
+
+
+	});
+
+	$('#form_coords').submit(function(e){
+ 		e.preventDefault();
+
+ 		if (marker !== undefined){
+ 			let body = {lat: marker._latlng.lat, lng: marker._latlng.lng};
+       	
+       	$.ajax({
+        	url : "/Mapas/Localizacion/",
+        	type : "POST",
+	        data : body, 
+	        beforeSend: function(xhr) {
+	    		xhr.setRequestHeader('X-CSRFToken', '{{csrf_token}}')
+	 		 },
+	  		success: function(data) {},
+	  		error: function(error) {}
+
+      	});
+
+ 		}
+
+ 		
+
+ 	})
+
+
+</script>
+
+
+
+
+
+{% endblock %}
+
+

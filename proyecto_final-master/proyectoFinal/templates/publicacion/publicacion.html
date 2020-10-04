@@ -22,6 +22,9 @@
                 <a href="{% url 'home' %}">Home</a>
               </li>
               <li class="breadcrumb-item">
+                <a href="{% url 'mapas:mostrar' publicacion.publicacion_id %}">Mapa</a>
+              </li>
+              <li class="breadcrumb-item">
                 <a href="{% url 'publicacion:propiedades' %}">Propiedades</a>
               </li>
               <li class="breadcrumb-item active" aria-current="page">
@@ -308,6 +311,8 @@
       </div>
     </div>
   </section>
+
+
   <!--/ Property Single End /-->
 
   <script>

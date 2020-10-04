@@ -2310,6 +2310,19 @@ footer .credits {
 }
 
 
+/*#mapa{
+  height: 250px;
+}*/
+
+.capas {
+
+  width: 600px;
+  display: inline-block;
+  height: 600px;
+  border: 1px;
+
+}
+
 
 /*-------------------------------------------------------------------*/
 input,
@@ -2535,3 +2548,5 @@ textarea {
     padding: 0 15px;
   }
 }
+
+

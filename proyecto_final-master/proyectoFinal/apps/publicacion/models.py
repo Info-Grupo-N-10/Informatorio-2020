@@ -42,7 +42,6 @@ class Publicaciones(models.Model):
     usuario = models.ForeignKey(Usuario, related_name='publicacionUsuario', null=True, on_delete=models.CASCADE)
 
     def getImagen(self):
-        print(self.imgInmueble.all())
         if self.imgInmueble.all():
             return self.imgInmueble.all()[0]
         else:

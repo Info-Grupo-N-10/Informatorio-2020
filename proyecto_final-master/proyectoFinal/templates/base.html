@@ -34,6 +34,15 @@
   <!-- Main Stylesheet File -->
   <link rel="stylesheet" href="{% static 'css/style.css' %}">
 
+
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"
+   integrity="sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A=="
+   crossorigin=""/>
+  <!-- Make sure you put this AFTER Leaflet's CSS -->
+  <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"
+   integrity="sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA=="
+   crossorigin=""></script>
+
   <!-- =======================================================
     Theme Name: EstateAgency
     Theme URL: https://bootstrapmade.com/real-estate-agency-bootstrap-template/
@@ -421,7 +430,9 @@
   <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
   <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %}"></script>
   <!-- Contact Form JavaScript File -->
+  {% comment %}
   <script src="{% static 'contactform/contactform.js' %}"></script>
+  {% endcomment %}
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
   <!-- Template Main Javascript File -->
   

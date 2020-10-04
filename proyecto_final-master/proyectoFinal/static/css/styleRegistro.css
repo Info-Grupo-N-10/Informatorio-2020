@@ -9,7 +9,7 @@ list-type-ulli {
   padding: 0; }
 
 .btn.btn-b-n {
-  background-color: #FFD300;
+  background-color: #FF7D1B;
   color: #ffffff;
   border-radius: 0;
 }
@@ -182,10 +182,10 @@ body {
     font-weight: 500; }
   .form-input:focus {
     border: 1px solid transparent;
-    -webkit-border-image-source: -webkit-linear-gradient(to right, #ffd300,#3914AF);
-    -moz-border-image-source: -moz-linear-gradient(to right, #ffd300,  #3914AF);
-    -o-border-image-source: -o-linear-gradient(to right, #ffd300, #3914AF);
-    border-image-source: linear-gradient(to right, #ffd300,  #3914AF);
+    -webkit-border-image-source: -webkit-linear-gradient(to right, #FF7D1B,#555555);
+    -moz-border-image-source: -moz-linear-gradient(to right, #FF7D1B,  #555555);
+    -o-border-image-source: -o-linear-gradient(to right, #FF7D1B, #555555);
+    border-image-source: linear-gradient(to right, #FF7D1B,  #555555);
     -webkit-border-image-slice: 1;
     border-image-slice: 1;
     border-radius: 5px;

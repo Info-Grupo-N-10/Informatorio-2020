@@ -59,6 +59,47 @@
                     <strong>Email: </strong>{{m.usuario.email}}</p>
                 </div>
               </div>
+
+              <div class="card-footer-d">
+                <div class="socials-footer d-flex justify-content-center">
+                  <ul class="list-inline">
+
+                    {% if m.usuario.getPerfil.facebook %}
+                    <li class="list-inline-item">
+                      <a href="{{m.usuario.getPerfil.facebook}}" class="link-one">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if m.usuario.getPerfil.twitter %}
+                    <li class="list-inline-item">
+                      <a href="{{m.usuario.getPerfil.twitter}}" class="link-one">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if m.usuario.getPerfil.instagram %}
+                    <li class="list-inline-item">
+                      <a href="{{m.usuario.getPerfil.instagram}}" class="link-one">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if m.usuario.getPerfil.pinterest %}
+                    <li class="list-inline-item">
+                      <a href="{{m.usuario.getPerfil.pinterest}}" class="link-one">
+                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                  </ul>
+                </div>
+              </div>
+
             </div>
           </div>
         </div>

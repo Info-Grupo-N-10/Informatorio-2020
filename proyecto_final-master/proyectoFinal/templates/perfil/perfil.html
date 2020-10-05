@@ -71,11 +71,47 @@
                       <strong>Correo Electronico: </strong>
                       <span class="color-text-a"> {{user.email}}</span>
                     </p>
-                    <form method= "POST" action="{% url 'perfil:borrar' user.id %}">{% csrf_token %}
-                      <button type="submit" class="btn btn-b-n">Eliminar Mi Cuenta</button>
-                  </form>
                   </div>
                 </div>
+                <div class="socials-footer">
+                  <ul class="list-inline">
+                    {% if user.getPerfil.facebook %}
+                    <li class="list-inline-item">
+                      <a href="{{user.getPerfil.facebook}}" class="link-one">
+                        <i class="fa fa-facebook" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.getPerfil.twitter %}
+                    <li class="list-inline-item">
+                      <a href="{{user.getPerfil.twitter}}" class="link-one">
+                        <i class="fa fa-twitter" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.getPerfil.instagram %}
+                    <li class="list-inline-item">
+                      <a href="{{user.getPerfil.instagram}}" class="link-one">
+                        <i class="fa fa-instagram" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                    {% if user.getPerfil.pinterest %}
+                    <li class="list-inline-item">
+                      <a href="{{user.getPerfil.pinterest}}" class="link-one">
+                        <i class="fa fa-pinterest-p" aria-hidden="true"></i>
+                      </a>
+                    </li>
+                    {% endif %}
+
+                  </ul>
+                </div>
+                <form method= "POST" action="{% url 'perfil:borrar' user.id %}">{% csrf_token %}
+                      <button type="submit" class="btn btn-b-n">Eliminar Mi Cuenta</button>
+                  </form>
               </div>
             </div>
           </div>

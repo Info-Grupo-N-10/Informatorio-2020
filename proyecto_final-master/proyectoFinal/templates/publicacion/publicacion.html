@@ -221,6 +221,96 @@
 
 
 
+            <!-- --------------------------------- -->
+
+        <div class="col-md-10 offset-md-1">
+          <ul class="nav nav-pills-a nav-pills mb-3 section-t3" id="pills-tab" role="tablist">
+            <li class="nav-item">
+              <a class="nav-link" id="pills-map-tab" data-toggle="pill" href="#pills-map" role="tab" aria-controls="pills-map"
+                aria-selected="true">Ubicación</a>
+            </li>
+
+            <li class="nav-item">
+              <a class="nav-link active" id="pills-comment-tab" data-toggle="pill" href="#pills-comment" role="tab" aria-controls="pills-comment"
+                aria-selected="false">Comentarios</a>
+            </li>
+
+          </ul>
+          <div class="tab-content" id="pills-tabContent">
+            <div class="tab-pane fade" id="pills-map" role="tabpanel" aria-labelledby="pills-map-tab">
+              <div style="width: 100%;" id="mapa" class= "capas" id="form_coords"></div>
+            </div>
+
+            <div class="tab-pane fade show active" id="pills-comment" role="tabpanel" aria-labelledby="pills-comment-tab">
+
+              <section class="section-testimonials section-t8 nav-arrow-a">
+              <div class="container">
+              <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+
+                {% for r in publicacion.getReseñas %}
+                <div class="carousel-item-a">
+                  <div class="testimonials-box">
+
+                      <div class="col-sm-12 col-md-6" style="max-width: 100%">
+                        <div class="testimonial-ico">
+                          <span class="ion-ios-quote"></span>
+                        </div>
+                        <div class="testimonials-content">
+                          <p class="testimonial-text">
+                            {{r.mensaje}}<br>
+                            {{r.fecha_creacion}}
+                          </p>
+                        </div>
+                        <div class="testimonial-author-box">
+                          <img src="{{r.usuario.getPerfil.imagen.url}}" alt="" class="testimonial-avatar">
+                          <h5 class="testimonial-author">{{ r.usuario }}</h5>
+                        </div>
+                      </div>
+                  </div>
+                </div>
+
+                {% endfor %}
+              </div>
+            </div>
+          </section>
+
+            </div>
+
+
+<!-- <div id="testimonial-carousel" class="owl-carousel owl-arrow">
+
+        {% for r in publicacion.getReseñas %}
+        <div class="carousel-item-a">
+          <div class="testimonials-box">
+
+              <div class="col-sm-12 col-md-6" style="max-width: 100%">
+                <div class="testimonial-ico">
+                  <span class="ion-ios-quote"></span>
+                </div>
+                <div class="testimonials-content">
+                  <p class="testimonial-text">
+                    {{r.mensaje}}<br>
+                    {{r.fecha_creacion}}
+                  </p>
+                </div>
+                <div class="testimonial-author-box">
+                  <img src="{{r.usuario.getPerfil.imagen.url}}" alt="" class="testimonial-avatar">
+                  <h5 class="testimonial-author">{{ r.usuario }}</h5>
+                </div>
+              </div>
+          </div>
+        </div>
+        {% endfor %}
+      </div> -->
+
+
+          </div>
+        </div>
+
+            <!-- --------------------------------- -->
+
+
+
         <div class="col-md-10 offset-md-1" style="padding-top: 48px;">
           <div class="title-box-d">
                     <h3 class="title-d">Añade tu comentario</h3>
@@ -231,7 +321,7 @@
                 <input type="submit" value="Publicar" class="btn btn-b-n">
             </form>
 
-              <section class="section-testimonials section-t8 nav-arrow-a">
+<!--               <section class="section-testimonials section-t8 nav-arrow-a">
     <div class="container">
       <div class="row">
         <div class="col-md-12">
@@ -268,7 +358,7 @@
         {% endfor %}
       </div>
     </div>
-  </section>
+  </section> -->
 
 
               <div class="col-md-12">
@@ -314,6 +404,28 @@
 
 
   <!--/ Property Single End /-->
+
+<script type="text/javascript">
+  
+  var lat = "{{lat}}";
+  var lng = "{{lng}}";
+  
+  let marker;
+
+  var mymap = L.map('mapa').setView([lat,lng], 13);
+
+   L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVsaTQyIiwiYSI6ImNrZnQza3IwajA1aWMycnE2OHdwcWtvNnkifQ.LutiE7gB3tp6QRRqIbxLOw', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/%22%3EOpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/%22%3ECC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/%22%3EMapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+}).addTo(mymap);
+
+    marker = L.marker([lat,lng]).addTo(mymap);
+
+
+</script>
 
   <script>
 

@@ -1,16 +1,160 @@
 {% extends 'base.html' %}
+{% load static %}
+{% block contenido %}
+	
+<!DOCTYPE html>
+<html lang="es">
+<head>
+
+	<link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<link rel="stylesheet" href="{% static 'css/style.css' %}">
+
+</head>
+
+<body>
+<section class="intro-single2">
+	<form method= "POST" enctype="multipart/form-data">
+		{% csrf_token %}
+
+		{{form.errors}}
+		<div class="container">
+			<div class="wrapper wrapper--w680">
+            	<div class="card card-6">
+                	<div class="card-heading">
+                    	<h2 class="text-center py-2" id="actualizar">Añadir Ubicación</h2>
+                	</div>
+                	<div class="card-body">
+
+						<div class="form-row">
+							<div class="name">Mapa</div><br>
+                            	<br><div id="mapa" class= "capas" id="form_coords"></div>
+						</div>
+
+                        <div class="form-row">
+                            <div class="name">Latitud</div>
+                            	<div class="value">
+                            		{{form.lat}}
+                            	</div>
+						</div>
+
+						<div class="form-row">
+                            <div class="name">Longitud</div>
+                            	<div class="value">
+                            		{{form.lng}}
+                            	</div>
+						</div>
+						<input class="btn btn-b-n" type="submit" name="Guardar Ubicacion" id="form_submit" value="Guardar Ubicacion">
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+</section>
+
+	{% block js %}
+
+		<script type="text/javascript">
+			C=0;
+			$("#boton").click(function(event){
+			C+=1;
+			event.preventDefault();
+			var x='<label for="id_imagen">Imagen:</label><input type="file" name="imagen'+C+'" accept="image/*" required="" id="id_imagen"><br>';
+			$("#img").append(x);
+			});
+		</script>
+
+	{% endblock js %}
+
+  <script src="{% static 'lib/jquery/jquery.min.js' %}"></script>
+  <script src="{% static 'lib/jquery/jquery-migrate.min.js' %}"></script>
+  <script src="{% static 'lib/popper/popper.min.js' %}"></script>
+  <script src="{% static 'lib/bootstrap/js/bootstrap.min.js' %}"></script>
+  <script src="{% static 'lib/easing/easing.min.js' %}"></script>
+  <script src="{% static 'lib/owlcarousel/owl.carousel.min.js' %}"></script>
+  <script src="{% static 'lib/scrollreveal/scrollreveal.min.js' %}"></script>
+
+  <script src="{% static 'contactform/contactform.js' %}"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+  
+  <script src="{% static 'js/main.js' %}"></script>
+
+
+
+  <script type="text/javascript">
+
+ 	let marker;
+
+
+ 
+ 	var mymap = L.map('mapa').setView([-27.451275, -58.986868], 13);
+
+	 L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibWVsaTQyIiwiYSI6ImNrZnQza3IwajA1aWMycnE2OHdwcWtvNnkifQ.LutiE7gB3tp6QRRqIbxLOw', {
+    attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/%22%3EOpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/%22%3ECC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/%22%3EMapbox</a>',
+    maxZoom: 18,
+    id: 'mapbox/streets-v11',
+    tileSize: 512,
+    zoomOffset: -1,
+}).addTo(mymap);
+
+    marker = L.marker([-27.451275, -58.986868]).addTo(mymap);
+	
+	mymap.on('click', function(e){
+       	marker.setLatLng(e.latlng);
+      
+       	let body = {lat: e.latlng.lat, lng: e.latlng.lng};
+       	console.log(e)
+
+       	id_lat.value = marker._latlng.lat;
+ 		id_lng.value = marker._latlng.lng;
+
+	});
+
+	$('#form_coords').submit(function(e){
+ 		e.preventDefault();
+
+ 		if (marker !== undefined){
+ 			let body = {lat: marker._latlng.lat, lng: marker._latlng.lng};
+       	
+       	$.ajax({
+        	url : "/Mapas/Localizacion/",
+        	type : "POST",
+	        data : body, 
+	        beforeSend: function(xhr) {
+	    		xhr.setRequestHeader('X-CSRFToken', '{{csrf_token}}')
+	 		 },
+	  		success: function(data) {},
+	  		error: function(error) {}
+
+      	});
+
+ 		}
+
+ 		
+
+ 	})
+
+
+</script>
+
+</body>
+</html>
+
+{% endblock contenido %}
+
+
+
+
+
+{% comment %}
+
+<!-- {% extends 'base.html' %}
 
 {% block contenido%}
 
 
 	<div id="mapa" class= "capas" id="form_coords"></div>
 		<form method= "POST" enctype="multipart/form-data">{% csrf_token %}
-			
-			<!-- <label for="id_lat">Latitud:</label>
-			<input type="text" name="lat" maxlength="100" required="" id="id_lat">
-			<label for="id_lng">Longitud:</label>
-			<input type="text" name="lng" maxlength="100" required="" id="id_lng">
-			<label for="id_publicacion">Publicacion:</label> -->
 			
 			{{ form.as_p }}
      
@@ -47,20 +191,6 @@
        	id_lat.value = marker._latlng.lat;
  		id_lng.value = marker._latlng.lng;
 
- 	
-     //   	$.ajax({
-     //    	url : "/Mapas/Localizacion/",
-     //    	type : "POST",
-	    //     data : body, 
-	    //     beforeSend: function(xhr) {
-	    // 		xhr.setRequestHeader('X-CSRFToken', '{{csrf_token}}')
-	 		 // },
-	  		// success: function(data) {},
-	  		// error: function(error) {}
-
-     //  	});
-
-
 	});
 
 	$('#form_coords').submit(function(e){
@@ -91,9 +221,6 @@
 </script>
 
 
+{% endblock %} -->
 
-
-
-{% endblock %}
-
-
+{% endcomment %}

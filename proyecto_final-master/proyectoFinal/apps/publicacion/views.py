@@ -9,12 +9,14 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 from apps.utils.funciones import PermisosMixin
 from apps.usuarios.models import Usuario
 from apps.publicacion.filters import FiltroPublicacion
+from apps.mapas.models import Ubicacion
 from django.http import HttpResponse, HttpResponseRedirect
 
 
 def Publicacion(request, pk):
     p = Publicaciones.objects.get(publicacion_id= pk)
     r = Reseña.objects.filter(post=p).order_by('id')
+    m = Ubicacion.objects.get(publicacion=pk)
 
     if request.method == 'POST':
         reseña_form = Reseñas(request.POST or None)
@@ -30,7 +32,9 @@ def Publicacion(request, pk):
 
     context = { 
                 'publicacion': p, 
-                'reseña_form': reseña_form, 
+                'reseña_form': reseña_form,
+                'lat': m.lat,
+                'lng': m.lng, 
     }
 
 

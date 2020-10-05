@@ -4,17 +4,17 @@ from .models import Ubicacion
 from django.urls import reverse_lazy
 from django.views.generic import CreateView
 from .forms import UbicacionForm
-import json
-
 
 
 def mostrarMapa(request, pk):
-	
-	m = Ubicacion.objects.get(publicacion=pk)
+    m = Ubicacion.objects.get(publicacion=pk)
 
-	contex = {'mapas': m }
+    context = {
+    'lat': m.lat,
+    'lng': m.lng, }
+    print(context)
 
-	return render(request, 'mapas/mostrar.html', contex)
+    return render(request, 'publicacion/publicacion.html', context)
 
 
 class CrearMapa(CreateView):
@@ -29,5 +29,3 @@ class CrearMapa(CreateView):
 	# 	m.save()
 	# 	return redirect(self.success_url)
    
-	
-

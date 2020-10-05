@@ -89,22 +89,12 @@ class ListarPublicaciones(ListView):
 
 def Filtros(request):
     context = {}
-    orden = request.GET.get("orden", None)
-        
-    if orden:
-        if orden == "1":
-            publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().
-                                              order_by("precio"))
-        elif orden == "2":
-            publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().
-                                              order_by("-precio"))
-    else:
-        publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all())      
-    
+    publicaciones = FiltroPublicacion(request.GET, queryset=Publicaciones.objects.all().order_by("precio"))
     context["publicaciones"] = publicaciones.qs
     context["formulario"] = publicaciones.form
-    
+
     return render(request, "publicacion/filtrado.html", context)
+
 
 
 class borrarReseña(DeleteView):
